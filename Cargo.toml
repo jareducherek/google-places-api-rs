@@ -19,6 +19,7 @@ exclude = [
 serde = { version = "1.0.127", features = ["derive"] }
 serde_json = "1.0"
 ureq = { version = "2.1.1", features = ["json"] }
+dotenv = "0.15.0"
 
 # Feature optional dependencies
 async-graphql = { version = "2.9.9", optional = true }
