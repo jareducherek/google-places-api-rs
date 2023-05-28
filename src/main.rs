@@ -11,12 +11,6 @@ fn main() {
         }
     };
 
-    //let args: Vec<String> = std::env::args().collect();
-    //if args.len() < 2 {
-    //    println!("place_id arg required");
-    //    return;
-    //}
-
     let place_id = "ChIJaccr2d4WsocRCJWGxAi8hWs";
 
     let places = &Places { api_key: &api_key };
@@ -56,6 +50,14 @@ fn main() {
 
                 println!("photo_reference: {}", photo_reference); // Added print statement
                 println!("photo_url      : {}", photo_url);
+
+                // Download the image data
+                let mut file = std::fs::File::create("image.png").unwrap();
+                reqwest::blocking::get(photo_url.as_str())
+        .unwrap()
+        .copy_to(&mut file)
+        .unwrap();
+                
             }
         }
         Response::ZeroResults => {
