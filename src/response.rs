@@ -59,6 +59,7 @@ pub struct PlaceResult {
     pub url: Option<String>,
     pub utc_offset: Option<i32>,
     pub vicinity: Option<String>,
+    pub photos: Option<Vec<PlacePhoto>>,
 }
 
 impl PlaceResult {
@@ -167,6 +168,15 @@ pub struct AddressComponent {
     long_name: String,
     short_name: String,
     types: Vec<AddressType>,
+}
+
+#[derive(Debug, Deserialize)]
+#[cfg_attr(feature = "async-graphql", derive(SimpleObject))]
+pub struct PlacePhoto {
+    pub height: i32,
+    pub width: i32,
+    pub html_attributions: Vec<String>,
+    pub photo_reference: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Copy, Clone, Eq, PartialEq)]

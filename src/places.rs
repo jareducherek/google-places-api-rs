@@ -88,6 +88,38 @@ impl<'a> Places<'a> {
 
         Ok(body)
     }
+    
+    pub fn get_place_image(
+        &self,
+        photo_reference: &str,
+        max_width: Option<u32>,
+    ) -> Result<String, GoogleMapPlaceError> {
+        if photo_reference.is_empty() {
+            return Err(GoogleMapPlaceError::BadRequest(
+                "Photo reference is required".to_string(),
+            ));
+        }
+
+        #[cfg(not(test))]
+        let base_url = "https://maps.googleapis.com".to_string();
+
+        #[cfg(test)]
+        let base_url = mockito::server_url();
+
+        let mut url = format!(
+            "{}/maps/api/place/photo?maxwidth={}&photoreference={}&key={}",
+            base_url,
+            max_width.unwrap_or(400), // Set a default max width if not provided
+            photo_reference,
+            self.api_key
+        );
+
+        if let Some(width) = max_width {
+            url = format!("{}&maxwidth={}", url, width);
+        }
+
+        Ok(url)
+    }
 }
 
 #[cfg(test)]
@@ -195,5 +227,21 @@ mod tests {
         } else {
             assert!(false);
         }
+    }
+
+    #[test]
+    fn test_get_place_image() {
+        let place = Places {
+            api_key: "api-key",
+        };
+
+        let photo_reference = "photo-reference";
+        let expected_url = format!(
+            "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={}&key=api-key",
+            photo_reference
+        );
+
+        let result = place.get_place_image(photo_reference, None);
+        assert_eq!(result.unwrap(), expected_url);
     }
 }
