@@ -11,13 +11,7 @@ fn main() {
         }
     };
 
-    //let args: Vec<String> = std::env::args().collect();
-    //if args.len() < 2 {
-    //    println!("place_id arg required");
-    //    return;
-    //}
-
-    let place_id = "ChIJATaCWGU3zDER32m__CAwDyY";
+    let place_id = "ChIJaccr2d4WsocRCJWGxAi8hWs";
 
     let places = &Places { api_key: &api_key };
 
@@ -43,6 +37,28 @@ fn main() {
             println!("city          : {}", result.city().unwrap_or(""));
             println!("state         : {}", result.state().unwrap_or(""));
             println!("country       : {}", result.country().unwrap_or(""));
+
+            // Retrieve a photo reference if available
+            
+
+            if let Some(photo) = result.photos.as_ref().and_then(|photos| photos.get(0)) {
+                let photo_reference = photo.photo_reference.as_ref().map(|s| s.as_str()).unwrap_or("");
+                let photo_url = places.get_place_image(photo_reference, Some(800)).unwrap_or_else(|e| {
+                    println!("Failed to retrieve image URL: {:?}", e);
+                    String::new()
+                });
+
+                println!("photo_reference: {}", photo_reference); // Added print statement
+                println!("photo_url      : {}", photo_url);
+
+                // Download the image data
+                let mut file = std::fs::File::create("image.png").unwrap();
+                reqwest::blocking::get(photo_url.as_str())
+        .unwrap()
+        .copy_to(&mut file)
+        .unwrap();
+                
+            }
         }
         Response::ZeroResults => {
             println!("Zero results");
