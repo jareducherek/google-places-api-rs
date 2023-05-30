@@ -54,7 +54,12 @@ impl<'a> Places<'a> {
     ///     }
     /// };
     /// ```
-    pub fn get_map_place(&self, place_id: &str) -> Result<Response, GoogleMapPlaceError> {
+    async fn get_url_req(&self, url: &str) Result<Response, Error> {
+        let response = reqwest::get("https://www.rust-lang.org").await?;
+        let body = response.text().await?;
+        Ok(body)
+    }
+    pub async fn get_map_place(&self, place_id: &str) -> Result<Response, GoogleMapPlaceError> {
         if place_id.is_empty() {
             return Err(GoogleMapPlaceError::BadRequest(
                 "Place id is required".to_string(),
@@ -72,7 +77,8 @@ impl<'a> Places<'a> {
             base_url, place_id, self.api_key
         );
 
-        let res = match ureq::get(&url).call() {
+        let res = match reqwest::get(&url).call()
+        .await? {
             Ok(r) => r,
             Err(e) => {
                 return Err(GoogleMapPlaceError::Unknown(e.to_string()));
@@ -89,7 +95,7 @@ impl<'a> Places<'a> {
         Ok(body)
     }
     
-    pub fn get_place_image(
+    pub async fn get_place_image(
         &self,
         photo_reference: &str,
         max_width: Option<u32>,

@@ -22,9 +22,14 @@ ureq = { version = "2.1.1", features = ["json"] }
 dotenv = "0.15.0"
 image = "*"
 reqwest = {version = "0.11", features = ["json","blocking"] }
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8" }
+tokio = { version = "1.28.2", features = ["full"] }
 
 # Feature optional dependencies
 async-graphql = { version = "2.9.9", optional = true }
 
 [dev-dependencies]
 mockito = "0.30.0"
+
+[workspace]
+members = ["prisma-cli"]
