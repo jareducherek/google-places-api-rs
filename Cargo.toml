@@ -24,6 +24,9 @@ image = "*"
 reqwest = {version = "0.11", features = ["json","blocking"] }
 prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8" }
 tokio = { version = "1.28.2", features = ["full"] }
+geoutils = "0.5.1"
+itertools = "0.10.5"
+
 
 # Feature optional dependencies
 async-graphql = { version = "2.9.9", optional = true }
