@@ -1,1 +1,1 @@
-static REQUEST_CLIENT: reqwest::Client = reqwest::Client();
+// static REQUEST_CLIENT: Client = reqwest::Client();
