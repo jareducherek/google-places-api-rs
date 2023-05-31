@@ -8,16 +8,6 @@ pub fn coordinates_to_grid(tl_lat: f64, tl_lng: f64, br_lat: f64, br_lng: f64, m
     let diag_count: f64 = (distance / m_btwn_pts).ceil();
     let dlat: f64 = (br_lat - tl_lat) / diag_count;
     let dlong: f64 = (br_lng - tl_lng) / diag_count;
-    // let mut all_points = Vec::with_capacity(((diag_count + 1.0) as usize).pow(2));
-    // for i in 0..=(diag_count as usize) {
-    //     let cur_lat = tl_lat + i as f64 * dlat;
-    //     for j in 0..=(diag_count as usize) {
-    //         let cur_long = tl_lng + j as f64 * dlong;
-    //         all_points.push((cur_lat, cur_long));
-    //     }
-    // }
-    // Ok(all_points)
-    println!("{}", diag_count);
     let all_points: Vec<(f64, f64)> = iproduct!(0..=(diag_count as usize), 0..=(diag_count as usize))
         .map(|(i, j)| {
             let cur_lat = tl_lat + i as f64 * dlat;
