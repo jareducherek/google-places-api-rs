@@ -13,6 +13,7 @@ use crate::{GoogleMapPlaceError, Response};
 /// ```
 pub struct Places<'a> {
     pub api_key: &'a str,
+    client: reqwest::Client
 }
 
 impl<'a> Places<'a> {
@@ -62,6 +63,9 @@ impl<'a> Places<'a> {
     //    let body = response.text().await?;
     //    Ok(body)
     //}
+    pub fn new(api_key: &str) -> Places {
+        Places {api_key: api_key, client: reqwest::Client::new()}
+    }
 
     pub async fn nearby_search(&self, latitude: f64, longitude: f64, radius: f64, keyword: &str) -> Result<String, Error> {
         let base_url = "https://maps.googleapis.com".to_string();
@@ -74,7 +78,7 @@ impl<'a> Places<'a> {
             base_url, keyword, latitude, longitude, radius, self.api_key
         );
 
-        let response: reqwest::Response = reqwest::get(&url).await.unwrap();
+        let response: reqwest::Response = self.client.get(&url).send().await.unwrap();
 
         let body: String = response.text().await.unwrap();
         
@@ -101,7 +105,7 @@ impl<'a> Places<'a> {
             base_url, place_id, self.api_key
         );
 
-        let res =  reqwest::get(&url).await.unwrap(); 
+        let res =  self.client.get(&url).send().await.unwrap(); 
 
         let body =  res.json().await.unwrap();
 

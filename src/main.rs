@@ -2,7 +2,6 @@ use waldo_google_api::{Places, Response};
 // Stops the client from outputing a huge number of warnings during compilation.
 #[allow(warnings, unused)]
 mod prisma;
-mod globals;
  
 use prisma::PrismaClient;
 use prisma_client_rust::NewClientError;
@@ -22,7 +21,7 @@ async fn main() {
     };
 
     let place_id = "ChIJaccr2d4WsocRCJWGxAi8hWs";
-    let places = &Places { api_key: &api_key };
+    let places = Places::new(&api_key);
     //let res = places.get_map_place(place_id);
     let res = places.nearby_search(-33.8670522, 151.1957362, 1500.0, "cruise").await.unwrap();
     println!("{}", res);
