@@ -1,5 +1,7 @@
 * `cargo prisma generate`
-* `cargo run --example basic_search`
+# Working Examples:
+* `cargo run --example nearby_search`
+* `cargo run --example place_details`
 
 # Repo Structure
 
