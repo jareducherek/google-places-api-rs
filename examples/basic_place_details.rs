@@ -21,19 +21,17 @@ async fn main() {
     // Define place_id
     let place_id = "ChIJaccr2d4WsocRCJWGxAi8hWs";
     
-
-    //starter code  for example details request
     // Perform the place details request
-    //match place_details_service.get_place_details(place_id, None, None, None, None, None, None).await {
-    //    Ok(place_details) => {
-    //        // Display the place details
-    //        println!("html_attributions: {}", place_details.place.html_attributions.unwrap_or_default());
-    //        println!("Rating: {}", place_details.rating.unwrap_or_default());
-    //        println!("Phone Number: {}", place_details.formatted_phone_number.unwrap_or_default());
-    //    }
-    //    Err(error) => {
-    //        // Handle the error
-    //        eprintln!("Error: {:?}", error);
-    //    }
-    //}
+    match place_details_service.get_place_details(place_id, None, None, None, None, None, None).await {
+       Ok(place_details) => {
+           // Display the place details
+           println!("Place ID: {}", place_details.place.id);
+           println!("Name: {}", place_details.place.name);
+           println!("Address: {}", place_details.place.address);
+       }
+       Err(error) => {
+           // Handle the error
+           eprintln!("Error: {:?}", error);
+       }
+    }
 }

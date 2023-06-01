@@ -14,7 +14,7 @@ pub struct Place {
 
 //todo details needs to inherit from place
 #[derive(Debug, Serialize, Deserialize)]
-pub struct details {
+pub struct FullPlace { // TODO update this to be combined with the above struct
     address_components: Vec<AddressComponent>,
     adr_address: String,
     business_status: String,
