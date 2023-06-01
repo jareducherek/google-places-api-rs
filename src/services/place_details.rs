@@ -1,7 +1,6 @@
 use crate::client::GooglePlacesClient;
 use crate::error::GooglePlacesError;
-use crate::models::NearbySearchResult;
-
+use crate::models::PlaceDetails;
 pub struct PlaceDetailsService {
     client: GooglePlacesClient,
 }
