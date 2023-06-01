@@ -1,5 +1,5 @@
 * `cargo prisma generate`
-
+* `cargo run --example basic_search`
 
 # Repo Structure
 
