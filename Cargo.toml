@@ -36,3 +36,8 @@ mockito = "0.30.0"
 
 [workspace]
 members = ["prisma-cli"]
+
+[example]
+name = "basic_search"
+path = "examples/basic_search.rs"
+
