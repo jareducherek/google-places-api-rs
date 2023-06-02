@@ -1,5 +1,11 @@
+# Google Places API
+
+# Contributing Instructions
+
+# Helpful Commands
 * `cargo prisma generate`
-# Working Examples:
+
+# Working Examples
 * `cargo run --example nearby_search`
 * `cargo run --example place_details`
 
@@ -9,7 +15,9 @@
     │   ├── lib.rs
     │   ├── error.rs
     │   ├── client.rs
-    │   ├── models.rs
+    │   ├── models
+    │   │   ├── place_details.rs
+    │   │   └── ...
     │   ├── services
     │   │   ├── places.rs
     │   │   └── ...
