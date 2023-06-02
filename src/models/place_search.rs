@@ -19,8 +19,8 @@ impl NearbySearchResult {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FindPlaceSearchResult {
-    #[serde(rename = "result")]
-    pub candidates: Vec<Place>,
+    #[serde(rename = "candidates")]
+    pub results: Vec<Place>,
     pub status: String,
 }
 

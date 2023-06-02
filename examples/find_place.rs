@@ -27,10 +27,10 @@ async fn main() {
         Ok(search_result) => {
             // Process and display the search result
             println!("Candidates:");
-            for mut candidate in search_result.candidates {
-                println!("Name: {}", candidate.name);
-                println!("Address: {}", candidate.formatted_address.unwrap_or_else(|| String::from("N/A")));
-                if let Some(geometry) = candidate.geometry.take() {
+            for mut result in search_result.results {
+                println!("Name: {}", result.name);
+                println!("Address: {}", result.formatted_address.unwrap_or_else(|| String::from("N/A")));
+                if let Some(geometry) = result.geometry.take() {
                     if let Some(location) = geometry.location {
                         println!("Location: {}, {}", location.lat.unwrap_or(0.0), location.lng.unwrap_or(0.0));
                     }
@@ -43,10 +43,10 @@ async fn main() {
                         }
                     }
                 }
-                if let Some(opening_hours) = candidate.opening_hours {
+                if let Some(opening_hours) = result.opening_hours {
                     println!("Opening Hours: Open now - {}", opening_hours.open_now.unwrap_or(false));
                 }
-                println!("Rating: {}", candidate.rating.unwrap_or(0.0));
+                println!("Rating: {}", result.rating.unwrap_or(0.0));
                 println!("");
             }
             println!("Status: {}", search_result.status);
