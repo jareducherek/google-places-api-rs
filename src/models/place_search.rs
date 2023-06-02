@@ -11,6 +11,12 @@ pub struct NearbySearchResult {
     pub total_results: u32,
 }
 
+impl NearbySearchResult {
+    pub fn calculate_total_results(&mut self) {
+        self.total_results = self.places.len() as u32;
+    }
+}
+
 // impl<'de> serde::Deserialize<'de> for NearbySearchResult {
 //     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
 //     where
