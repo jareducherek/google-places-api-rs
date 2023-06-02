@@ -1,3 +1,5 @@
 /target
 .env
 prisma.rs
+*.png
+image.png
