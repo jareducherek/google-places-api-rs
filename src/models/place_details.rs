@@ -13,10 +13,10 @@ use crate::models::place::Place;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PlaceDetails {
-    html_attributions: Vec<String>,
+    pub html_attributions: Vec<String>,
     #[serde(rename = "result")]
     pub place: Place,
-    status: String,
+    pub status: String,
 }
 
 
