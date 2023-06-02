@@ -17,6 +17,13 @@ impl NearbySearchResult {
     }
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FindPlaceSearchResult {
+    #[serde(rename = "result")]
+    pub candidates: Vec<Place>,
+    pub status: String,
+}
+
 // impl<'de> serde::Deserialize<'de> for NearbySearchResult {
 //     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
 //     where

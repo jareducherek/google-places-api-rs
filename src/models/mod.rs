@@ -5,3 +5,5 @@ pub mod place_search;
 pub use place::Place;
 pub use place_details::PlaceDetails;
 pub use place_search::NearbySearchResult;
+pub use place_search::FindPlaceSearchResult;
+

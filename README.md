@@ -8,6 +8,8 @@
 # Working Examples
 * `cargo run --example nearby_search`
 * `cargo run --example place_details`
+* `cargo run --example find_place`
+
 
 # Repo Structure
 
