@@ -17,17 +17,13 @@ impl PlacePhotosService {
         &self,
         photo_reference: &str,
         max_width: Option<u32>,
+        max_height: Option<u32>,
     ) -> Result<image::DynamicImage, GooglePlacesError> {
         // Construct the request URL
-        let mut url = format!(
-            "https://maps.googleapis.com/maps/api/place/photo?photoreference={}&key={}",
-            photo_reference, self.client.get_api_key()
+        let url = format!(
+            "https://maps.googleapis.com/maps/api/place/photo?maxwidth={}&maxheight={}&photoreference={}&key={}",
+            max_width.unwrap_or(1000), max_height.unwrap_or(1000), photo_reference, self.client.get_api_key()
         );
-
-        match max_width {
-            Some(mw) => { url.push_str(&format!("&maxwidth={}", mw)) }
-            None => {  }
-        }
     
         // Send the HTTP GET request to download the image
         let response = self.client.get_req_client().get(&url).send().await.unwrap();
