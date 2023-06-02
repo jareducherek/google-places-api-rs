@@ -31,6 +31,7 @@ async fn main() {
                 println!("Place Name: {}", place.name);
                 println!("Place Address: {}", place.address);
                 println!("---------------------------------------");
+                
             }
             println!("Total Results: {}", search_result.total_results);
         }
@@ -39,4 +40,5 @@ async fn main() {
             eprintln!("Error: {:?}", error);
         }
     }
+    
 }

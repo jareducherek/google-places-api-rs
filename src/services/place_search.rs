@@ -26,7 +26,8 @@ impl PlaceSearchService {
 
         let response: reqwest::Response = self.client.get_req_client().get(&url).send().await.unwrap();
         let body: String = response.text().await.unwrap();
-        let search_result: NearbySearchResult = serde_json::from_str(&body).unwrap();
+        let mut search_result: NearbySearchResult = serde_json::from_str(&body).unwrap();
+        search_result.calculate_total_results();
         Ok(search_result)
     }
 }

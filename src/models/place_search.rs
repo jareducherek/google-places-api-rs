@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use crate::models::Place;
+use crate::models::place::Place;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct NearbySearchResult {
@@ -9,6 +9,12 @@ pub struct NearbySearchResult {
 
     #[serde(skip)]
     pub total_results: u32,
+}
+
+impl NearbySearchResult {
+    pub fn calculate_total_results(&mut self) {
+        self.total_results = self.places.len() as u32;
+    }
 }
 
 // impl<'de> serde::Deserialize<'de> for NearbySearchResult {
