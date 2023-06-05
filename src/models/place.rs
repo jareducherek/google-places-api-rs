@@ -96,9 +96,9 @@ pub struct DayTime {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Photo {
-    pub height: Option<i32>,
     pub html_attributions: Option<Vec<String>>,
     pub photo_reference: Option<String>,
+    pub height: Option<u32>,
     pub width: Option<i32>,
 }
 

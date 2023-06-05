@@ -1,14 +1,15 @@
 # Google Places API
 
-# Contributing Instructions
-
-# Helpful Commands
-* `cargo prisma generate`
-
 # Working Examples
 * `cargo run --example nearby_search`
 * `cargo run --example place_details`
 * `cargo run --example find_place`
+* `cargo run --example place_photos`
+
+# Contributing Instructions
+* Add `"rust-analyzer.diagnostics.disabled": ["unresolved-import"]` to your settings.json file to disable proc macro warnings for serde.
+
+# Helpful Commands
 
 
 # Repo Structure

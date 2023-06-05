@@ -1,8 +1,8 @@
 [package]
-name = "google_places_api"
+name = "google-places-api"
 version = "0.1.0"
 edition = "2021"
-description = "Crate to access google api for the Waldo project."
+description = "Crate to access google places api. Get location data for over 200 million places, and add place details, search, and autocomplete to your apps."
 homepage = "https://github.com/jonsaw/google-maps-places-rs"
 documentation = "https://docs.rs/google-maps-places"
 repository = "https://github.com/jonsaw/google-maps-places-rs"
@@ -22,7 +22,6 @@ ureq = { version = "2.1.1", features = ["json"] }
 dotenv = "0.15.0"
 image = "*"
 reqwest = {version = "0.11", features = ["json","blocking"] }
-prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8" }
 tokio = { version = "1.28.2", features = ["full"] }
 geoutils = "0.5.1"
 itertools = "0.10.5"
@@ -34,6 +33,3 @@ async-graphql = { version = "2.9.9", optional = true }
 
 [dev-dependencies]
 mockito = "0.30.0"
-
-[workspace]
-members = ["prisma-cli"]
