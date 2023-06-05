@@ -19,35 +19,15 @@ async fn main() {
     let place_search_service = PlaceSearchService::new(client);
 
     // Define the search query, location, and radius
-    let input = "restaurant";
-    let input_type = "textquery"; 
+    let input = "Mongolian Grill";
+    let input_type = "textquery";
 
     // Perform the place search
     match place_search_service.find_place(input, input_type).await {
         Ok(search_result) => {
             // Process and display the search result
-            println!("Candidates:");
-            for mut result in search_result.results {
-                println!("Name: {}", result.name);
-                println!("Address: {}", result.formatted_address.unwrap_or_else(|| String::from("N/A")));
-                if let Some(geometry) = result.geometry.take() {
-                    if let Some(location) = geometry.location {
-                        println!("Location: {}, {}", location.lat.unwrap_or(0.0), location.lng.unwrap_or(0.0));
-                    }
-                    if let Some(viewport) = geometry.viewport {
-                        if let Some(northeast) = viewport.northeast {
-                            println!("Viewport NE: {}, {}", northeast.lat.unwrap_or(0.0), northeast.lng.unwrap_or(0.0));
-                        }
-                        if let Some(southwest) = viewport.southwest {
-                            println!("Viewport SW: {}, {}", southwest.lat.unwrap_or(0.0), southwest.lng.unwrap_or(0.0));
-                        }
-                    }
-                }
-                if let Some(opening_hours) = result.opening_hours {
-                    println!("Opening Hours: Open now - {}", opening_hours.open_now.unwrap_or(false));
-                }
-                println!("Rating: {}", result.rating.unwrap_or(0.0));
-                println!("");
+            for result in search_result.results {
+                println!("Place:\n{}", result.to_string());
             }
             println!("Status: {}", search_result.status);
         }
@@ -56,5 +36,4 @@ async fn main() {
             eprintln!("Error: {:?}", error);
         }
     }
-    
 }

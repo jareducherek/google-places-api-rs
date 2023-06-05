@@ -1,13 +1,14 @@
 use serde::{Deserialize, Serialize};
+use serde_json::{json, Value};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Place {
     // Define the fields that represent a place
     #[serde(rename = "place_id")]
     pub id: String,
-    pub name: String,
+    pub name: Option<String>,
     #[serde(rename = "vicinity")]
-    pub address: String,
+    pub address: Option<String>,
     pub address_components: Option<Vec<AddressComponent>>,
     pub adr_address: Option<String>,
     pub business_status: Option<String>,
@@ -30,6 +31,23 @@ pub struct Place {
     pub user_ratings_total: Option<i32>,
     pub website: Option<String>,
     // Add more fields as needed
+    pub curbside_pickup: Option<bool>,
+    pub current_opening_hours: Option<PlaceOpeningHours>,
+    pub delivery: Option<bool>,
+    pub dine_in: Option<bool>,
+    pub editorial_summary: Option<PlaceEditorialSummary>,
+    pub permanently_closed: Option<bool>,
+    pub serves_beer: Option<bool>,
+    pub serves_breakfast: Option<bool>,
+    pub serves_brunch: Option<bool>,
+    pub serves_dinner: Option<bool>,
+    pub serves_lunch: Option<bool>,
+    pub serves_vegetarian_food: Option<bool>,
+    pub serves_wine: Option<bool>,
+    pub takeout: Option<bool>,
+    pub secondary_opening_hours: Option<Vec<PlaceOpeningHours>>,
+    pub vicinity: Option<String>,
+    pub wheelchair_accessible_entrance: Option<bool>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -102,4 +120,61 @@ pub struct Review {
     pub time: Option<i64>,
 }
 
+// Additional structs
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlaceOpeningHours {
+    pub open_now: Option<bool>,
+    pub periods: Option<Vec<OpeningHoursPeriod>>,
+    pub weekday_text: Option<Vec<String>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OpeningHoursPeriod {
+    pub open: Option<OpeningHoursTime>,
+    pub close: Option<OpeningHoursTime>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OpeningHoursTime {
+    pub day: Option<i32>,
+    pub time: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlaceEditorialSummary {
+    pub body: Option<String>,
+    pub attribution: Option<String>,
+}
+
+
+impl Place {
+    pub fn to_string(&self) -> String {
+        let json_value: Value = json!(self);
+        let cleaned_value = remove_empty_fields(&json_value);
+        cleaned_value.to_string()
+    }
+}
+
+fn remove_empty_fields(value: &Value) -> Value {
+    match value {
+        Value::Object(obj) => {
+            let cleaned_fields: serde_json::Map<String, Value> = obj
+                .iter()
+                .filter(|(_, v)| !v.is_null())
+                .map(|(k, v)| (k.clone(), remove_empty_fields(v)))
+                .collect();
+
+            Value::Object(cleaned_fields)
+        }
+        Value::Array(arr) => {
+            let cleaned_array: Vec<Value> = arr
+                .iter()
+                .map(|v| remove_empty_fields(v))
+                .collect();
+
+            Value::Array(cleaned_array)
+        }
+        _ => value.clone(),
+    }
+}
