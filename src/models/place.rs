@@ -1,9 +1,8 @@
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Place {
-    // Define the fields that represent a place
+    // Basic
     #[serde(rename = "place_id")]
     pub id: String,
     pub name: Option<String>,
@@ -13,30 +12,35 @@ pub struct Place {
     pub adr_address: Option<String>,
     pub business_status: Option<String>,
     pub formatted_address: Option<String>,
-    pub formatted_phone_number: Option<String>,
     pub geometry: Option<Geometry>,
     pub icon: Option<String>,
     pub icon_background_color: Option<String>,
     pub icon_mask_base_uri: Option<String>,
-    pub international_phone_number: Option<String>,
-    pub opening_hours: Option<OpeningHours>,
-    pub photos: Option<Vec<Photo>>,
     pub plus_code: Option<PlusCode>,
-    pub rating: Option<f32>,
-    pub reference: Option<String>,
-    pub reviews: Option<Vec<Review>>,
     pub types: Option<Vec<String>>,
     pub url: Option<String>,
     pub utc_offset: Option<i32>,
-    pub user_ratings_total: Option<i32>,
-    pub website: Option<String>,
-    // Add more fields as needed
-    pub curbside_pickup: Option<bool>,
+    pub permanently_closed: Option<bool>,
+    pub photos: Option<Vec<Photo>>,
+    pub vicinity: Option<String>,
+    pub wheelchair_accessible_entrance: Option<bool>,
+
+    // Contact
+    pub formatted_phone_number: Option<String>,
+    pub international_phone_number: Option<String>,
+    pub opening_hours: Option<OpeningHours>,
     pub current_opening_hours: Option<PlaceOpeningHours>,
+    pub secondary_opening_hours: Option<Vec<PlaceOpeningHours>>,
+    pub website: Option<String>,
+
+    // Atmosphere
+    pub curbside_pickup: Option<bool>,
     pub delivery: Option<bool>,
     pub dine_in: Option<bool>,
     pub editorial_summary: Option<PlaceEditorialSummary>,
-    pub permanently_closed: Option<bool>,
+    pub rating: Option<f32>,
+    pub reviews: Option<Vec<Review>>,
+    pub user_ratings_total: Option<i32>,
     pub serves_beer: Option<bool>,
     pub serves_breakfast: Option<bool>,
     pub serves_brunch: Option<bool>,
@@ -45,10 +49,10 @@ pub struct Place {
     pub serves_vegetarian_food: Option<bool>,
     pub serves_wine: Option<bool>,
     pub takeout: Option<bool>,
-    pub secondary_opening_hours: Option<Vec<PlaceOpeningHours>>,
-    pub vicinity: Option<String>,
-    pub wheelchair_accessible_entrance: Option<bool>,
+    pub reservable: Option<bool>,
+    pub price_level: Option<i32>,
 }
+
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AddressComponent {
