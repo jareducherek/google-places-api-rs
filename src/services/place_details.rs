@@ -8,6 +8,8 @@ pub struct PlaceDetailsService {
 }
 
 impl PlaceDetailsService {
+    /// Retrieves detailed information about a place based on its place ID.
+
     pub fn new(client: GooglePlacesClient) -> Self {
         PlaceDetailsService { 
             client, 
@@ -22,25 +24,52 @@ impl PlaceDetailsService {
         self.session_token = None;
     }
 
-    // pub async fn get_place_details(&self, place_id: &str) -> Result<PlaceDetails, GooglePlacesError> {
-    //     return self.get_place_details(place_id, None, None, None, None, None, None);
-    // }
-
+    ///
+    /// This function makes a request to the Google Places API to fetch the details of a place
+    /// identified by the provided place ID. The retrieved information includes the name, address,
+    /// phone number, opening hours, photos, reviews, and other details of the place.
+    ///
+    /// # Arguments
+    ///
+    /// * `place_id` - The unique identifier of the place.
+    /// * `fields` - Optional. A list of specific fields to retrieve for the place. If not provided,
+    ///              all available fields will be returned.
+    /// * `language` - Optional. The preferred language for the returned place details. If provided,
+    ///                the API will attempt to provide the information in the specified language.
+    /// * `region` - Optional. The region code (ccTLD) to bias the results towards a specific country
+    ///              or region. This helps to narrow down the search to a specific geographical area.
+    /// * `review_no_translation` - Optional. Specifies whether to disable translation of reviews.
+    ///                             If set to `true`, reviews will be returned in their original language.
+    ///                             If omitted or set to `false`, reviews will be translated to the
+    ///                             preferred language specified or determined by the Accept-Language header.
+    /// * `review_sort` - Optional. The sorting method to use when returning reviews. Can be set to
+    ///                   "most_relevant" (default) or "newest". For "most_relevant", reviews are sorted
+    ///                   by relevance and biased towards the preferred language. For "newest", reviews
+    ///                   are sorted in chronological order.
+    /// * `session_token` - Optional. A session token that identifies an autocomplete session for billing
+    ///                     purposes. Each session can have multiple queries and one place selection.
+    ///                     If not provided, each request is billed separately.
+    ///
+    /// # Returns
+    ///
+    /// The retrieved place details as a `PlaceDetails` struct if successful, or an error of type
+    /// `GooglePlacesError` if the API request fails or the place details cannot be retrieved.
+    ///
     pub async fn get_place_details(
         &self,
         place_id: &str,
         #[allow(unused)]
-        fields: Option<Vec<String>>, //todo
+        fields: Option<Vec<String>>, 
         #[allow(unused)]
-        language: Option<Language>, //todo
+        language: Option<Language>, 
         #[allow(unused)]
-        region: Option<String>, //todo
+        region: Option<String>,
         #[allow(unused)]
-        review_no_translation: Option<bool>, //todo
+        review_no_translation: Option<bool>,
         #[allow(unused)]
-        review_sort: Option<ReviewSort>, //todo (wrong type, needs to be categorical variable? enum?)
+        review_sort: Option<ReviewSort>, 
         #[allow(unused)]
-        session_token: Option<String>, //todo
+        session_token: Option<String>,
 
     ) -> Result<PlaceDetails, GooglePlacesError> {//format for url might be wrong, need to test all cases
         let base_url = format!(
