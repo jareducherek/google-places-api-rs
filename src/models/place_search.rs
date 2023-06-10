@@ -1,13 +1,12 @@
 use serde::{Deserialize, Serialize};
 use crate::models::place::Place;
-use crate::models::status::Status;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct NearbySearchResult {
     pub html_attributions: Vec<String>,
     #[serde(rename = "results")]
     pub places: Vec<Place>,
-    pub status: Status,
+    pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
     pub next_page_token: Option<String>,
@@ -25,7 +24,7 @@ impl NearbySearchResult {
 pub struct FindPlaceSearchResult {
     #[serde(rename = "candidates")]
     pub results: Vec<Place>,
-    pub status: Status,
+    pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
 }
@@ -34,7 +33,7 @@ pub struct TextSearchResult {
     pub html_attributions: Vec<String>,
     #[serde(rename = "results")]
     pub places: Vec<Place>,
-    pub status: Status,
+    pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
     pub next_page_token: Option<String>,
@@ -70,5 +69,35 @@ impl TextSearchResult {
             html_attributions, places, self.status.to_string(),
             self.error_message.as_ref().unwrap_or(&"".to_string()),
             info_messages, self.next_page_token.as_ref().unwrap_or(&"".to_string()))
+    }
+}
+
+
+#[derive(Debug, Serialize, Deserialize)]
+pub enum PlaceSearchStatus {
+    #[serde(rename = "OK")]
+    Ok,
+    #[serde(rename = "ZERO_RESULTS")]
+    ZeroResults,
+    #[serde(rename = "INVALID_REQUEST")]
+    InvalidRequest,
+    #[serde(rename = "OVER_QUERY_LIMIT")]
+    OverQueryLimit,
+    #[serde(rename = "REQUEST_DENIED")]
+    RequestDenied,
+    #[serde(rename = "UNKNOWN_ERROR")]
+    UnknownError,
+}
+
+impl PlaceSearchStatus {
+    pub fn to_string(&self) -> &str {
+        match self {
+            PlaceSearchStatus::Ok => "OK",
+            PlaceSearchStatus::ZeroResults => "ZERO_RESULTS",
+            PlaceSearchStatus::OverQueryLimit => "OVER_QUERY_LIMIT",
+            PlaceSearchStatus::RequestDenied => "REQUEST_DENIED",
+            PlaceSearchStatus::InvalidRequest => "INVALID_REQUEST",
+            PlaceSearchStatus::UnknownError => "UNKNOWN_ERROR",
+        }
     }
 }
