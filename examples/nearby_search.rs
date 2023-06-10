@@ -27,18 +27,11 @@ async fn main() {
     match place_search_service.nearby_search(query, location, radius).await {
         Ok(search_result) => {
             // Process and display the search result
-            for place in search_result.places {
-                println!("Place Name: {}", place.name);
-                println!("Place Address: {}", place.address);
-                println!("---------------------------------------");
-                
-            }
-            println!("Total Results: {}", search_result.total_results);
+            println!("{}", search_result.to_string());
         }
         Err(error) => {
             // Handle the error
             eprintln!("Error: {:?}", error);
         }
     }
-    
 }

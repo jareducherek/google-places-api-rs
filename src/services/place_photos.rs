@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 use crate::client::GooglePlacesClient;
 use crate::error::GooglePlacesError;
 use image::io::Reader;
@@ -40,4 +38,4 @@ impl PlacePhotosService {
 
     }
 }
->>>>>>> Stashed changes
+

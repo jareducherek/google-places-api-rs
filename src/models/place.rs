@@ -1,35 +1,34 @@
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Place {
     // Basic
     #[serde(rename = "place_id")]
     pub id: String,
     pub name: Option<String>,
-    #[serde(rename = "vicinity")]
-    pub address: Option<String>,
     pub address_components: Option<Vec<AddressComponent>>,
     pub adr_address: Option<String>,
     pub business_status: Option<String>,
     pub formatted_address: Option<String>,
     pub geometry: Option<Geometry>,
     pub icon: Option<String>,
-    pub icon_background_color: Option<String>,
     pub icon_mask_base_uri: Option<String>,
+    pub icon_background_color: Option<String>,
+    pub permanently_closed: Option<bool>,
+    pub photos: Option<Vec<Photo>>,
     pub plus_code: Option<PlusCode>,
     pub types: Option<Vec<String>>,
     pub url: Option<String>,
     pub utc_offset: Option<i32>,
-    pub permanently_closed: Option<bool>,
-    pub photos: Option<Vec<Photo>>,
     pub vicinity: Option<String>,
     pub wheelchair_accessible_entrance: Option<bool>,
 
     // Contact
+    pub current_opening_hours: Option<PlaceOpeningHours>,
     pub formatted_phone_number: Option<String>,
     pub international_phone_number: Option<String>,
     pub opening_hours: Option<OpeningHours>,
-    pub current_opening_hours: Option<PlaceOpeningHours>,
     pub secondary_opening_hours: Option<Vec<PlaceOpeningHours>>,
     pub website: Option<String>,
 
@@ -38,9 +37,10 @@ pub struct Place {
     pub delivery: Option<bool>,
     pub dine_in: Option<bool>,
     pub editorial_summary: Option<PlaceEditorialSummary>,
+    pub price_level: Option<i32>,
     pub rating: Option<f32>,
+    pub reservable: Option<bool>,
     pub reviews: Option<Vec<Review>>,
-    pub user_ratings_total: Option<i32>,
     pub serves_beer: Option<bool>,
     pub serves_breakfast: Option<bool>,
     pub serves_brunch: Option<bool>,
@@ -49,8 +49,7 @@ pub struct Place {
     pub serves_vegetarian_food: Option<bool>,
     pub serves_wine: Option<bool>,
     pub takeout: Option<bool>,
-    pub reservable: Option<bool>,
-    pub price_level: Option<i32>,
+    pub user_ratings_total: Option<i32>,  
 }
 
 
@@ -100,9 +99,9 @@ pub struct DayTime {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Photo {
-    pub height: Option<i32>,
     pub html_attributions: Option<Vec<String>>,
     pub photo_reference: Option<String>,
+    pub height: Option<u32>,
     pub width: Option<i32>,
 }
 
@@ -117,6 +116,8 @@ pub struct Review {
     pub author_name: Option<String>,
     pub author_url: Option<String>,
     pub language: Option<String>,
+    pub original_language: Option<String>,
+    pub translated: Option<bool>,
     pub profile_photo_url: Option<String>,
     pub rating: Option<i32>,
     pub relative_time_description: Option<String>,
@@ -130,7 +131,16 @@ pub struct Review {
 pub struct PlaceOpeningHours {
     pub open_now: Option<bool>,
     pub periods: Option<Vec<OpeningHoursPeriod>>,
+    pub special_days: Option<Vec<PlaceSpecialDay>>,
+    #[serde(rename = "type")]
+    pub place_opening_hours_type: Option<String>,
     pub weekday_text: Option<Vec<String>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlaceSpecialDay {
+    pub date: Option<String>,
+    pub exceptional_hours: Option<bool>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -149,6 +159,8 @@ pub struct OpeningHoursTime {
 pub struct PlaceEditorialSummary {
     pub body: Option<String>,
     pub attribution: Option<String>,
+    pub language: Option<String>,
+    pub overview: Option<String>,
 }
 
 
@@ -156,7 +168,7 @@ impl Place {
     pub fn to_string(&self) -> String {
         let json_value: Value = json!(self);
         let cleaned_value = remove_empty_fields(&json_value);
-        cleaned_value.to_string()
+        serde_json::to_string_pretty(&cleaned_value).unwrap_or_else(|_| String::from("Error formatting Place"))
     }
 }
 

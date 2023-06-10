@@ -1,7 +1,7 @@
 use dotenv::dotenv;
 use std::env;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::services::PlaceDetailsService;
+use google_places_api::services::PlaceSearchService;
 
 #[tokio::main]
 async fn main() {
@@ -16,20 +16,22 @@ async fn main() {
     let client = GooglePlacesClient::new(&api_key);
 
     // Create a PlaceSearchService instance
-    let place_details_service = PlaceDetailsService::new(client);
+    let place_search_service = PlaceSearchService::new(client);
 
-    // Define place_id
-    let place_id = "ChIJeSVts2QSkFQRyse0d8pWNa0";
-    
-    // Perform the place details request
-    match place_details_service.get_place_details(place_id, None, None, None, None, None, None).await {
-        Ok(place_details) => {
-            // Display the place details
-            println!("{}", place_details.to_string());
+    // Define the search query, location, and radius
+    let query = "restaurant";
+    let radius = 5000; // 5000 meters radius
+
+    // Perform the place search
+    match place_search_service.text_search(query, radius).await {
+        Ok(search_result) => {
+            // Process and display the search result
+            println!("{}", search_result.to_string());
         }
         Err(error) => {
             // Handle the error
             eprintln!("Error: {:?}", error);
         }
     }
+
 }
