@@ -1,6 +1,10 @@
 use crate::client::GooglePlacesClient;
 use crate::error::GooglePlacesError;
+<<<<<<< Updated upstream
 use crate::models::{Place, NearbySearchResult, FindPlaceSearchResult};
+=======
+use crate::models::{NearbySearchResult, FindPlaceSearchResult, TextSearchResult};
+>>>>>>> Stashed changes
 use urlencoding::encode;
 
 pub struct PlaceSearchService {
