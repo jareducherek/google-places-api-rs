@@ -8,7 +8,7 @@ documentation = "https://docs.rs/google-places-api"
 repository = "https://github.com/jareducherek/google-places-api-rs"
 readme = "README.md"
 license = "MIT"
-keywords = ["google", "places", "api", "reviews", "ratings", "maps"]
+keywords = ["google", "places", "api", "reviews", "ratings"]
 categories = ["api-bindings"]
 
 exclude = [
