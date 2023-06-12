@@ -1,6 +1,8 @@
 use crate::client::GooglePlacesClient;
 use crate::error::GooglePlacesError;
-use crate::models::{PlaceDetails, Language, ReviewSort};
+use crate::models::PlaceDetails;
+use crate::models::constants::{PlaceDataField, Language, ReviewSort};
+use isocountry::CountryCode;
 use uuid::Uuid;
 pub struct PlaceDetailsService {
     client: GooglePlacesClient,
@@ -58,17 +60,11 @@ impl PlaceDetailsService {
     pub async fn get_place_details(
         &self,
         place_id: &str,
-        #[allow(unused)]
-        fields: Option<Vec<String>>, 
-        #[allow(unused)]
+        fields: Option<Vec<PlaceDataField>>, 
         language: Option<Language>, 
-        #[allow(unused)]
-        region: Option<String>,
-        #[allow(unused)]
+        region: Option<CountryCode>,
         review_no_translation: Option<bool>,
-        #[allow(unused)]
         review_sort: Option<ReviewSort>, 
-        #[allow(unused)]
         session_token: Option<String>,
 
     ) -> Result<PlaceDetails, GooglePlacesError> {//format for url might be wrong, need to test all cases
@@ -79,7 +75,7 @@ impl PlaceDetailsService {
         let mut url = base_url;
         // Fields
         if let Some(fields) = fields {
-            let field_list: Vec<String> = fields.into_iter().map(|f| f.to_string()).collect();
+            let field_list: Vec<String> = fields.into_iter().map(|f| String::from(f.as_str())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
         }
@@ -89,7 +85,7 @@ impl PlaceDetailsService {
         }
         // Region
         if let Some(region) = region {
-            url.push_str(&format!("&region={}", region));
+            url.push_str(&format!("&region={}", region.alpha2()));
         }
         // Review No Translation
         if let Some(review_no_translation) = review_no_translation {
@@ -97,7 +93,7 @@ impl PlaceDetailsService {
         }
         // Review Sort
         if let Some(review_sort) = review_sort {
-            url.push_str(&format!("&sort={}", review_sort.to_string()));
+            url.push_str(&format!("&sort={}", review_sort.as_str()));
         }
         // Session token
         if let Some(session_token) = session_token {

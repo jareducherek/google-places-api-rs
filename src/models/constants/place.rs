@@ -101,7 +101,7 @@ pub struct DayTime {
 pub struct Photo {
     pub html_attributions: Option<Vec<String>>,
     pub photo_reference: Option<String>,
-    pub height: Option<u32>,
+    pub height: Option<i32>,
     pub width: Option<i32>,
 }
 
@@ -163,9 +163,8 @@ pub struct PlaceEditorialSummary {
     pub overview: Option<String>,
 }
 
-
 impl Place {
-    pub fn to_string(&self) -> String {
+    pub fn display(&self) -> String {
         let json_value: Value = json!(self);
         let cleaned_value = remove_empty_fields(&json_value);
         serde_json::to_string_pretty(&cleaned_value).unwrap_or_else(|_| String::from("Error formatting Place"))

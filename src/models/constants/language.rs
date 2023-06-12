@@ -1,4 +1,6 @@
-#[derive(Debug)]
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub enum Language {
     Af, Am, Ar, Hy, Az, Eu, Be, Bn, Bs, Bg, My, Ca, Zh, ZhCN, ZhHK, ZhTW,
     Hr, Cs, Da, Nl, En, EnAU, EnGB, Et, Fa, Fi, Fil, Fr, FrCA, Gl, Ka, De,

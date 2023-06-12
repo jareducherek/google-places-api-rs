@@ -414,6 +414,7 @@ dependencies = [
  "dotenv",
  "geoutils",
  "image",
+ "isocountry",
  "itertools",
  "mockito",
  "reqwest",
@@ -619,6 +620,16 @@ name = "ipnet"
 version = "2.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "12b6ee2129af8d4fb011108c73d99a1b83a85977f23b82460c0ae2e25bb4b57f"
+
+[[package]]
+name = "isocountry"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1ea1dc4bf0fb4904ba83ffdb98af3d9c325274e92e6e295e4151e86c96363e04"
+dependencies = [
+ "serde",
+ "thiserror",
+]
 
 [[package]]
 name = "itertools"

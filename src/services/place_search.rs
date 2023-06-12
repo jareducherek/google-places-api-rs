@@ -1,6 +1,6 @@
 use crate::client::GooglePlacesClient;
 use crate::error::GooglePlacesError;
-use crate::models::{NearbySearchResult, FindPlaceSearchResult, TextSearchResult};
+use crate::models::place_search::{FindPlaceSearchResult, NearbySearchResult, TextSearchResult};
 use urlencoding::encode;
 
 pub struct PlaceSearchService {

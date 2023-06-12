@@ -25,7 +25,7 @@ async fn main() {
     match place_details_service.get_place_details(place_id, None, None, None, None, None, None).await {
         Ok(place_details) => {
             // Display the place details
-            println!("{}", place_details.to_string());
+            println!("{}", place_details.display());
         }
         Err(error) => {
             // Handle the error

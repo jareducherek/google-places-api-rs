@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use crate::models::place::Place;
+use crate::models::constants::Place;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PlaceDetails {
@@ -11,11 +11,11 @@ pub struct PlaceDetails {
 }
 
 impl PlaceDetails {
-    pub fn to_string(&self) -> String {
+    pub fn display(&self) -> String {
         let html_attributions = self.html_attributions.join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
         format!("PlaceDetails {{ html_attributions: [{}], place: {}, status: {}, info_messages: [{}] }}", 
-            html_attributions, self.place.to_string(), self.status.to_string(), info_messages)
+            html_attributions, self.place.display(), self.status.as_str(), info_messages)
     }
 }
 
@@ -38,7 +38,7 @@ pub enum PlaceDetailsStatus {
 }
 
 impl PlaceDetailsStatus {
-    pub fn to_string(&self) -> &str {
+    pub fn as_str(&self) -> &str {
         match self {
             PlaceDetailsStatus::Ok => "OK",
             PlaceDetailsStatus::ZeroResults => "ZERO_RESULTS",
@@ -51,15 +51,4 @@ impl PlaceDetailsStatus {
     }
 }
 
-pub enum ReviewSort {
-    MostRelevant,
-    Newest,
-}
-impl ToString for ReviewSort {
-    fn to_string(&self) -> String {
-        match *self {
-            ReviewSort::MostRelevant => "most_relevant".to_string(),
-            ReviewSort::Newest => "newest".to_string(),
-        }
-    }
-}
+
