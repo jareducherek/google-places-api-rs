@@ -3,6 +3,7 @@ use crate::error::GooglePlacesError;
 use crate::models::PlaceDetails;
 use crate::models::constants::{PlaceDataField, Language, ReviewSort};
 use isocountry::CountryCode;
+use std::collections::HashSet;
 use uuid::Uuid;
 pub struct PlaceDetailsService {
     client: GooglePlacesClient,
@@ -60,7 +61,7 @@ impl PlaceDetailsService {
     pub async fn get_place_details(
         &self,
         place_id: &str,
-        fields: Option<Vec<PlaceDataField>>, 
+        fields: Option<HashSet<PlaceDataField>>, 
         language: Option<Language>, 
         region: Option<CountryCode>,
         review_no_translation: Option<bool>,
