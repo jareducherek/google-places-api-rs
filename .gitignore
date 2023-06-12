@@ -1,4 +1,4 @@
 /target
 .env
-prisma.rs
 *.png
+Cargo.lock
