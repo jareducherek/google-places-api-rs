@@ -106,16 +106,16 @@ pub struct PlusCode {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Review {
-    pub author_name: Option<String>,
+    pub author_name: String,
     pub author_url: Option<String>,
     pub language: Option<String>,
     pub original_language: Option<String>,
     pub translated: Option<bool>,
     pub profile_photo_url: Option<String>,
-    pub rating: Option<i32>,
-    pub relative_time_description: Option<String>,
+    pub rating: i32,
+    pub relative_time_description: String,
     pub text: Option<String>,
-    pub time: Option<i64>,
+    pub time: i64,
 }
 
 // Additional structs
