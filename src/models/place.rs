@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
+use crate::models::Photo;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Place {
@@ -95,14 +96,6 @@ pub struct Period {
 pub struct DayTime {
     pub day: Option<i32>,
     pub time: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Photo {
-    pub html_attributions: Option<Vec<String>>,
-    pub photo_reference: Option<String>,
-    pub height: Option<u32>,
-    pub width: Option<i32>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
