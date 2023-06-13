@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Copy, Eq, PartialEq, Hash, Clone, Serialize, Deserialize)]
 pub enum PlaceDataField {
     // Basic Data
     AddressComponents,

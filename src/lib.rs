@@ -8,4 +8,6 @@ pub mod utils;
 // Re-export public items
 pub use client::GooglePlacesClient;
 pub use models::{PlaceDetails, NearbySearchResult};
+pub use models::constants::*;
 pub use services::{PlaceDetailsService, PlaceSearchService};
+

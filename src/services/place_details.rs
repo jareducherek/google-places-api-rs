@@ -75,7 +75,8 @@ impl PlaceDetailsService {
         );
         let mut url = base_url;
         // Fields
-        if let Some(fields) = fields {
+        if let Some(mut fields) = fields {
+            fields.insert(PlaceDataField::PlaceId);
             let field_list: Vec<String> = fields.into_iter().map(|f| String::from(f.as_str())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
