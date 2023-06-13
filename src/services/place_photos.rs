@@ -1,6 +1,5 @@
 use crate::client::GooglePlacesClient;
 use crate::error::GooglePlacesError;
-use crate::models::{Place, NearbySearchResult};
 use image::io::Reader;
 use std::io::Cursor;
 
@@ -39,3 +38,4 @@ impl PlacePhotosService {
 
     }
 }
+

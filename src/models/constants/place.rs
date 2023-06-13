@@ -1,43 +1,47 @@
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
+use crate::models::Photo;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Place {
-    // Define the fields that represent a place
+    // Basic
     #[serde(rename = "place_id")]
     pub id: String,
     pub name: Option<String>,
-    #[serde(rename = "vicinity")]
-    pub address: Option<String>,
     pub address_components: Option<Vec<AddressComponent>>,
     pub adr_address: Option<String>,
     pub business_status: Option<String>,
     pub formatted_address: Option<String>,
-    pub formatted_phone_number: Option<String>,
     pub geometry: Option<Geometry>,
     pub icon: Option<String>,
-    pub icon_background_color: Option<String>,
     pub icon_mask_base_uri: Option<String>,
-    pub international_phone_number: Option<String>,
-    pub opening_hours: Option<OpeningHours>,
+    pub icon_background_color: Option<String>,
+    pub permanently_closed: Option<bool>,
     pub photos: Option<Vec<Photo>>,
     pub plus_code: Option<PlusCode>,
-    pub rating: Option<f32>,
-    pub reference: Option<String>,
-    pub reviews: Option<Vec<Review>>,
+    pub types: Option<Vec<String>>,
     pub url: Option<String>,
     pub utc_offset: Option<i32>,
-    pub user_ratings_total: Option<i32>,
-    pub website: Option<String>,
-    // Add more fields as needed
-    pub reservable: Option<bool>,
-    pub price_level: Option<i32>,
-    pub editorial_summary: Option<PlaceEditorialSummary>,
-    pub curbside_pickup: Option<bool>,
+    pub vicinity: Option<String>,
+    pub wheelchair_accessible_entrance: Option<bool>,
+
+    // Contact
     pub current_opening_hours: Option<PlaceOpeningHours>,
+    pub formatted_phone_number: Option<String>,
+    pub international_phone_number: Option<String>,
+    pub opening_hours: Option<OpeningHours>,
+    pub secondary_opening_hours: Option<Vec<PlaceOpeningHours>>,
+    pub website: Option<String>,
+
+    // Atmosphere
+    pub curbside_pickup: Option<bool>,
     pub delivery: Option<bool>,
     pub dine_in: Option<bool>,
-    pub permanently_closed: Option<bool>,
+    pub editorial_summary: Option<PlaceEditorialSummary>,
+    pub price_level: Option<i32>,
+    pub rating: Option<f32>,
+    pub reservable: Option<bool>,
+    pub reviews: Option<Vec<Review>>,
     pub serves_beer: Option<bool>,
     pub serves_breakfast: Option<bool>,
     pub serves_brunch: Option<bool>,
@@ -46,11 +50,9 @@ pub struct Place {
     pub serves_vegetarian_food: Option<bool>,
     pub serves_wine: Option<bool>,
     pub takeout: Option<bool>,
-    pub types: Option<Vec<String>>,
-    pub secondary_opening_hours: Option<Vec<PlaceOpeningHours>>,
-    pub vicinity: Option<String>,
-    pub wheelchair_accessible_entrance: Option<bool>,
+    pub user_ratings_total: Option<i32>,  
 }
+
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AddressComponent {
@@ -97,14 +99,6 @@ pub struct DayTime {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Photo {
-    pub html_attributions: Option<Vec<String>>,
-    pub photo_reference: Option<String>,
-    pub height: Option<u32>,
-    pub width: Option<i32>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PlusCode {
     pub compound_code: Option<String>,
     pub global_code: Option<String>,
@@ -112,16 +106,16 @@ pub struct PlusCode {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Review {
-    pub author_name: Option<String>,
+    pub author_name: String,
     pub author_url: Option<String>,
     pub language: Option<String>,
     pub original_language: Option<String>,
     pub translated: Option<bool>,
     pub profile_photo_url: Option<String>,
-    pub rating: Option<i32>,
-    pub relative_time_description: Option<String>,
+    pub rating: i32,
+    pub relative_time_description: String,
     pub text: Option<String>,
-    pub time: Option<i64>,
+    pub time: i64,
 }
 
 // Additional structs
@@ -162,9 +156,8 @@ pub struct PlaceEditorialSummary {
     pub overview: Option<String>,
 }
 
-
 impl Place {
-    pub fn to_string(&self) -> String {
+    pub fn display(&self) -> String {
         let json_value: Value = json!(self);
         let cleaned_value = remove_empty_fields(&json_value);
         serde_json::to_string_pretty(&cleaned_value).unwrap_or_else(|_| String::from("Error formatting Place"))
