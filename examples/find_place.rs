@@ -2,6 +2,8 @@ use dotenv::dotenv;
 use std::env;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
+use google_places_api::models::constants::*;
+
 
 #[tokio::main]
 async fn main() {
@@ -20,16 +22,16 @@ async fn main() {
 
     // Define the search query, location, and radius
     let input = "Mongolian Grill";
-    let input_type = "textquery";
+    let input_type = InputType::TextQuery;
 
     // Perform the place search
-    match place_search_service.find_place(input, input_type).await {
-        Ok(search_result) => {
+    match place_search_service.find_place(input, input_type, None, None, None).await {
+        Ok(find_place) => {
             // Process and display the search result
-            for result in search_result.results {
-                println!("Place:\n{}", result.to_string());
+            for result in find_place.results {
+                println!("Place:\n{}", result.display());
             }
-            println!("Status: {}", search_result.status);
+            println!("Status: {}", find_place.status.as_str());
         }
         Err(error) => {
             // Handle the error

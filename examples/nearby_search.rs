@@ -25,9 +25,9 @@ async fn main() {
 
     // Perform the place search
     match place_search_service.nearby_search(query, location, radius).await {
-        Ok(search_result) => {
+        Ok(find_place) => {
             // Process and display the search result
-            println!("{}", search_result.to_string());
+            println!("{}", find_place.to_string());
         }
         Err(error) => {
             // Handle the error

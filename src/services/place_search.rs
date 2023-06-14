@@ -1,6 +1,8 @@
 use crate::client::GooglePlacesClient;
 use crate::error::GooglePlacesError;
 use crate::models::place_search::{FindPlaceSearchResult, NearbySearchResult, TextSearchResult};
+use crate::models::constants::{PlaceDataField, Language, InputType, LocationBias};
+use std::collections::HashSet;
 use urlencoding::encode;
 
 pub struct PlaceSearchService {
@@ -35,15 +37,35 @@ impl PlaceSearchService {
     pub async fn find_place(
         &self,
         input: &str,
-        input_type: &str,
+        input_type: InputType,
+        fields: Option<HashSet<PlaceDataField>>,
+        language: Option<Language>,
+        location_bias: Option<LocationBias>,
     ) -> Result<FindPlaceSearchResult, GooglePlacesError>{
         
         let input_encoded = encode(input);
-        let url = format!(
+        let mut url = format!(
             "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={}&inputtype={}&key={}",
-            input_encoded, input_type, self.client.get_api_key()
+            input_encoded, input_type.as_str(), self.client.get_api_key()
         );
-        println!("{}", url);
+        // Fields
+        if let Some(mut fields) = fields {
+            fields.insert(PlaceDataField::PlaceId);
+            let field_list: Vec<String> = fields.into_iter().map(|f| String::from(f.as_str())).collect();
+            let field_string = field_list.join(",");
+            url.push_str(&format!("&fields={}", field_string));
+        }
+        
+        // Language
+        if let Some(language) = language {
+            url.push_str(&format!("&language={}", language.as_str()));
+        }
+        
+        // Location Bias
+        if let Some(location_bias) = location_bias {
+            url.push_str(&format!("&locationbias={}", location_bias.as_str()));
+        }
+
         let response: reqwest::Response = self.client.get_req_client().get(&url).send().await.unwrap();
         let body: String = response.text().await.unwrap();
         let search_result: FindPlaceSearchResult = serde_json::from_str(&body).unwrap();
