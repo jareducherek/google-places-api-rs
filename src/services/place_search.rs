@@ -13,12 +13,64 @@ impl PlaceSearchService {
     pub fn new(client: GooglePlacesClient) -> Self {
         PlaceSearchService { client }
     }
-
     pub async fn nearby_search(
         &self,
         location: (f64, f64),
         radius: u32,
-        keyword: Option<String>,
+        keyword: Option<&str>,
+        language: Option<Language>,
+        max_price: Option<u32>,
+        min_price: Option<u32>,
+        open_now: Option<bool>,
+        page_token: Option<String>,
+        place_type: Option<HashSet<PlaceTypes>>,
+    ) -> Result<NearbySearchResult, GooglePlacesError> {
+        return
+            self.full_nearby_search(
+                location,
+                Some(radius),
+                keyword,
+                language, 
+                max_price,
+                min_price,
+                open_now,
+                page_token,
+                None,
+                place_type,
+            ).await
+        
+    }
+    pub async fn nearby_search_rank_by_distance(
+        &self,
+        location: (f64, f64),
+        keyword: Option<&str>,
+        language: Option<Language>,
+        max_price: Option<u32>,
+        min_price: Option<u32>,
+        open_now: Option<bool>,
+        page_token: Option<String>,
+        place_type: Option<HashSet<PlaceTypes>>,
+    ) -> Result<NearbySearchResult, GooglePlacesError> {
+        return
+            self.full_nearby_search(
+                location,
+                None,
+                keyword,
+                language,
+                max_price,
+                min_price,
+                open_now,
+                page_token,
+                Some(RankBy::Distance),
+                place_type,
+            ).await
+    }
+
+    async fn full_nearby_search(
+        &self,
+        location: (f64, f64),
+        radius: Option<u32>,
+        keyword: Option<&str>,
         language: Option<Language>,
         max_price: Option<u32>,
         min_price: Option<u32>,
@@ -30,10 +82,13 @@ impl PlaceSearchService {
         // Construct the request URL
         // "{}/maps/api/place/nearbysearch/json?keyword={}&location={}%2c{}&radius={}&key={}",
         let mut url = format!(
-            "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius={}&key={}",
-            location.0, location.1, radius, self.client.get_api_key()
+            "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={}%2C{}&key={}",
+            location.0,location.1, self.client.get_api_key()
         );
-
+        // Radius
+        if let Some(radius) = radius {
+            url.push_str(&format!("&radius={}", radius));
+        }
         // Keyword
         if let Some(keyword) = keyword {
             url.push_str(&format!("&keyword={}", encode(&keyword)));
