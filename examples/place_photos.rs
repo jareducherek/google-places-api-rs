@@ -1,7 +1,7 @@
 use dotenv::dotenv;
 use std::env;
-use relative_path::{RelativePath, RelativePathBuf};
-use std::path::{Path, PathBuf};
+use relative_path::RelativePath;
+use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlacePhotosService;
 
