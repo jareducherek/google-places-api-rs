@@ -1,0 +1,1600 @@
+{
+  "html_attributions": [],
+  "results": [
+    {
+      "place_id": "ChIJa0NZ3JiAhYARtFo33Kd7kTU",
+      "name": "Hayes Street Grill",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7771452,
+          "lng": -122.4218475
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77847112989271,
+            "lng": -122.4204458201072
+          },
+          "southwest": {
+            "lat": 37.77577147010727,
+            "lng": -122.4231454798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0mOGZ5Xu12T6tSSVsBEghEN26r1aUHV1Vsnq7qhBWnUWM8dflo5AVuJOTXkB2bJwm5Sbv36WiBOyYcQdkgJx9Kt0K3nJ1MC8QOsI9pa0jZ7dTuBKa_lfKHpKlQqN5YdBhLS2gctJk8B6ekRNOefP94GZkwZtF7A-wCUxmfWjSg5EiQ",
+          "height": 4032,
+          "width": 3024,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/108515560459857186478\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGH+V7 Civic Center, San Francisco, CA",
+        "global_code": "849VQHGH+V7"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "320 Hayes St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 3,
+      "rating": 4.2,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 262
+    },
+    {
+      "place_id": "ChIJP61Jo-mAhYARynPDnUkRBr0",
+      "name": "Street Restaurant and Bar",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7965888,
+          "lng": -122.4220519
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.79794517989272,
+            "lng": -122.4206471201073
+          },
+          "southwest": {
+            "lat": 37.79524552010728,
+            "lng": -122.4233467798928
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0krdHbUvJpOpZEJ3evUkyY9-VDyA7P9SFotmoPocOpuUj3Xgk9S-vuCtm6z_Ytkj-LB4kp97i0JjMFJXf1QT8wVCu10sx6YyPyP9IxbIUk9WEQb5Te4f7YMMgVL5XE84n4gcuRqpELCQzllBkDFFoGowIUA-E-sSMm4wLuQfsY39bKe",
+          "height": 4048,
+          "width": 3036,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/105848000205039949588\">caitlin torsney</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHWH+J5 Polk Gulch, San Francisco, CA",
+        "global_code": "849VQHWH+J5"
+      },
+      "types": [
+        "meal_takeaway",
+        "store",
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "2141 Polk St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 174
+    },
+    {
+      "place_id": "ChIJ48pP55SAhYARIpn5hH4dqXE",
+      "name": "Grubstake Diner",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7893701,
+          "lng": -122.4208507
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.79082882989272,
+            "lng": -122.4195229701073
+          },
+          "southwest": {
+            "lat": 37.78812917010728,
+            "lng": -122.4222226298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lhHpKm6X8zvaxM3thBf-wQ1Xx4u8yzJL6sUHGi2eISqNRv3nnvziP0DnzS1wZXvhaMNGV7GPCKKPi2UpTX-mxfl0fjadzmoy-qZ4xjsUEpLSBWgl7BoRh2x_WMo4vgCMrRy3tS_dcRptq4Vt0RgfjOD56K6lLySW3vEB0OO4DZpSXZ",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/106011102022232840554\">Little.Fatiha</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHQH+PM Lower Nob Hill, San Francisco, CA",
+        "global_code": "849VQHQH+PM"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1525 Pine St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.1,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 908
+    },
+    {
+      "place_id": "ChIJZ9s5SJeAhYARIX3Fxl6oj6c",
+      "name": "Brenda's French Soul Food",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7829132,
+          "lng": -122.4188995
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78423762989271,
+            "lng": -122.4176697701073
+          },
+          "southwest": {
+            "lat": 37.78153797010727,
+            "lng": -122.4203694298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0mJIMo1Nai92ydGzT4Q_jFS6b2brINu8oVTHTF_Wet6XoqLOtb7Gj75lDQhKH4LapcC_BZOlPZKK_fnrD3vwU0FdlS-ITngPm2g4B7jqhlpfvNxVqgEAjdbxqwMRe9y2cWNHMjmE6XdWd2bnxvZl25R6t_Vxyeu_0lBixzINVHyh57x",
+          "height": 3265,
+          "width": 4898,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/104111246635874032234\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHMJ+5C Tenderloin, San Francisco, CA",
+        "global_code": "849VQHMJ+5C"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "652 Polk St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 5320
+    },
+    {
+      "place_id": "ChIJdfXhM46AhYAREL50HHWg8ys",
+      "name": "Tratto",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7868143,
+          "lng": -122.4118341
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78817502989272,
+            "lng": -122.4104861201073
+          },
+          "southwest": {
+            "lat": 37.78547537010728,
+            "lng": -122.4131857798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0leTMXMbllDTewPOXvXQsMZ9_yuHBfcAUZWDLmDE6o0F3R5bRR9oxXqjts4NXivyUPT-79VQ6tUHnIdvvTZRiAWFR_vzsOTC-aKevNRK6dJAx6hSj99zq3Qu-q_xyPS7kNeZ69qcfX3hPez587tJqDkAP2oSYt-IlAbAGIyWPIwAsNr",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/106926774009596615181\">Ann Brooks</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHPQ+M7 Tenderloin, San Francisco, CA",
+        "global_code": "849VQHPQ+M7"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "501 Geary St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.2,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 737
+    },
+    {
+      "place_id": "ChIJTRf2DXeAhYARsjppfRXu44s",
+      "name": "Delancey Street Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7843641,
+          "lng": -122.3883708
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78571487989272,
+            "lng": -122.3869842701073
+          },
+          "southwest": {
+            "lat": 37.78301522010727,
+            "lng": -122.3896839298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nKTFn2QhHLI19ykS_f-a1InPKEXtfLv3-eQztjuDw5neMWXmlBtrn6Q3C2qd4zKZEuvDlP2JUCtHTWJR9dNgDGuMTTf1Lj4KoPtSnDM_eK5jMk8mvxSjXvn9ZzjMOj7YTy4wCHdcdTUiuGPILF4NXwbGnWF7B2rb3ddowG5VvybPwY",
+          "height": 2988,
+          "width": 3984,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/108092639991171794500\">Shannon Alvarez</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QJM6+PJ South Beach, San Francisco, CA",
+        "global_code": "849VQJM6+PJ"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "600 The Embarcadero, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 1,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 1325
+    },
+    {
+      "place_id": "ChIJaZ6Hg4iAhYARrwVEfkv9Zlw",
+      "name": "MKT Restaurant and Bar",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7864857,
+          "lng": -122.4044548
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78775757989272,
+            "lng": -122.4027939201073
+          },
+          "southwest": {
+            "lat": 37.78505792010728,
+            "lng": -122.4054935798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0m4_pCOikOpi4-3qNJNM39Gt_WYEbaeJPNPUt67WMZlC-7ndmXlLC6jtDlOsF5lPW95_APJPXD9DkwxgBqq_JhRgGA4Brsme9VEla6grmTGIObA31o9gLCrk1UlH_VD4ZVbjPDFmTjaSAAzD1uyEvVyuQJS7XXxT_iW8sRxRIEnnGHo",
+          "height": 3000,
+          "width": 4000,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/112920205209894234789\">George Megrelishvili</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHPW+H6 Yerba Buena, San Francisco, CA",
+        "global_code": "849VQHPW+H6"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "757 Market St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": null,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 348
+    },
+    {
+      "place_id": "ChIJ8fdwjbKAhYARR7XNGRBhGIs",
+      "name": "Bistro Central Parc Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7750282,
+          "lng": -122.4443817
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77634142989272,
+            "lng": -122.4431328701073
+          },
+          "southwest": {
+            "lat": 37.77364177010728,
+            "lng": -122.4458325298928
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0kD2zysj4irqElmX4SlwwCI0c8H06kvFyAZdPF5CAmIO-o9daMYVNpP_4hE1VUIEfOIy-E_BpxhuGOyQX7tFy9kFLbcqsTu5HRdZp9EWxh7Fd8Dgr89j2e0mpfbPvEujm74GKCp8hzHSyPoDBRw16Z0PUAef7PfC9chojfjkZ5sC-21",
+          "height": 2049,
+          "width": 1537,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/115253606070747438702\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHG4+26 North of the Panhandle, San Francisco, CA",
+        "global_code": "849VQHG4+26"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "560 Central Ave, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 318
+    },
+    {
+      "place_id": "ChIJVVWFJZWAhYARZpglOWWhijo",
+      "name": "R.O.H Bar & Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7897152,
+          "lng": -122.421981
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.79105237989273,
+            "lng": -122.4206962701073
+          },
+          "southwest": {
+            "lat": 37.78835272010728,
+            "lng": -122.4233959298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0kmpPpO6DJaAok83H2_zQs2GerxyaPRLowGusbD8GLKsy7uCXPTGt2f612UC2qrlf39GWnQtrHAHkrqCgVKyOaXqDauigTN98tefOVIKBY1j5ZwZ-zdaLAGv1TH7xJ7fxODj5VlsRUeRgN7PAn_e8Ag7TxSapq8UcMpMg_wOjCX7eDb",
+          "height": 4000,
+          "width": 3000,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/109031531864774755950\">Thomas Murphy</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHQH+V6 Polk Gulch, San Francisco, CA",
+        "global_code": "849VQHQH+V6"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1500 Van Ness Ave, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": null,
+      "rating": 3.7,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 12
+    },
+    {
+      "place_id": "ChIJzZlqo5qAhYARN2QTmpYN6yc",
+      "name": "Casa Mayah Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.78293860000001,
+          "lng": -122.4138851
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78423357989273,
+            "lng": -122.4125231701072
+          },
+          "southwest": {
+            "lat": 37.78153392010729,
+            "lng": -122.4152228298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lCyPMKXBGBlgNpm0dKwRrYmS7TFNNemKEaHxMa-BEnd4EwdtSt191lUcQ-HyVB7NlNKioBOujoDqO30Y6XqJYGwNqfSaQHc3DJ0aIkdttxjqOGVUt5By0PHhQNXqWQOhxzisfDlVtLbi_1hShYn2DbSyvUspdDj-0WnsaUtCGGgJaf",
+          "height": 1836,
+          "width": 3264,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/105470727697681630412\">Steven Smith</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHMP+5C Tenderloin, San Francisco, CA",
+        "global_code": "849VQHMP+5C"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "294 Turk St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 1,
+      "rating": 4.0,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 99
+    },
+    {
+      "place_id": "ChIJo6cHuFiBhYART5h6Eya1gP8",
+      "name": "GastrobotEats | Virtual Food Hall",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.799562,
+          "lng": -122.4172828
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.80085087989273,
+            "lng": -122.4159272701072
+          },
+          "southwest": {
+            "lat": 37.79815122010729,
+            "lng": -122.4186269298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nc7cR2pgHvC87QeYhv3Cq9dbbU1yGLHAeIlW3Ok8XjZ_NKNZzCNi94I9FLXyfS5s9SdKvKzdWrIFRJ1CAZT1GL8yrGmEpzX83BazUg3wjX_OP4Uh7xCtq-mLEY8OnQFr9nE8eDbfIDcNbKtm2tqqEEbK1AudPwOrcYJghTMt-XEC5q",
+          "height": 2250,
+          "width": 2812,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/109258691584646230533\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHXM+R3 Russian Hill, San Francisco, CA",
+        "global_code": "849VQHXM+R3"
+      },
+      "types": [
+        "restaurant",
+        "meal_delivery",
+        "meal_takeaway",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1096 Union St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": null,
+      "rating": 4.3,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 6
+    },
+    {
+      "place_id": "ChIJcff_WBt-j4ARS273SYuSWYs",
+      "name": "Orphan Andy's Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.762326,
+          "lng": -122.4348896
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.76378237989272,
+            "lng": -122.4335045701073
+          },
+          "southwest": {
+            "lat": 37.76108272010728,
+            "lng": -122.4362042298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0l4Qfkm9BWkEoqchadKnMZ2VSCCWVmkPwyYI_0KGxy4EhYL_d5-8Go0g2ew1GkDnFCBUPX2uVx1c-YbZMxBKTKMedqXQ1Z37S-smCNpefVT6omt_va0Wcm9NGXLrsrcNMYWuoetf1XbN71Yq36EwxkMkdfy7bt0tF8eUS3P6p2V1J-Q",
+          "height": 2268,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/109814988987866125669\">Brian McConnell</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QH68+W2 The Castro, San Francisco, CA",
+        "global_code": "849VQH68+W2"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "3991-A 17th St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 1,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 1907
+    },
+    {
+      "place_id": "ChIJXX7b1vSAhYARvD0AU-P83P8",
+      "name": "Trestle Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7961962,
+          "lng": -122.4045409
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.79759647989272,
+            "lng": -122.4031788201073
+          },
+          "southwest": {
+            "lat": 37.79489682010728,
+            "lng": -122.4058784798928
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0kiX_eoXxsyY952G1qu5F_O202-CZxZ7J1NrLwTLyFXbypgUsz-Gvl_Xkipv7_tUlkjATLimQ0gpsLRBEbNA3neIfncb0qTQVqYTuTQK6YPrCITDqo2Cs0WbfFfufiFG4HBkDX0zQvTnxjAyvT8rRiUo8-vgf4GIo8pltQy_bQbvzYT",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/112201285987403588477\">Sean Ivester</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHWW+F5 Chinatown, San Francisco, CA",
+        "global_code": "849VQHWW+F5"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "531 Jackson St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 816
+    },
+    {
+      "place_id": "ChIJUaWIjCR-j4ARR3YQRmBbujQ",
+      "name": "Poc-Chuc Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7653373,
+          "lng": -122.4171298
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.76663847989272,
+            "lng": -122.4157623701073
+          },
+          "southwest": {
+            "lat": 37.76393882010728,
+            "lng": -122.4184620298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nXBQ27jI6F0yN7rxPIDc5UdcMwB-rt9YCq6y-VAyGFeCuU5iAqYBqCU1yyc2wcq85sJKagEB58SknrLmG4KJ9_LFYHp6RY4rRwmXUoOAM3Tn-YzSPaD4IWZqU_u3CkQPe-6i-FQLLcmNRr-s0WbmeyNLZdVsUBjkMifXrFsNRpOi22",
+          "height": 3036,
+          "width": 4048,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/109322044954882859880\">Suzanne Coberly</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QH8M+44 Mission District, San Francisco, CA",
+        "global_code": "849VQH8M+44"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "2886 16th St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 321
+    },
+    {
+      "place_id": "ChIJf2YNhYaAhYAR_J-wDOgjaD0",
+      "name": "Soma Restaurant & Bar",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7830007,
+          "lng": -122.406655
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78428202989272,
+            "lng": -122.4052972701073
+          },
+          "southwest": {
+            "lat": 37.78158237010727,
+            "lng": -122.4079969298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0kKG1y7qOZt4hdBYytWM702a4zTZo-Dk1lc_GMU5VgmXbxB-eDV8FuFb1rCyH-hhlTdvSUQeXzl3KhY2l8tJ2SDa-d52GiBZc3QPFx7J9w_UqVtDiYrKL7GxK5veH37DQtEBYmUhXl-Q3yoNIfB0klp7K4ix0slwbESTbiBhvWaDG-t",
+          "height": 1960,
+          "width": 3145,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/100937828992107593369\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHMV+68 Yerba Buena, San Francisco, CA",
+        "global_code": "849VQHMV+68"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "85 5th St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.1,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 610
+    },
+    {
+      "place_id": "ChIJofWUNAx-j4ARnQzSL9SlBq0",
+      "name": "Firefly Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7511917,
+          "lng": -122.4382376
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.75246957989272,
+            "lng": -122.4368830201073
+          },
+          "southwest": {
+            "lat": 37.74976992010727,
+            "lng": -122.4395826798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0m0DyPk0QEwQrCorQVGs3rPH2PSppRDXOCVdxzAe16FtdIZ90Qn0hDlCclOHi7aMNgtGnspqnQKpEpLYFN6YKXf1oZSUmV0RFr4qqRCTNMGkl7lXIw9soB4H3fzWVPGvgbScFBD4N5JMiZ-u6K0iaZf6f1NuAxe2TMt-k1ZGAnJYKjy",
+          "height": 2000,
+          "width": 3008,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101335179499963922376\">Firefly Restaurant</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QH26+FP Noe Valley, San Francisco, CA",
+        "global_code": "849VQH26+FP"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "4288 24th St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 3,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 585
+    },
+    {
+      "place_id": "ChIJF-zbSmSAhYARvOafjdCRszQ",
+      "name": "Boulevard",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7932697,
+          "lng": -122.3928679
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.79469117989272,
+            "lng": -122.3915658201073
+          },
+          "southwest": {
+            "lat": 37.79199152010728,
+            "lng": -122.3942654798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0mxOyTLG0Bzi00SBy70Rpu2DFlJpyKqa5bt3ce4PnIr9h5tVXwdth5u5xE1-c3Qh41i3NRrfLeaiD3b7h9gLmcJYOZjv0Sh2mYoovB4wxgpGULf5jWL4ReDGGRcgIkcJx-JP3dhf0PEhYwSf6sgrvaifMVaEWGHDCZGq5NCj9JV_jOF",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/105435456131951356924\">Joseph Cheng</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QJV4+8V Embarcadero, San Francisco, CA",
+        "global_code": "849VQJV4+8V"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1 Mission St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 4,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 1437
+    },
+    {
+      "place_id": "ChIJZTCRmjyHhYAR1aeqChJLjng",
+      "name": "Mandalay Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7851638,
+          "lng": -122.4643251
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78647122989272,
+            "lng": -122.4629988201073
+          },
+          "southwest": {
+            "lat": 37.78377157010728,
+            "lng": -122.4656984798928
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lEuwYyaIPpuvAnBAntMSQTDSP5hMoaNuY_jOG-sGG2O1s8uVXAWIIE_PKmC3ZZG2Xv3dVzEbaF73cx17nlWuk7fN7BlooNciByyUVELHcL1m4wIrP4Twpkyu1BTaEiCvrVLyW88m_7xrytT1wO1iRSQm0v8mgwMoG5zOEBOG9D4I9x",
+          "height": 2518,
+          "width": 4509,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/110162457115297224651\">Peter Bernhardt</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QGPP+37 Presidio Terrace, San Francisco, CA",
+        "global_code": "849VQGPP+37"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "4348 California St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 954
+    },
+    {
+      "place_id": "ChIJwc7rvGOBhYARCQiUBmSak_0",
+      "name": "Tonton Restaurant",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7872123,
+          "lng": -122.410372
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.78850082989273,
+            "lng": -122.4090361701073
+          },
+          "southwest": {
+            "lat": 37.78580117010728,
+            "lng": -122.4117358298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0kJA7fql9WWf8PN0ba1uLx2j3JHMRcv8oIpC-1mbQL3eMOfT3lv6qae-i2DaK-nVq2UuiGLEJs6chJAeoISwmTQ3RcumEuI42uXfYJ-vDIpibX--GCsSH9NHzmX4bqe3v09Li8NnPaEIRBTtxVpbW-VdhTMnnwYHsrT1b8gBYmMLcrA",
+          "height": 3072,
+          "width": 4080,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/116370847898776376364\">Michael Xu</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHPQ+VV Lower Nob Hill, San Francisco, CA",
+        "global_code": "849VQHPQ+VV"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "422 Geary St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": null,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 232
+    },
+    {
+      "place_id": "ChIJlfC_eYKAhYARhcWC559q0jc",
+      "name": "Basil Thai Restaurant & Bar",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7754393,
+          "lng": -122.4093067
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77681877989271,
+            "lng": -122.4080087701073
+          },
+          "southwest": {
+            "lat": 37.77411912010727,
+            "lng": -122.4107084298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nKj6cCLknfcI58OQI7HZr2Vh6Go8CsXkBDn1AiMuuLXK5DH6RWGkOh4aBvNimDcYehEUPWS2MbS8X4-uJfH3zKbu9cmioIj3zQTGh_Ynru-O-J9ZJvE5NJW3n_1xpcKvRbtK5WZ9Fcy4SWj_Gbc64zlF62MyFNnSCs3MlU_8q9aIlA",
+          "height": 3096,
+          "width": 5504,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/109633798650991895639\">Familia Valdivia Ortiz</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGR+57 SoMa, San Francisco, CA",
+        "global_code": "849VQHGR+57"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1175 Folsom St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.3,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 677
+    }
+  ],
+  "status": "OK",
+  "error_message": null,
+  "info_messages": null,
+  "next_page_token": "AZose0lV15rOy4zZqoIQCVlHGWM8tCWEwaSHGAW_XHXFrRfYLLseVbA8BGKryv58OP9X6DcMS3qVIN7GAnuV0vwbSmzcSbWIFrfVpQyPCR5QSGL1ptcHHGaX80lnetHb2-WIHMm1yk0qqdxaTOb0gqw4Y6kADwaRtPk03U_UBnKpwa9B7gx2conG9C2Dnchh917mQp4I1v27LLRIp15tlJGzK5ttZBu7F_NnZ45RSIUDYclB0GDsUn_9OOeOQWOKGCMB7dQwfLOxnCXu6_jD6SXS75GyFL-gLdq4y_GWzuH1oVgvadWn_PShduJoPtFnLWuwMoiorvS1Poo83YcjNbbP8dAb2wYy82mz0qPRkK00oE2aBIZ9AzpmvG8vOL5bRKauwvOLWqrwpW263U7h3WRJaZd3sjkIMohmwu4GZbqMnQBSje6SNy2AsfxcK7nb"
+}
