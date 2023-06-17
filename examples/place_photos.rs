@@ -18,16 +18,15 @@ async fn main() {
     // Create a PlaceSearchService instance
     let place_photos_service = PlacePhotosService::new(client);
 
-    // Define photo_reference
+    // Define the request parameters
     let photo_reference = "AZose0ninw6UOtG97IxGoKQN03Ar6JAKydIoTPfPT-KmMgqT6AAtAm90_RA65rV3imOU2Q6f34LcM8U_Trj5Y6hlo6l__0K7RpMvbdO77tvrAVLY0adHsBk80TUyTt2p7yH1_roKAdVCNCH1fFCJvSQVmIg0GoBEszWpTuUqr5wPaMnG_Ws-";
     
-    // Perform the place details request
+    // Perform the request
     match place_photos_service.get_photo_reference(photo_reference, None, None).await {
         Ok(img) => {
             let save_result = img.save("image.png");
         }
         Err(error) => {
-            // Handle the error
             eprintln!("Error: {:?}", error);
         }
     }

@@ -3,33 +3,22 @@ use std::env;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
 
-#[tokio::main]
-async fn main() {
-    // Load environment variables from the .env file
+#[tokio::test]
+async fn test_nearby_search() {
     dotenv().ok();
-
-    // Retrieve the API key from the environment variable
-    let api_key = env::var("GOOGLE_PLACES_API_KEY")
-        .expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
-
-    // Create a Google Places client
+    let api_key = env::var("GOOGLE_PLACES_API_KEY").expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
     let client = GooglePlacesClient::new(&api_key);
-
-    // Create a PlaceSearchService instance
     let place_search_service = PlaceSearchService::new(client);
-
-    // Define the request parameters
     let query = "restaurant";
     let location = (37.7749, -122.4194); // San Francisco coordinates
     let radius = 5000; // 5000 meters radius
 
-    // Perform the request
     match place_search_service.nearby_search(query, location, radius).await {
         Ok(search_result) => {
             println!("{}", search_result.display());
         }
         Err(error) => {
-            eprintln!("Error: {:?}", error);
+            panic!("Error in nearby search test {}", error);
         }
     }
 }

@@ -4,7 +4,7 @@ use std::collections::HashSet;
 use isocountry::CountryCode;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceDetailsService;
-use google_places_api::models::constants::*;
+use google_places_api::models::constants::{Language, ReviewSort};
 
 #[tokio::main]
 async fn main() {
@@ -31,22 +31,18 @@ async fn main() {
     //    PlaceDataField::PhoneNumber,
     //].into_iter().collect();
 
+    // Define the request parameters
     let language: Language = Language::Es;
-
     let region: CountryCode = CountryCode::USA;
-
     let review_no_translation: bool = false;
-
     let review_sort: ReviewSort = ReviewSort::Newest;
 
-    // Perform the place details request
+    // Perform the request
     match place_details_service.get_place_details(place_id, None, Some(language), Some(region), Some(review_no_translation), Some(review_sort), None).await {
         Ok(place_details) => {
-            // Display the place details
             println!("{}", place_details.display());
         }
         Err(error) => {
-            // Handle the error
             eprintln!("Error: {:?}", error);
         }
     }
