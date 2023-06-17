@@ -1,5 +1,7 @@
 use dotenv::dotenv;
 use std::env;
+use relative_path::RelativePath;
+use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
 
@@ -18,19 +20,25 @@ async fn main() {
     // Create a PlaceSearchService instance
     let place_search_service = PlaceSearchService::new(client);
 
-    // Define the search query, location, and radius
+    // Output path to view the corresponding json
+    let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
+    let output_path = RelativePath::new("examples/outputs/nearby_search.json").to_path(root_dir);
+
+    // Define the request parameters
     let query = "restaurant";
     let location = (37.7749, -122.4194); // San Francisco coordinates
     let radius = 5000; // 5000 meters radius
 
-    // Perform the place search
+    // Perform the request
     match place_search_service.nearby_search(query, location, radius).await {
         Ok(search_result) => {
-            // Process and display the search result
-            println!("{}", search_result.to_string());
+            println!("{}", search_result.display());
+            std::fs::write(
+                output_path,
+                serde_json::to_string_pretty(&search_result).unwrap(),
+            );
         }
         Err(error) => {
-            // Handle the error
             eprintln!("Error: {:?}", error);
         }
     }

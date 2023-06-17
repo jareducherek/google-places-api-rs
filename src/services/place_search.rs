@@ -43,7 +43,6 @@ impl PlaceSearchService {
             "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={}&inputtype={}&key={}",
             input_encoded, input_type, self.client.get_api_key()
         );
-        println!("{}", url);
         let response: reqwest::Response = self.client.get_req_client().get(&url).send().await.unwrap();
         let body: String = response.text().await.unwrap();
         let search_result: FindPlaceSearchResult = serde_json::from_str(&body).unwrap();
