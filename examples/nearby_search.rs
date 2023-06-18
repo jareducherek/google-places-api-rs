@@ -1,6 +1,8 @@
 use dotenv::dotenv;
 use std::env;
 use std::collections::HashSet;
+use relative_path::RelativePath;
+use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
 use google_places_api::models::constants::*;
@@ -20,12 +22,15 @@ async fn main() {
     // Create a PlaceSearchService instance
     let place_search_service = PlaceSearchService::new(client);
 
-    // Define the location, and radius
-    let location = (-33.8670522, 151.1957362); // San Francisco coordinates
-    let radius = 1500; // 5000 meters radius
+    // Output path to view the corresponding json
+    let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
+    let output_path = RelativePath::new("examples/outputs/nearby_search.json").to_path(root_dir);
 
-    //Optional Args
-    let keyword = "cruise";
+    // Define the request parameters
+    let keyword = "restaurant";
+    let location = (37.7749, -122.4194); // San Francisco coordinates
+    // Optional request parameters
+    let radius = 5000; // 5000 meters radius
     let language: Language = Language::En;
     let max_price = 4;
     let min_price = 1;
@@ -38,14 +43,16 @@ async fn main() {
     ].into_iter().collect();
     let place_types_clone = place_types.clone();
 
-    // Perform the place search with rankby distance
+    // Perform the request
     match place_search_service.nearby_search_rank_by_distance(location, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types_clone)).await {
-        Ok(nearby_search) => {
-            // Process and display the search result
-            println!("{}", nearby_search.display());
+        Ok(search_result) => {
+            println!("{}", search_result.display());
+            std::fs::write(
+                output_path,
+                serde_json::to_string_pretty(&search_result).unwrap(),
+            );
         }
         Err(error) => {
-            // Handle the error
             eprintln!("Error: {:?}", error);
         }
     }

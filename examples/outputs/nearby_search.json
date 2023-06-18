@@ -1,0 +1,1596 @@
+{
+  "html_attributions": [],
+  "results": [
+    {
+      "place_id": "ChIJ77Y2bSSBhYARJvdKhv2-EsA",
+      "name": "Crossroad Pizzeria",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7744592,
+          "lng": -122.4206809
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77573147989272,
+            "lng": -122.4193720201073
+          },
+          "southwest": {
+            "lat": 37.77303182010728,
+            "lng": -122.4220716798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nvweQQYLYpSFeqr-rIWvWssG-THyCmGtzTljpQan6socuNf4UdJJIpl6075U42NnGEVDgiGeGvYefUHy_pHBz4o0ZxkUYpv7CF1LSoA0QY_c2KbqWWwNQsW9Z-0DhFLpUdTr7AVRCFPEAt7avoFD1sYuWRs4z6F6iGjZQK41b7smLY",
+          "height": 4032,
+          "width": 3024,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/111450706673730952587\">Albertino M.</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFH+QP Civic Center, San Francisco, CA",
+        "global_code": "849VQHFH+QP"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1596 Market St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 1,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 39
+    },
+    {
+      "place_id": "ChIJXZc0HJyAhYAR1O96nCqTohw",
+      "name": "Little Griddle @ Dough",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7757356,
+          "lng": -122.4182346
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77738852989272,
+            "lng": -122.4166892701073
+          },
+          "southwest": {
+            "lat": 37.77468887010728,
+            "lng": -122.4193889298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0k5D0BISjx9IUJYa0qKfHE-pyhYGelV_OuPEfLNAJmDZlIIHjHHMzcvgBLf3KU_DDboXCnetdnPopS8idll1EhKvBts3xGREM0tZ3hW2HHKhpWIEE95H0ORDztn8VQvJ8c5auUyu8vSdUFPT1l6ZWvFmQt5tjTyHqvqBVPiMTVV_rJ2",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/105969355905733223234\">Vince Mediaa</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGJ+7P SoMa, San Francisco, CA",
+        "global_code": "849VQHGJ+7P"
+      },
+      "types": [
+        "cafe",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "store",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1455 Market St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.3,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 387
+    },
+    {
+      "place_id": "ChIJySu0ImWBhYARGlc6QfGBCdM",
+      "name": "Dough",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.77570499999999,
+          "lng": -122.4181662
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77713832989272,
+            "lng": -122.4169256201073
+          },
+          "southwest": {
+            "lat": 37.77443867010728,
+            "lng": -122.4196252798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lIlZpCNWliGcU-zPjpNt6WelDHlDQe5-y5scZKlSJ1X7vv8VrL8YiSako6aqs7RVBmQRNQlkT4TLTImLDafjxTy3tmmtHMJmAabvmenaJT2z3UjTwfhPJ8Fj0g1IxgWU7OFDUUNU4vXdFanUwcnlucOp7hi89kzrLybUJkpwHTpedW",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/104390914659004769007\">Shelly Puri</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGJ+7P SoMa, San Francisco, CA",
+        "global_code": "849VQHGJ+7P"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1455 Market St UNIT 3C, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 54
+    },
+    {
+      "place_id": "ChIJZ4bnQTSBhYAR2jpJ472WwiE",
+      "name": "The Italian Homemade Company",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7744002,
+          "lng": -122.4209338
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77574257989272,
+            "lng": -122.4195230701073
+          },
+          "southwest": {
+            "lat": 37.77304292010728,
+            "lng": -122.4222227298928
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0mIBdzbJemLa06CpUSOfEOQ1mn62O_912j0lkKU8qPc2woI2mWWBUXZisZp27n7Oa-wrETq8nus4ftfDMPyyJzIUz6PULSTuHX5Y398ClLpuAT0Q6F-nXTB62hnSkhNI03pxoIwedQfLKBF6Mcm8MEQUiH1YvrJAIcculdpA_lsaCsj",
+          "height": 842,
+          "width": 1179,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/107514471099782336374\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFH+QJ Civic Center, San Francisco, CA",
+        "global_code": "849VQHFH+QJ"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1 Franklin St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.4,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 436
+    },
+    {
+      "place_id": "ChIJGalUMpyAhYARGMC7GR9hs1M",
+      "name": "KAGAWA-YA UDON",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7757569,
+          "lng": -122.4181092
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77724927989271,
+            "lng": -122.4167843701073
+          },
+          "southwest": {
+            "lat": 37.77454962010727,
+            "lng": -122.4194840298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0mh1FCD7IMaBH0dHa9UjeUA4Vz5C-x3w6Xi4MtIz5Rko1s0GlB3rrKig_z_gIS8o_B2U_VAm1WJaVoKeYN2Qo4Rg3IEI8e0Br4hYmqC0ruU4tZH4CkwiueRA0O2cTxyVvy_xktDldD75yLInBJU_gU4MUjY011bdg99bIfX9U-2u6KA",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/103711791581260797491\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGJ+8Q SoMa, San Francisco, CA",
+        "global_code": "849VQHGJ+8Q"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1455 Market St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.1,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 261
+    },
+    {
+      "place_id": "ChIJk8dm4J6AhYAR8MCM6inxTgE",
+      "name": "RT Rotisserie",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7751208,
+          "lng": -122.4211008
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77650632989272,
+            "lng": -122.4197644701073
+          },
+          "southwest": {
+            "lat": 37.77380667010728,
+            "lng": -122.4224641298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0kf0tkRKewozZxPtkeAtLGTlFCjmsY5a1ra17phUjuU4biWNgkT5dlrIJYJ2K3QyFUtrgRpB-SgdwLxCI3i2_CRMrLTtNsrx_AYasDP4O8ocPQir74k3aWm-Tyi3MTbmgQKE_cqFvKcc57T_IiBFTE4WTxyIaoFfGd0Qv9oFL1XzUis",
+          "height": 854,
+          "width": 1280,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/102856729911104190281\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGH+2H Civic Center, San Francisco, CA",
+        "global_code": "849VQHGH+2H"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "101 Oak St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 688
+    },
+    {
+      "place_id": "ChIJvUqK452AhYARkWQeut8-8-0",
+      "name": "Zaoh",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7733216,
+          "lng": -122.418064
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77469372989272,
+            "lng": -122.4167529701073
+          },
+          "southwest": {
+            "lat": 37.77199407010728,
+            "lng": -122.4194526298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nC6q9CAbfedJgx7sT-WeKc9VYfgekgTcJ_wff54vdXQh4Pq6iZncA0p5j1t0gbxUCHtSsRgfM-Cc4XbGJBHsvc-0r8E2kLcJmbeZtzuCTMFHeVxfMdfb8PSOUQqr-18q1puGshxT0PaDN3pbRITcgk_hrsHEIhNIz0XPq1qauFCL5S",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/114113075544437672890\">Sital Mistry</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFJ+8Q SoMa, San Francisco, CA",
+        "global_code": "849VQHFJ+8Q"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1555 Mission St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.3,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 206
+    },
+    {
+      "place_id": "ChIJ557UHJ6AhYAR_zj0jhd9fQI",
+      "name": "Taqueria Cazadores",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7727723,
+          "lng": -122.4188861
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77407452989272,
+            "lng": -122.4174893701073
+          },
+          "southwest": {
+            "lat": 37.77137487010727,
+            "lng": -122.4201890298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0necw-7-a4JQ2RHWT_nZqZdGjyl4yDyySC1GTUAHMfcDCuaFupgbhby1ePzvSyfF5Xc3mFLprhGMuP4O0V6z5zxUdRZirkJC_31aQJkgySR1fJECWVunj0-jU_gAeVYGWpMXQKWmiMYRyagBwuMxCPLITIhZu_Acv34Jvijj9whemmt",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/103950785257249498338\">Justen Perez</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFJ+4C SoMa, San Francisco, CA",
+        "global_code": "849VQHFJ+4C"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1600 Mission St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 1,
+      "rating": 4.4,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 283
+    },
+    {
+      "place_id": "ChIJO7u9q5-AhYARiSSXyWv9eJ8",
+      "name": "Zuni Café",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7735818,
+          "lng": -122.4215935
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77491247989272,
+            "lng": -122.4202190701073
+          },
+          "southwest": {
+            "lat": 37.77221282010728,
+            "lng": -122.4229187298928
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lt92lMDGM-B1jYyIhdbkcmmILKzJ411ln5cyC2RvJT9fTo4qKTvpAIsVkwJh3JfreRSsn4U8Gg9cZAhore62MXsFsTpq4SDkyFo8bG3U-WOmTujApgzaQoAzm4sp8lEZW0y_vr_O5etxJ6FchbqzsdHhBrjntA12JYgR8rdbcJs8I4",
+          "height": 2988,
+          "width": 5312,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/116289653129569088798\">Sing Chan</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFH+C9 Civic Center, San Francisco, CA",
+        "global_code": "849VQHFH+C9"
+      },
+      "types": [
+        "cafe",
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1658 Market St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 3,
+      "rating": 4.4,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 2041
+    },
+    {
+      "place_id": "ChIJCYUUtXyBhYARdiW0xhV4VE4",
+      "name": "Spice of America",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7732325,
+          "lng": -122.4212692
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77465762989272,
+            "lng": -122.4199882701073
+          },
+          "southwest": {
+            "lat": 37.77195797010727,
+            "lng": -122.4226879298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nLuNeqGBUyndx7h81O-61kUYJ8rfYhegXMu9T7w_2IaclEFtrKw2ABYo5S0V8xuVMp6RUyCtK7Z5EW-9-mXLrFLlLZazEvomtbD5OWGaNw5Cg9acLQ5zOvd5iCK4QG8jbnIJkRZwE9DxHScyiCCRRjIKGOsts2pKF5XT-oZ3t2pITI",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/106279247133249830866\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFH+7F SoMa, San Francisco, CA",
+        "global_code": "849VQHFH+7F"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "1655 Market St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.1,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 149
+    },
+    {
+      "place_id": "ChIJgaqMEZ-AhYARektJ_RuUq4E",
+      "name": "Baiano SF Pizza",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7742529,
+          "lng": -122.4222984
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77557367989273,
+            "lng": -122.4210279701072
+          },
+          "southwest": {
+            "lat": 37.77287402010728,
+            "lng": -122.4237276298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0nVplZ69KbVJiMjQlawLmX1IML_IzwB5OY1l8nuKMwSbnmgSHRHqSAJz64HnPeqYFNE3wLaxNaUfni4FWtWIRIxGOr41AShC1IO6MnrCGwfpmcpuHuYNIXJGTRylRUKOGx47c6Okbmt2XYsF_SY8_7qCItbl3vqQBZDlj5nW9tYaXka",
+          "height": 1836,
+          "width": 3264,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101817512354410639572\">Devon Peterson</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFH+P3 Civic Center, San Francisco, CA",
+        "global_code": "849VQHFH+P3"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "100 Gough St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 1,
+      "rating": 4.2,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 240
+    },
+    {
+      "place_id": "ChIJQ9mJ1ZiAhYARQmPYLOs-h-g",
+      "name": "Nojo Ramen Tavern",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7767269,
+          "lng": -122.4214053
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77807897989273,
+            "lng": -122.4200279201073
+          },
+          "southwest": {
+            "lat": 37.77537932010728,
+            "lng": -122.4227275798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lbDOHXEoLysoKpBnqtC0I8RX8lSStzd-tGqkWxSj6IVjcwnU-gQ1QcYbohEt2Ap3xHrkpBpRy11EPNFqBE6GKN41nuAiDfMgI4HL4_dH8AQkPl2wS4IOhBRDSvgMF8jUZk7QkKUV4NGASz-FG7PA_BKBXnuK8-IRTqs_bZeEL9asub",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101210890612016093620\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGH+MC Civic Center, San Francisco, CA",
+        "global_code": "849VQHGH+MC"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "231 Franklin St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.5,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 1151
+    },
+    {
+      "place_id": "ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+      "name": "Rich Table",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7748812,
+          "lng": -122.422725
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77625447989273,
+            "lng": -122.4213785201073
+          },
+          "southwest": {
+            "lat": 37.77355482010729,
+            "lng": -122.4240781798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0mPbYu2XT1-4ZrwTruUZFiUMouyxXCiznv9uNPz0qnloNiZV52BMFC7txmfafFAi0md1_LlgmFtzg8g5GD-m6AdTYjHO7lirzl8iFi95uP-xCDQNsuYEQAw81o2yIX5bxAE9AP7dq4k8OZTwdkFxlxCOjPNnJrIR9o8fgZ5JVeEjpsg",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/117388100209642021036\">Victor Coppola</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHFG+WV Lower Haight, San Francisco, CA",
+        "global_code": "849VQHFG+WV"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "199 Gough St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 3,
+      "rating": 4.7,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 1206
+    },
+    {
+      "place_id": "ChIJlYL0Wa-BhYARJi6qr49Ncv0",
+      "name": "Dumpling Home",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7758205,
+          "lng": -122.4226361
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77720282989272,
+            "lng": -122.4213660201073
+          },
+          "southwest": {
+            "lat": 37.77450317010728,
+            "lng": -122.4240656798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0l_q6L4zspU5wQpK-hq3Mb7l4_liWabo4-UxnDFMa1RJ17Jjqh1-SjPGWDpcF58I4J2fKj5qpqgba9MTpsf0ZDSNMYj-e1-hdbHdpOEUT5PZaNOTmwxsCTMkmtOanr6asAzjihEPcBN6Zt9nrpVZCuOU7HdIf5nFXsXjUNwpzqYz4ms",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/105061099394492403376\">Terpsichore</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGG+8W Civic Center, San Francisco, CA",
+        "global_code": "849VQHGG+8W"
+      },
+      "types": [
+        "meal_takeaway",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "298 Gough St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 734
+    },
+    {
+      "place_id": "ChIJ99U92ZiAhYARVTbIb2VGPJA",
+      "name": "Lers Ros Thai",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.776942,
+          "lng": -122.4217496
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77828952989272,
+            "lng": -122.4203951201073
+          },
+          "southwest": {
+            "lat": 37.77558987010728,
+            "lng": -122.4230947798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0kFi_OK6w9aiRQtJww2riL4H4kRQIjZSnbYw_yAspyZVKDzKS_z1mtM_2czr62U4qeiC1eXo1fZXpaXHNlju8rDtgUeaLUPfEophE7idg9l0gFlV78hv37S1RPB-Umj7RsFqnCHuAZjE0LRMT9zrZoqOc0OOg-EjN3OrBo97-yB_j1B",
+          "height": 3024,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/108037685037290710145\">Yukyeong Song</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGH+Q8 Civic Center, San Francisco, CA",
+        "global_code": "849VQHGH+Q8"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "307 Hayes St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.2,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 714
+    },
+    {
+      "place_id": "ChIJa0NZ3JiAhYARtFo33Kd7kTU",
+      "name": "Hayes Street Grill",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7771452,
+          "lng": -122.4218475
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77847112989271,
+            "lng": -122.4204458201072
+          },
+          "southwest": {
+            "lat": 37.77577147010727,
+            "lng": -122.4231454798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0mg299qzyj1X5FqeUb7vdhC8B1GXPF6lyPzMbkzFWYnfe39PfYLYGOALXIUlausr2ZIopysumT0imQ8YMSuABdeZtmNMBLZByUkkM5u8ifKKi597_dF_RstiSvvATflXAIsTG6oWys02Tk4_cfmVB_ZxdqrMlr_83clItLIXTyHdIo",
+          "height": 4032,
+          "width": 3024,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/108515560459857186478\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGH+V7 Civic Center, San Francisco, CA",
+        "global_code": "849VQHGH+V7"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "320 Hayes St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 3,
+      "rating": 4.2,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 262
+    },
+    {
+      "place_id": "ChIJyzdPuJiAhYARaLoaRwaGRGE",
+      "name": "Nightbird",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.77651609999999,
+          "lng": -122.422801
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77785292989272,
+            "lng": -122.4215058701073
+          },
+          "southwest": {
+            "lat": 37.77515327010727,
+            "lng": -122.4242055298928
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lqydcvs-WSCMceuKd7c7zYlXLG_J3osXBMNRH7-FOtWC738L0-5Pc2WIU0R3XBYB-9SfXUtCXmLnOOfZUeFdx7pxCfJcGDxiplbz4nsK4EeH8tVUDnpXrfwdPpq-sfRoURD6BaamukY6Rvk-7SEIvajR0e1zzX8cE-wcce_GfJPIot",
+          "height": 2268,
+          "width": 4032,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101239258223959818825\">antonio peterson</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGG+JV Civic Center, San Francisco, CA",
+        "global_code": "849VQHGG+JV"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "330 Gough St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 4,
+      "rating": 4.6,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 169
+    },
+    {
+      "place_id": "ChIJtdUYv5iAhYARaOOFfGK1TKU",
+      "name": "Doppio Zero San Francisco",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7767846,
+          "lng": -122.4227688
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77819402989272,
+            "lng": -122.4214527201073
+          },
+          "southwest": {
+            "lat": 37.77549437010727,
+            "lng": -122.4241523798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0n9ugKdLy4ykxyZloJqO5JBzv9wMb5hPxIAYmqkwWE-jzSCiB-8orZFXtpOiHXP0h_h2mcjiVm4LDlZYw67txJubXBH97zjNw91tKIFialyDiQpBfA89QvbDldhc52tKcncUh-V60OqRp2vzQm0kZjc1ievd1Y_tKaYTkzCULbVHFsI",
+          "height": 2000,
+          "width": 3000,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/107379058144298440197\">A Google User</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGG+PV Civic Center, San Francisco, CA",
+        "global_code": "849VQHGG+PV"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "395 Hayes St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.3,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 625
+    },
+    {
+      "place_id": "ChIJpXkdYJyAhYARbxi_KqJa5MQ",
+      "name": "Cadillac Bar & Grill",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7767947,
+          "lng": -122.4158096
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77820817989272,
+            "lng": -122.4143528701073
+          },
+          "southwest": {
+            "lat": 37.77550852010727,
+            "lng": -122.4170525298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0lyCj77KjuXVkQFbygfbC6P_SNda1HOeLYMXwAeTdlPJbFNgKrwi_799xgZIkyCUz9aUj2627pdpKnezNwSMgv9SMFimCdY2zOnjUy2ALsdKhFlqmCMBWUoepqus5PvBLcG7LbCOR8HFM3MD-Z4CRg_ypLRUUCbowUNufQOUG9Q9N0N",
+          "height": 456,
+          "width": 728,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/101957075775022930750\">Cadillac Bar &amp; Grill</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGM+PM SoMa, San Francisco, CA",
+        "global_code": "849VQHGM+PM"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "44 9th St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": false,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 2,
+      "rating": 4.2,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 697
+    },
+    {
+      "place_id": "ChIJ1T-IlZiAhYAR5m-Mps4qLFk",
+      "name": "Absinthe Brasserie & Bar",
+      "address_components": null,
+      "adr_address": null,
+      "business_status": "OPERATIONAL",
+      "formatted_address": null,
+      "geometry": {
+        "location": {
+          "lat": 37.7771042,
+          "lng": -122.4227403
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 37.77835157989271,
+            "lng": -122.4214618201073
+          },
+          "southwest": {
+            "lat": 37.77565192010727,
+            "lng": -122.4241614798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+      "icon_background_color": "#FF9E67",
+      "permanently_closed": null,
+      "photos": [
+        {
+          "photo_reference": "AZose0knqbxjg50GJeY0zhrZjqvzjzRPC7mfLyChC7pzb-a0pWRXD4TJXttTSKU8_fwSwQHxK2pvXQ-vY43ciYp5oQmKeq2QS4YfgH99boQatwCPHkosqLYta6Uk1b2FLcOx_cOb0ToJDzCq8IVeN71O4PcuIUCTuTqDsYVFCSVl3ZhQ76uX",
+          "height": 3072,
+          "width": 4080,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/105061099394492403376\">Terpsichore</a>"
+          ]
+        }
+      ],
+      "plus_code": {
+        "compound_code": "QHGG+RW Civic Center, San Francisco, CA",
+        "global_code": "849VQHGG+RW"
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "url": null,
+      "utc_offset": null,
+      "vicinity": "398 Hayes St, San Francisco",
+      "wheelchair_accessible_entrance": null,
+      "current_opening_hours": null,
+      "formatted_phone_number": null,
+      "international_phone_number": null,
+      "opening_hours": {
+        "open_now": true,
+        "periods": null,
+        "weekday_text": null
+      },
+      "secondary_opening_hours": null,
+      "website": null,
+      "curbside_pickup": null,
+      "delivery": null,
+      "dine_in": null,
+      "editorial_summary": null,
+      "price_level": 3,
+      "rating": 4.4,
+      "reservable": null,
+      "reviews": null,
+      "serves_beer": null,
+      "serves_breakfast": null,
+      "serves_brunch": null,
+      "serves_dinner": null,
+      "serves_lunch": null,
+      "serves_vegetarian_food": null,
+      "serves_wine": null,
+      "takeout": null,
+      "user_ratings_total": 1611
+    }
+  ],
+  "status": "OK",
+  "error_message": null,
+  "info_messages": null,
+  "next_page_token": "AZose0nM9IyUzfoR15KDBytb9KtxPXRSAQucUSVXgCE_QrIXVW1loWu_Mxn-m74xf7Kha5nd_vU18QbIBee8QbK6PpxEkomCYoFJ3VGf6Vp1Y3LTFj5gQTybaPTN-96SFOLuJIsSJ6bgxULB2b8RalDeiDbeWDuZPIQs7vyUk9ZBKDzAlnrOZe5-UiTLfUYZXxQq_dQ-xH5EnFNOy568cmznhercs-5NeTFNYkjcXkVdawKBQjRt3Zamq9Lh7gn4JIy1UdUkcbtvjYOSVWET-JTiicy2hHUFYe5OJqWY88ipKj7144WAKueAjoteN0CVVWd3VF98T5OKuHzJsAgPemdxG0r6hhQXCUnl3ITb2bffdZ80PxN0u_b9Qh3wdzDMfZr2I9R57C1Xy-gJUKXXqLKMJ6yuZJA6RNB3ur1GUGAJWbdLzXH06idTVXCs35bB4iXCRoGrd5vnaiwFB02HGyFAObv86Pp8FWZbBNqppWWVraTl"
+}

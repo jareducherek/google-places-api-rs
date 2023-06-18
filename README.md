@@ -10,6 +10,7 @@
 
 # Contributing Instructions
 * Add `"rust-analyzer.diagnostics.disabled": ["unresolved-import"]` to your settings.json file to disable proc macro warnings for serde.
+* `cargo test` will run integration tests that ensure basic functionality is in check
 
 # Helpful Commands
 

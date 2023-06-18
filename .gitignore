@@ -3,3 +3,4 @@
 *.png
 Cargo.lock
 /.vscode
+*.json
