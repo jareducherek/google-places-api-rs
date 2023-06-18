@@ -24,7 +24,7 @@ impl LocationBias {
                 format!("circle:{}@{},{}", radius, latitude, longitude)
             }
             LocationBias::Rectangular { south, west, north, east } => {
-                format!("rectangle:{}|{}|{},{}", south, west, north, east)
+                format!("rectangle:{},{}|{},{}", south, west, north, east)
             }
         }
     }

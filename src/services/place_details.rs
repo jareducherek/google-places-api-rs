@@ -74,30 +74,25 @@ impl PlaceDetailsService {
             place_id, self.client.get_api_key()
         );
         let mut url = base_url;
-        // Fields
+        // Optional parameters
         if let Some(mut fields) = fields {
             fields.insert(PlaceDataField::PlaceId);
             let field_list: Vec<String> = fields.into_iter().map(|f| String::from(f.as_str())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
         }
-        // Language
         if let Some(language) = language {
             url.push_str(&format!("&language={}", language.as_str()));
         }
-        // Region
         if let Some(region) = region {
             url.push_str(&format!("&region={}", region.alpha2()));
         }
-        // Review No Translation
         if let Some(review_no_translation) = review_no_translation {
             url.push_str(&format!("&reviews_no_translations={}", review_no_translation));
         }
-        // Review Sort
         if let Some(review_sort) = review_sort {
             url.push_str(&format!("&sort={}", review_sort.as_str()));
         }
-        // Session token
         if let Some(session_token) = session_token {
             if !session_token.is_empty() {
                 url.push_str(&format!("&sessiontoken={}", session_token));

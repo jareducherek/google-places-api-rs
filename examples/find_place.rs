@@ -5,7 +5,7 @@ use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
-use google_places_api::models::constants::*;
+use google_places_api::models::constants::{InputType,PlaceDataField, Language, LocationBias};
 
 #[tokio::main]
 async fn main() {

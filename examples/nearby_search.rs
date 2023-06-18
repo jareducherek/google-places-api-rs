@@ -5,7 +5,7 @@ use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
-use google_places_api::models::constants::*;
+use google_places_api::models::constants::{Language, PlaceTypes};
 
 #[tokio::main]
 async fn main() {
@@ -39,7 +39,6 @@ async fn main() {
         PlaceTypes::Restaurant,
         PlaceTypes::Establishment,
         PlaceTypes::Food,
-
     ].into_iter().collect();
     let place_types_clone = place_types.clone();
 

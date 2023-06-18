@@ -85,46 +85,31 @@ impl PlaceSearchService {
             "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={}%2C{}&key={}",
             location.0,location.1, self.client.get_api_key()
         );
-        // Radius
+        // Optional parameters
         if let Some(radius) = radius {
             url.push_str(&format!("&radius={}", radius));
         }
-        // Keyword
         if let Some(keyword) = keyword {
             url.push_str(&format!("&keyword={}", encode(&keyword)));
         }
-
-        // Language
         if let Some(language) = language {
             url.push_str(&format!("&language={}", language.as_str()));
         }
-
-        // Max price
         if let Some(max_price) = max_price {
             url.push_str(&format!("&maxprice={}", max_price));
         }
-
-        // Min price
         if let Some(min_price) = min_price {
             url.push_str(&format!("&minprice={}", min_price));
         }
-
-        // Open now
         if let Some(open_now) = open_now {
             url.push_str(&format!("&opennow={}", open_now));
         }
-
-        // Page token
         if let Some(page_token) = page_token {
             url.push_str(&format!("&pagetoken={}", encode(&page_token)));
         }
-
-        // Rank by
         if let Some(rank_by) = rank_by {
             url.push_str(&format!("&rankby={}", rank_by.as_str()));
         }
-
-        // Place type
         if let Some(place_type) = place_type {
             let type_list: Vec<String> = place_type.into_iter().map(|p| String::from(p.as_str())).collect();
             let type_string = type_list.join(",");
