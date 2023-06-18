@@ -1,8 +1,10 @@
 use dotenv::dotenv;
 use std::env;
+use std::collections::HashSet;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
 use google_places_api::models::place_search::{PlaceSearchStatus};
+use google_places_api::models::constants::{PlaceTypes, Language};
 
 #[tokio::test]
 async fn test_nearby_search() {
@@ -10,11 +12,21 @@ async fn test_nearby_search() {
     let api_key = env::var("GOOGLE_PLACES_API_KEY").expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
     let client = GooglePlacesClient::new(&api_key);
     let place_search_service = PlaceSearchService::new(client);
-    let query = "restaurant";
+    let keyword = "restaurant";
     let location = (37.7749, -122.4194); // San Francisco coordinates
     let radius = 5000; // 5000 meters radius
+    let language: Language = Language::En;
+    let max_price = 4;
+    let min_price = 1;
+    let open_now = false;
+    let place_types: HashSet<PlaceTypes> = vec![
+        PlaceTypes::Restaurant,
+        PlaceTypes::Establishment,
+        PlaceTypes::Food,
 
-    match place_search_service.nearby_search(query, location, radius).await {
+    ].into_iter().collect();
+
+    match place_search_service.nearby_search(location, radius, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types)).await {
         Ok(nearby_search) => {
             assert!(nearby_search.places.len() > 0);
             assert!(nearby_search.next_page_token.is_some());

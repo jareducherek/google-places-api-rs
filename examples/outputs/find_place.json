@@ -1,12 +1,12 @@
 {
   "candidates": [
     {
-      "place_id": "ChIJq6BizyCxwoARQRqvalGkWks",
-      "name": null,
+      "place_id": "ChIJsaLQdoQ1w4ARxf9oC0n0agw",
+      "name": "Big Wok Mongolian Grill BWRC",
       "address_components": null,
       "adr_address": null,
       "business_status": null,
-      "formatted_address": null,
+      "formatted_address": "11334 Fourth St # 103, Rancho Cucamonga, CA 91730, United States",
       "geometry": null,
       "icon": null,
       "icon_mask_base_uri": null,
@@ -30,7 +30,7 @@
       "dine_in": null,
       "editorial_summary": null,
       "price_level": null,
-      "rating": null,
+      "rating": 4.5,
       "reservable": null,
       "reviews": null,
       "serves_beer": null,

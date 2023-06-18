@@ -1,6 +1,6 @@
-use serde::{Deserialize};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, Copy, Clone, Eq, PartialEq)]
+#[derive(Debug, Copy, Eq, PartialEq, Hash, Clone, Serialize, Deserialize)]
 pub enum PlaceTypes {
     //Table 1 lists the types that are supported for place searches, 
     //and can be returned with Place details results, and as part of autocomplete place predictions.

@@ -23,7 +23,7 @@ pub enum PlaceDataField {
     WheelchairAccessibleEntrance,
 
     // Contact Data
-    PhoneNumber,
+    FormattedPhoneNumber,
     InternationalPhoneNumber,
     OpeningHours,
     CurrentOpeningHours,
@@ -71,7 +71,7 @@ impl PlaceDataField {
             PlaceDataField::UtcOffset => "utc_offset",
             PlaceDataField::Vicinity => "vicinity",
             PlaceDataField::WheelchairAccessibleEntrance => "wheelchair_accessible_entrance",
-            PlaceDataField::PhoneNumber => "formatted_phone_number",
+            PlaceDataField::FormattedPhoneNumber => "formatted_phone_number",
             PlaceDataField::InternationalPhoneNumber => "international_phone_number",
             PlaceDataField::OpeningHours => "opening_hours",
             PlaceDataField::CurrentOpeningHours => "current_opening_hours",

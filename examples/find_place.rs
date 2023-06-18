@@ -1,9 +1,11 @@
 use dotenv::dotenv;
 use std::env;
+use std::collections::HashSet;
 use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::services::PlaceSearchService;
+use google_places_api::models::constants::{InputType,PlaceDataField, Language, LocationBias};
 
 #[tokio::main]
 async fn main() {
@@ -26,10 +28,22 @@ async fn main() {
 
     // Define the request parameters
     let input = "Mongolian Grill";
-    let input_type = "textquery";
+    let input_type: InputType = InputType::TextQuery;;
+    let fields: HashSet<PlaceDataField> = vec![
+        PlaceDataField::Name,
+        PlaceDataField::Rating,
+        PlaceDataField::FormattedAddress,
+
+    ].into_iter().collect();
+    let language: Language = Language::En;
+    let location_bias: LocationBias = LocationBias::Circular {
+        radius: 10000,
+        latitude: 33.85984846198168,
+        longitude: 151.20907015422375,
+    };
 
     // Perform the request
-    match place_search_service.find_place(input, input_type).await {
+    match place_search_service.find_place(input, input_type, Some(fields), Some(language), Some(location_bias)).await {
         Ok(search_result) => {
             println!("{}", search_result.display());
             std::fs::write(
