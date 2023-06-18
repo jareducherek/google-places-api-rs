@@ -30,16 +30,16 @@ async fn main() {
     let max_price = 4;
     let min_price = 1;
     let open_now = false;
-    //page_token = None;
     let place_types: HashSet<PlaceTypes> = vec![
         PlaceTypes::Restaurant,
         PlaceTypes::Establishment,
         PlaceTypes::Food,
 
     ].into_iter().collect();
+    let place_types_clone = place_types.clone();
 
     // Perform the place search with rankby distance
-    match place_search_service.nearby_search_rank_by_distance(location, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types)).await {
+    match place_search_service.nearby_search_rank_by_distance(location, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types_clone)).await {
         Ok(nearby_search) => {
             // Process and display the search result
             println!("{}", nearby_search.display());
@@ -51,14 +51,14 @@ async fn main() {
     }
 
     // Perform the place search with default args
-    //match place_search_service.nearby_search(location, radius, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types)).await {
-    //    Ok(nearby_search) => {
-    //        // Process and display the search result
-    //        println!("{}", nearby_search.display());
-    //    }
-    //    Err(error) => {
-    //        // Handle the error
-    //        eprintln!("Error: {:?}", error);
-    //    }
-    //}
+    match place_search_service.nearby_search(location, radius, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types)).await {
+       Ok(nearby_search) => {
+           // Process and display the search result
+           println!("{}", nearby_search.display());
+       }
+       Err(error) => {
+           // Handle the error
+           eprintln!("Error: {:?}", error);
+       }
+    }
 }
