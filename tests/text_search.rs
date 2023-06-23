@@ -32,6 +32,7 @@ async fn test_text_search() {
     match place_search_service.text_search(query, radius, Some(language), Some(location), Some(max_price), Some(min_price), Some(open_now), None, Some(region), Some(place_types)).await {
         Ok(text_search) => {
             assert!(text_search.places.len() > 0);
+            assert!(text_search.places.len() == text_search.total_results as usize);
             assert!(text_search.next_page_token.is_some());
             assert!(matches!(text_search.status, PlaceSearchStatus::Ok));
             for place in text_search.places.iter() {

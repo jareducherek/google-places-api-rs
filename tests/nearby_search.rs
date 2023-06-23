@@ -29,6 +29,7 @@ async fn test_nearby_search() {
     match place_search_service.nearby_search(location, radius, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types)).await {
         Ok(nearby_search) => {
             assert!(nearby_search.places.len() > 0);
+            assert!(nearby_search.places.len() == nearby_search.total_results as usize);
             assert!(nearby_search.next_page_token.is_some());
             assert!(matches!(nearby_search.status, PlaceSearchStatus::Ok));
             for place in nearby_search.places.iter() {
