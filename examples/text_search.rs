@@ -29,7 +29,7 @@ async fn main() {
     let radius = 5000; // 5000 meters radius
 
     // Perform the request
-    match place_search_service.text_search(query, radius).await {
+    match place_search_service.text_search(query, radius, None, None, None, None, None, None, None, None).await {
         Ok(search_result) => {
             println!("{}", search_result.display());
             std::fs::write(
