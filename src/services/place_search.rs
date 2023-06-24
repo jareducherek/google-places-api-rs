@@ -1,4 +1,4 @@
-use crate::client::GooglePlacesClient;
+use crate::services::RequestService;
 use crate::error::GooglePlacesError;
 use crate::models::place_search::{FindPlaceSearchResult, NearbySearchResult, TextSearchResult};
 use crate::models::constants::{PlaceDataField, Language, InputType, LocationBias,PlaceTypes, RankBy};
@@ -6,12 +6,12 @@ use std::collections::HashSet;
 use isocountry::CountryCode;
 use urlencoding::encode;
 
-pub struct PlaceSearchService {
-    client: GooglePlacesClient,
+pub struct PlaceSearchService<'a> {
+    client: &'a RequestService,
 }
 
-impl PlaceSearchService {
-    pub fn new(client: GooglePlacesClient) -> Self {
+impl<'a> PlaceSearchService<'a> {
+    pub fn new(client: &'a RequestService) -> Self {
         PlaceSearchService { client }
     }
     pub async fn nearby_search(

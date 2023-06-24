@@ -1,36 +1,22 @@
 use reqwest::Client;
-use std::sync::Arc;
+use crate::services::{RequestService, PlaceSearchService, PlaceDetailsService, PlacePhotosService};
 
-pub struct GooglePlacesClient {
-    req_client: Arc<Client>,
-    api_key: String,
+pub struct GooglePlacesClient<'a> {
+    request_service: RequestService,
+    place_search_service: PlaceSearchService<'a>,
+    place_details_service: PlaceDetailsService<'a>,
+    place_photos_service: PlacePhotosService<'a>,
 }
 
-impl GooglePlacesClient {
+impl<'a> GooglePlacesClient<'a> {
     pub fn new(api_key: &str) -> Self {
-        let client = Arc::new(Client::new());
+        let request_service = RequestService::new(api_key);
+
         GooglePlacesClient {
-            req_client: client,
-            api_key: api_key.to_string(),
+            request_service: request_service,
+            place_search_service: PlaceSearchService::new(&request_service),
+            place_details_service: PlaceDetailsService::new(&request_service),
+            place_photos_service: PlacePhotosService::new(&request_service),
         }
     }
-
-    pub fn get_req_client(&self) -> &Client {
-        &self.req_client
-    }
-
-    pub fn get_api_key(&self) -> &str {
-        &self.api_key
-    }
-    
-
-    // Implement methods for interacting with the Google Places API
-    // For example, you could define methods for place search, place details retrieval, etc.
-    // pub fn search_places(&self, query: &str, location: (f64, f64)) -> Result<PlaceSearchResult, GooglePlacesError> {
-    //     // Implementation goes here
-    // }
-
-    // pub fn get_place_details(&self, place_id: &str) -> Result<PlaceDetails, GooglePlacesError> {
-    //     // Implementation goes here
-    // }
 }

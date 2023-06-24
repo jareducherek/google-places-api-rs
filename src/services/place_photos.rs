@@ -1,14 +1,14 @@
-use crate::client::GooglePlacesClient;
+use crate::services::RequestService;
 use crate::error::GooglePlacesError;
 use image::io::Reader;
 use std::io::Cursor;
 
-pub struct PlacePhotosService {
-    client: GooglePlacesClient,
+pub struct PlacePhotosService<'a> {
+    client: &'a RequestService,
 }
 
-impl PlacePhotosService {
-    pub fn new(client: GooglePlacesClient) -> Self {
+impl<'a> PlacePhotosService<'a> {
+    pub fn new(client: &'a RequestService) -> Self {
         PlacePhotosService { client }
     }
 

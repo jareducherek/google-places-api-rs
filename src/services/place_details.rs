@@ -1,19 +1,19 @@
-use crate::client::GooglePlacesClient;
+use crate::services::RequestService;
 use crate::error::GooglePlacesError;
 use crate::models::PlaceDetails;
 use crate::models::constants::{PlaceDataField, Language, ReviewSort};
 use isocountry::CountryCode;
 use std::collections::HashSet;
 use uuid::Uuid;
-pub struct PlaceDetailsService {
-    client: GooglePlacesClient,
+pub struct PlaceDetailsService<'a> {
+    client: &'a RequestService,
     session_token: Option<String>,
 }
 
-impl PlaceDetailsService {
+impl<'a> PlaceDetailsService<'a> {
     /// Retrieves detailed information about a place based on its place ID.
 
-    pub fn new(client: GooglePlacesClient) -> Self {
+    pub fn new(client: &'a RequestService) -> Self {
         PlaceDetailsService { 
             client, 
             session_token: None,
