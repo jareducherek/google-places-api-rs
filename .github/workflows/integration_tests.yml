@@ -28,5 +28,7 @@ jobs:
     - name: Build
       run: cargo build --verbose
     - name: Run tests
+      env:
+        GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
       run: cargo test --verbose
   
