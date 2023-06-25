@@ -4,7 +4,6 @@ use std::collections::HashSet;
 use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::services::PlaceSearchService;
 use google_places_api::models::constants::{Language, PlaceTypes};
 
 #[tokio::main]
@@ -18,9 +17,6 @@ async fn main() {
 
     // Create a Google Places client
     let client = GooglePlacesClient::new(&api_key);
-
-    // Create a PlaceSearchService instance
-    let place_search_service = PlaceSearchService::new(client);
 
     // Output path to view the corresponding json
     let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
@@ -43,7 +39,7 @@ async fn main() {
     let place_types_clone = place_types.clone();
 
     // Perform the request
-    match place_search_service.nearby_search_rank_by_distance(location, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types_clone)).await {
+    match client.place_search_service.nearby_search_rank_by_distance(&location, Some(keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, Some(&place_types_clone)).await {
         Ok(search_result) => {
             println!("{}", search_result.display());
             std::fs::write(
@@ -57,7 +53,7 @@ async fn main() {
     }
 
     // Perform the place search with default args
-    match place_search_service.nearby_search(location, radius, Some(keyword), Some(language), Some(max_price), Some(min_price), Some(open_now), None, Some(place_types)).await {
+    match client.place_search_service.nearby_search(&location, &radius, Some(&keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, Some(&place_types)).await {
        Ok(nearby_search) => {
            // Process and display the search result
            println!("{}", nearby_search.display());

@@ -5,7 +5,6 @@ use isocountry::CountryCode;
 use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::services::PlaceDetailsService;
 use google_places_api::models::constants::{PlaceDataField, Language, ReviewSort};
 
 #[tokio::main]
@@ -19,9 +18,6 @@ async fn main() {
 
     // Create a Google Places client
     let client = GooglePlacesClient::new(&api_key);
-
-    // Create a PlaceSearchService instance
-    let place_details_service = PlaceDetailsService::new(client);
 
     // Output path to view the corresponding json
     let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
@@ -41,7 +37,7 @@ async fn main() {
     let review_sort: ReviewSort = ReviewSort::Newest;
 
     // Perform the request
-    match place_details_service.get_place_details(place_id, Some(fields), Some(language), Some(region), Some(review_no_translation), Some(review_sort), None).await {
+    match client.place_details_service.get_place_details(place_id, Some(&fields), Some(&language), Some(&region), Some(&review_no_translation), Some(&review_sort), None).await {
         Ok(search_result) => {
             println!("{}", search_result.display());
             std::fs::write(

@@ -1,22 +1,22 @@
-use reqwest::Client;
+use std::sync::Arc;
 use crate::services::{RequestService, PlaceSearchService, PlaceDetailsService, PlacePhotosService};
 
-pub struct GooglePlacesClient<'a> {
-    request_service: RequestService,
-    place_search_service: PlaceSearchService<'a>,
-    place_details_service: PlaceDetailsService<'a>,
-    place_photos_service: PlacePhotosService<'a>,
+pub struct GooglePlacesClient {
+    request_service: Arc<RequestService>,
+    pub place_search_service: PlaceSearchService,
+    pub place_details_service: PlaceDetailsService,
+    pub place_photos_service: PlacePhotosService,
 }
 
-impl<'a> GooglePlacesClient<'a> {
+impl GooglePlacesClient {
     pub fn new(api_key: &str) -> Self {
-        let request_service = RequestService::new(api_key);
+        let request_service = Arc::new(RequestService::new(api_key));
 
         GooglePlacesClient {
+            place_search_service: PlaceSearchService::new(request_service.clone()),
+            place_details_service: PlaceDetailsService::new(request_service.clone()),
+            place_photos_service: PlacePhotosService::new(request_service.clone()),
             request_service: request_service,
-            place_search_service: PlaceSearchService::new(&request_service),
-            place_details_service: PlaceDetailsService::new(&request_service),
-            place_photos_service: PlacePhotosService::new(&request_service),
         }
     }
 }

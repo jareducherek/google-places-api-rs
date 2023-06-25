@@ -5,26 +5,27 @@ use crate::models::constants::{PlaceDataField, Language, InputType, LocationBias
 use std::collections::HashSet;
 use isocountry::CountryCode;
 use urlencoding::encode;
+use std::sync::Arc;
 
-pub struct PlaceSearchService<'a> {
-    client: &'a RequestService,
+pub struct PlaceSearchService {
+    client: Arc<RequestService>,
 }
 
-impl<'a> PlaceSearchService<'a> {
-    pub fn new(client: &'a RequestService) -> Self {
+impl PlaceSearchService {
+    pub fn new(client: Arc<RequestService>) -> Self {
         PlaceSearchService { client }
     }
     pub async fn nearby_search(
         &self,
-        location: (f64, f64),
-        radius: u32,
+        location: &(f64, f64),
+        radius: &u32,
         keyword: Option<&str>,
-        language: Option<Language>,
-        max_price: Option<u32>,
-        min_price: Option<u32>,
-        open_now: Option<bool>,
-        page_token: Option<String>,
-        place_type: Option<HashSet<PlaceTypes>>,
+        language: Option<&Language>,
+        max_price: Option<&u32>,
+        min_price: Option<&u32>,
+        open_now: Option<&bool>,
+        page_token: Option<&str>,
+        place_type: Option<&HashSet<PlaceTypes>>,
     ) -> Result<NearbySearchResult, GooglePlacesError> {
         return
             self.full_nearby_search(
@@ -43,14 +44,14 @@ impl<'a> PlaceSearchService<'a> {
     }
     pub async fn nearby_search_rank_by_distance(
         &self,
-        location: (f64, f64),
+        location: &(f64, f64),
         keyword: Option<&str>,
-        language: Option<Language>,
-        max_price: Option<u32>,
-        min_price: Option<u32>,
-        open_now: Option<bool>,
-        page_token: Option<String>,
-        place_type: Option<HashSet<PlaceTypes>>,
+        language: Option<&Language>,
+        max_price: Option<&u32>,
+        min_price: Option<&u32>,
+        open_now: Option<&bool>,
+        page_token: Option<&str>,
+        place_type: Option<&HashSet<PlaceTypes>>,
     ) -> Result<NearbySearchResult, GooglePlacesError> {
         return
             self.full_nearby_search(
@@ -62,23 +63,23 @@ impl<'a> PlaceSearchService<'a> {
                 min_price,
                 open_now,
                 page_token,
-                Some(RankBy::Distance),
+                Some(&RankBy::Distance),
                 place_type,
             ).await
     }
 
     async fn full_nearby_search(
         &self,
-        location: (f64, f64),
-        radius: Option<u32>,
+        location: &(f64, f64),
+        radius: Option<&u32>,
         keyword: Option<&str>,
-        language: Option<Language>,
-        max_price: Option<u32>,
-        min_price: Option<u32>,
-        open_now: Option<bool>,
-        page_token: Option<String>,
-        rank_by: Option<RankBy>,
-        place_type: Option<HashSet<PlaceTypes>>,
+        language: Option<&Language>,
+        max_price: Option<&u32>,
+        min_price: Option<&u32>,
+        open_now: Option<&bool>,
+        page_token: Option<&str>,
+        rank_by: Option<&RankBy>,
+        place_type: Option<&HashSet<PlaceTypes>>,
     ) -> Result<NearbySearchResult, GooglePlacesError> {
         // Construct the request URL
         // "{}/maps/api/place/nearbysearch/json?keyword={}&location={}%2c{}&radius={}&key={}",
@@ -127,10 +128,10 @@ impl<'a> PlaceSearchService<'a> {
     pub async fn find_place(
         &self,
         input: &str,
-        input_type: InputType,
-        fields: Option<HashSet<PlaceDataField>>,
-        language: Option<Language>,
-        location_bias: Option<LocationBias>,
+        input_type: &InputType,
+        fields: Option<&HashSet<PlaceDataField>>,
+        language: Option<&Language>,
+        location_bias: Option<&LocationBias>,
     ) -> Result<FindPlaceSearchResult, GooglePlacesError>{
         
         let input_encoded = encode(input);
@@ -139,9 +140,10 @@ impl<'a> PlaceSearchService<'a> {
             input_encoded, input_type.as_str(), self.client.get_api_key()
         );
         // Fields
-        if let Some(mut fields) = fields {
-            fields.insert(PlaceDataField::PlaceId);
-            let field_list: Vec<String> = fields.into_iter().map(|f| String::from(f.as_str())).collect();
+        let all_fields = fields.cloned();
+        if let Some(mut all_fields) = all_fields {
+            all_fields.insert(PlaceDataField::PlaceId);
+            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.as_str())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
         }
@@ -165,15 +167,15 @@ impl<'a> PlaceSearchService<'a> {
     pub async fn text_search(
         &self,
         query: &str,
-        radius: u32,
-        language: Option<Language>,
-        location: Option<(f64, f64)>,
-        max_price: Option<u32>,
-        min_price: Option<u32>,
-        open_now: Option<bool>,
-        page_token: Option<String>,
-        region: Option<CountryCode>,
-        place_type: Option<HashSet<PlaceTypes>>
+        radius: &u32,
+        language: Option<&Language>,
+        location: Option<&(f64, f64)>,
+        max_price: Option<&u32>,
+        min_price: Option<&u32>,
+        open_now: Option<&bool>,
+        page_token: Option<&String>,
+        region: Option<&CountryCode>,
+        place_type: Option<&HashSet<PlaceTypes>>
     ) -> Result<TextSearchResult, GooglePlacesError>{
         let mut url = format!(
             "https://maps.googleapis.com/maps/api/place/textsearch/json?query={}&radius={}&key={}",
