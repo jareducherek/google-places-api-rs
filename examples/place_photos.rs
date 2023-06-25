@@ -3,7 +3,6 @@ use std::env;
 use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::services::PlacePhotosService;
 
 #[tokio::main]
 async fn main() {
@@ -17,9 +16,6 @@ async fn main() {
     // Create a Google Places client
     let client = GooglePlacesClient::new(&api_key);
 
-    // Create a PlaceSearchService instance
-    let place_photos_service = PlacePhotosService::new(client);
-
     // Output path to view the corresponding json
     let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
     let output_path = RelativePath::new("examples/outputs/place_photos.png").to_path(root_dir);
@@ -28,7 +24,7 @@ async fn main() {
     let photo_reference = "AZose0ninw6UOtG97IxGoKQN03Ar6JAKydIoTPfPT-KmMgqT6AAtAm90_RA65rV3imOU2Q6f34LcM8U_Trj5Y6hlo6l__0K7RpMvbdO77tvrAVLY0adHsBk80TUyTt2p7yH1_roKAdVCNCH1fFCJvSQVmIg0GoBEszWpTuUqr5wPaMnG_Ws-";
     
     // Perform the request
-    match place_photos_service.get_photo_reference(photo_reference, None, None).await {
+    match client.place_photos_service.get_photo_reference(photo_reference, None, None).await {
         Ok(search_result) => {
             let save_result = search_result.save(output_path);
             

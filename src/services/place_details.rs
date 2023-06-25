@@ -1,19 +1,21 @@
-use crate::client::GooglePlacesClient;
+use crate::services::RequestService;
 use crate::error::GooglePlacesError;
 use crate::models::PlaceDetails;
 use crate::models::constants::{PlaceDataField, Language, ReviewSort};
 use isocountry::CountryCode;
 use std::collections::HashSet;
 use uuid::Uuid;
+use std::sync::Arc;
+
 pub struct PlaceDetailsService {
-    client: GooglePlacesClient,
+    client: Arc<RequestService>,
     session_token: Option<String>,
 }
 
 impl PlaceDetailsService {
     /// Retrieves detailed information about a place based on its place ID.
 
-    pub fn new(client: GooglePlacesClient) -> Self {
+    pub fn new(client: Arc<RequestService>) -> Self {
         PlaceDetailsService { 
             client, 
             session_token: None,
@@ -61,12 +63,12 @@ impl PlaceDetailsService {
     pub async fn get_place_details(
         &self,
         place_id: &str,
-        fields: Option<HashSet<PlaceDataField>>, 
-        language: Option<Language>, 
-        region: Option<CountryCode>,
-        review_no_translation: Option<bool>,
-        review_sort: Option<ReviewSort>, 
-        session_token: Option<String>,
+        fields: Option<&HashSet<PlaceDataField>>, 
+        language: Option<&Language>, 
+        region: Option<&CountryCode>,
+        review_no_translation: Option<&bool>,
+        review_sort: Option<&ReviewSort>, 
+        session_token: Option<&str>,
 
     ) -> Result<PlaceDetails, GooglePlacesError> {//format for url might be wrong, need to test all cases
         let base_url = format!(
@@ -75,9 +77,10 @@ impl PlaceDetailsService {
         );
         let mut url = base_url;
         // Optional parameters
-        if let Some(mut fields) = fields {
-            fields.insert(PlaceDataField::PlaceId);
-            let field_list: Vec<String> = fields.into_iter().map(|f| String::from(f.as_str())).collect();
+        let all_fields = fields.cloned();
+        if let Some(mut all_fields) = all_fields {
+            all_fields.insert(PlaceDataField::PlaceId);
+            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.as_str())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
         }

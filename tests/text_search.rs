@@ -3,7 +3,6 @@ use isocountry::CountryCode;
 use std::env;
 use std::collections::HashSet;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::services::PlaceSearchService;
 use google_places_api::models::place_search::{PlaceSearchStatus};
 use google_places_api::models::constants::{PlaceTypes, Language};
 
@@ -13,7 +12,6 @@ async fn test_text_search() {
     let api_key = env::var("GOOGLE_PLACES_API_KEY")
         .expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
     let client = GooglePlacesClient::new(&api_key);
-    let place_search_service = PlaceSearchService::new(client);
     let query = "restaurant";
     let radius = 5000; // 5000 meters radius
     let language = Language::En;
@@ -29,7 +27,7 @@ async fn test_text_search() {
 
     ].into_iter().collect();
 
-    match place_search_service.text_search(query, radius, Some(language), Some(location), Some(max_price), Some(min_price), Some(open_now), None, Some(region), Some(place_types)).await {
+    match client.place_search_service.text_search(query, &radius, Some(&language), Some(&location), Some(&max_price), Some(&min_price), Some(&open_now), None, Some(&region), Some(&place_types)).await {
         Ok(text_search) => {
             assert!(text_search.places.len() > 0);
             assert!(text_search.places.len() == text_search.total_results as usize);
