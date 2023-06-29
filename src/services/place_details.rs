@@ -1,6 +1,6 @@
 use crate::services::RequestService;
 use crate::error::GooglePlacesError;
-use crate::models::PlaceDetails;
+use crate::models::PlaceDetailsResult;
 use crate::models::constants::{PlaceDataField, Language, ReviewSort};
 use isocountry::CountryCode;
 use std::collections::HashSet;
@@ -70,7 +70,7 @@ impl PlaceDetailsService {
         review_sort: Option<&ReviewSort>, 
         session_token: Option<&str>,
 
-    ) -> Result<PlaceDetails, GooglePlacesError> {//format for url might be wrong, need to test all cases
+    ) -> Result<PlaceDetailsResult, GooglePlacesError> {//format for url might be wrong, need to test all cases
         let base_url = format!(
             "https://maps.googleapis.com/maps/api/place/details/json?place_id={}&key={}",
             place_id, self.client.get_api_key()
@@ -102,11 +102,22 @@ impl PlaceDetailsService {
             }
         }
 
-        let response: reqwest::Response = self.client.get_req_client().get(&url).send().await.unwrap();
-        let body: String = response.text().await.unwrap();
-        let search_result: PlaceDetails = serde_json::from_str(&body).unwrap();
+        let response: reqwest::Response = match self.client.get_req_client().get(&url).send().await{
+            Ok(response) => response,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let body: String = match response.text().await{
+            Ok(body) => body,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let search_result: PlaceDetailsResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
         //self.end_query();
         
         Ok(search_result)
     }
 }
+
+

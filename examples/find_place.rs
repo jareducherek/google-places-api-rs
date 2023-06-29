@@ -24,7 +24,7 @@ async fn main() {
 
     // Define the request parameters
     let input = "Mongolian Grill";
-    let input_type: InputType = InputType::TextQuery;;
+    let input_type: InputType = InputType::TextQuery;
     let fields: HashSet<PlaceDataField> = vec![
         PlaceDataField::Name,
         PlaceDataField::Rating,

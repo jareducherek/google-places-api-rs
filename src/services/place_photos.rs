@@ -24,10 +24,14 @@ impl PlacePhotosService {
             "https://maps.googleapis.com/maps/api/place/photo?maxwidth={}&maxheight={}&photoreference={}&key={}",
             max_width.unwrap_or(&1000), max_height.unwrap_or(&1000), photo_reference, self.client.get_api_key()
         );
-    
-        // Send the HTTP GET request to download the image
-        let response = self.client.get_req_client().get(&url).send().await.unwrap();
-        let bytes = response.bytes().await.unwrap();
+        let response = match self.client.get_req_client().get(&url).send().await{
+            Ok(response) => response,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let bytes = match response.bytes().await{
+            Ok(body) => body,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
         let cur = Cursor::new(bytes);
         // Decode the image from the bytes using the image crate
         let reader = Reader::new(cur)

@@ -118,9 +118,18 @@ impl PlaceSearchService {
             url.push_str(&format!("&type={}", type_string));
         }
 
-        let response: reqwest::Response = self.client.get_req_client().get(&url).send().await.unwrap();
-        let body: String = response.text().await.unwrap();
-        let mut search_result: NearbySearchResult = serde_json::from_str(&body).unwrap();
+        let response: reqwest::Response = match self.client.get_req_client().get(&url).send().await{
+            Ok(response) => response,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let body: String = match response.text().await{
+            Ok(body) => body,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let mut search_result: NearbySearchResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
         search_result.calculate_total_results();
         Ok(search_result)
     }
@@ -157,10 +166,18 @@ impl PlaceSearchService {
         if let Some(location_bias) = location_bias {
             url.push_str(&format!("&locationbias={}", location_bias.as_str()));
         }
-
-        let response: reqwest::Response = self.client.get_req_client().get(&url).send().await.unwrap();
-        let body: String = response.text().await.unwrap();
-        let search_result: FindPlaceSearchResult = serde_json::from_str(&body).unwrap();
+        let response: reqwest::Response = match self.client.get_req_client().get(&url).send().await{
+            Ok(response) => response,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let body: String = match response.text().await{
+            Ok(body) => body,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
         Ok(search_result)
     }
 
@@ -209,9 +226,18 @@ impl PlaceSearchService {
             url.push_str(&format!("&type={}", type_string));
         }
 
-        let response: reqwest::Response = self.client.get_req_client().get(&url).send().await.unwrap();
-        let body: String = response.text().await.unwrap();
-        let mut search_result: TextSearchResult = serde_json::from_str(&body).unwrap();
+        let response: reqwest::Response = match self.client.get_req_client().get(&url).send().await{
+            Ok(response) => response,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let body: String = match response.text().await{
+            Ok(body) => body,
+            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+        };
+        let mut search_result: TextSearchResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
         search_result.calculate_total_results();
         Ok(search_result)
     }
