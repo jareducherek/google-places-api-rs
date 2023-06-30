@@ -1,6 +1,6 @@
 [package]
 name = "google-places-api"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 description = "Crate to access google places api. Get location data for over 200 million places, and add place details, search, and autocomplete to your apps."
 homepage = "https://github.com/jareducherek/google-places-api-rs"
