@@ -14,12 +14,6 @@ pub struct NearbySearchResult {
     pub total_results: u32,
 }
 
-impl NearbySearchResult {
-    pub fn calculate_total_results(&mut self) {
-        self.total_results = self.places.len() as u32;
-    }
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FindPlaceSearchResult {
     #[serde(rename = "candidates")]
@@ -37,9 +31,14 @@ pub struct TextSearchResult {
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
     pub next_page_token: Option<String>,
+    #[serde(skip)]
+    pub total_results: u32,
 }
 
 impl NearbySearchResult {
+    pub fn calculate_total_results(&mut self) {
+        self.total_results = self.places.len() as u32;
+    }
     pub fn display(&self) -> String {
         let places = self.places.iter().map(|p| p.display()).collect::<Vec<String>>().join(", ");
         let html_attributions = self.html_attributions.join(", ");
@@ -61,14 +60,17 @@ impl FindPlaceSearchResult {
 }
 
 impl TextSearchResult {
+    pub fn calculate_total_results(&mut self) {
+        self.total_results = self.places.len() as u32;
+    }
     pub fn display(&self) -> String {
         let places = self.places.iter().map(|p| p.display()).collect::<Vec<String>>().join(", ");
         let html_attributions = self.html_attributions.join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
-        format!("TextSearchResult {{ html_attributions: [{}], places: [{}], status: {}, error_message: {}, info_messages: [{}], next_page_token: {} }}", 
+        format!("TextSearchResult {{ html_attributions: [{}], places: [{}], status: {}, error_message: {}, info_messages: [{}], next_page_token: {} }}, total_results: {}", 
             html_attributions, places, self.status.as_str(),
             self.error_message.as_ref().unwrap_or(&"".to_string()),
-            info_messages, self.next_page_token.as_ref().unwrap_or(&"".to_string()))
+            info_messages, self.next_page_token.as_ref().unwrap_or(&"".to_string()), self.total_results)
     }
 }
 

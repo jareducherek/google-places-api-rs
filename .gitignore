@@ -2,3 +2,5 @@
 .env
 *.png
 Cargo.lock
+/.vscode
+*.json
