@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use crate::models::constants::Place;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlaceDetails {
+pub struct PlaceDetailsResult {
     pub html_attributions: Vec<String>,
     #[serde(rename = "result")]
     pub place: Place,
@@ -10,7 +10,7 @@ pub struct PlaceDetails {
     pub info_messages: Option<Vec<String>>,
 }
 
-impl PlaceDetails {
+impl PlaceDetailsResult {
     pub fn display(&self) -> String {
         let html_attributions = self.html_attributions.join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
