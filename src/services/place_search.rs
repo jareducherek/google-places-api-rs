@@ -6,6 +6,7 @@ use std::collections::HashSet;
 use isocountry::CountryCode;
 use urlencoding::encode;
 use std::sync::Arc;
+use serde::de::DeserializeOwned;
 
 pub struct PlaceSearchService {
     client: Arc<RequestService>,
@@ -14,6 +15,29 @@ pub struct PlaceSearchService {
 impl PlaceSearchService {
     pub fn new(client: Arc<RequestService>) -> Self {
         PlaceSearchService { client }
+    }
+    async fn process_nearby_search(&self, body: &String) -> Result<NearbySearchResult, GooglePlacesError>{
+        let mut search_result: NearbySearchResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
+        search_result.calculate_total_results();
+        Ok(search_result)
+    }
+    async fn process_text_search(&self, body: &String) -> Result<TextSearchResult, GooglePlacesError>{
+        let mut search_result: TextSearchResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
+        search_result.calculate_total_results();
+        Ok(search_result)
+    }
+    async fn process_find_place(&self, body: &String) -> Result<FindPlaceSearchResult, GooglePlacesError>{
+        let search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
+        Ok(search_result)
     }
     pub async fn nearby_search(
         &self,
@@ -126,12 +150,7 @@ impl PlaceSearchService {
             Ok(body) => body,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
         };
-        let mut search_result: NearbySearchResult = match serde_json::from_str(&body){
-            Ok(search_result) => search_result,
-            Err(e) => return Err(GooglePlacesError::ParseError(e)),
-        };
-        search_result.calculate_total_results();
-        Ok(search_result)
+        Ok(self.process_nearby_search(&body).await?)
     }
 
     pub async fn find_place(
@@ -174,11 +193,7 @@ impl PlaceSearchService {
             Ok(body) => body,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
         };
-        let search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
-            Ok(search_result) => search_result,
-            Err(e) => return Err(GooglePlacesError::ParseError(e)),
-        };
-        Ok(search_result)
+        Ok(self.process_find_place(&body).await?)
     }
 
     pub async fn text_search(
@@ -234,11 +249,6 @@ impl PlaceSearchService {
             Ok(body) => body,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
         };
-        let mut search_result: TextSearchResult = match serde_json::from_str(&body){
-            Ok(search_result) => search_result,
-            Err(e) => return Err(GooglePlacesError::ParseError(e)),
-        };
-        search_result.calculate_total_results();
-        Ok(search_result)
+        Ok(self.process_text_search(&body).await?)
     }
 }
