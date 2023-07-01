@@ -34,9 +34,10 @@ impl PlacePhotosService {
         };
         let cur = Cursor::new(bytes);
         // Decode the image from the bytes using the image crate
-        let reader = Reader::new(cur)
-        .with_guessed_format()
-        .expect("This will never fail using Cursor");
+        let reader = match Reader::new(cur).with_guessed_format(){
+            Ok(reader) => reader,
+            Err(e) => return Err(GooglePlacesError::ReaderError(e)),
+        };
 
         let img: image::DynamicImage = reader.decode().expect("Failed to read image");
         Ok(img)

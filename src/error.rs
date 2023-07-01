@@ -1,6 +1,7 @@
 use thiserror::Error;
 use reqwest::Error as ReqwestError;
 use serde_json::Error as SerdeError;
+use std::io::Error as IOError;
 
 #[derive(Debug, Error)]
 pub enum GooglePlacesError {
@@ -12,5 +13,7 @@ pub enum GooglePlacesError {
     InvalidApiKey,
     #[error("Parse Error: {0}")]
     ParseError(SerdeError),
+    #[error("IO Error")]
+    ReaderError(IOError)
     // Add more custom error variants as needed
 }
