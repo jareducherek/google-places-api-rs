@@ -17,7 +17,7 @@ pub enum LocationBias {
 }
 
 impl LocationBias {
-    pub fn as_str(&self) -> String {
+    pub fn to_string(&self) -> String {
         match self {
             LocationBias::IpBias => "ipbias".to_string(),
             LocationBias::Circular { radius, latitude, longitude } => {
