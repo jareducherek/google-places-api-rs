@@ -40,7 +40,7 @@ mod nearby_search {
             url.push_str(&format!("&keyword={}", encode(&keyword)));
         }
         if let Some(language) = language {
-            url.push_str(&format!("&language={}", language.as_str()));
+            url.push_str(&format!("&language={}", language.to_string()));
         }
         if let Some(max_price) = max_price {
             if *max_price > 4 {
@@ -64,10 +64,10 @@ mod nearby_search {
             url.push_str(&format!("&pagetoken={}", encode(&page_token)));
         }
         if let Some(rank_by) = rank_by {
-            url.push_str(&format!("&rankby={}", rank_by.as_str()));
+            url.push_str(&format!("&rankby={}", rank_by.to_string()));
         }
         if let Some(place_types) = place_types {
-            let type_list: Vec<String> = place_types.into_iter().map(|p| String::from(p.as_str())).collect();
+            let type_list: Vec<String> = place_types.into_iter().map(|p| String::from(p.to_string())).collect();
             let type_string = type_list.join(",");
             url.push_str(&format!("&type={}", type_string));
         }
@@ -111,7 +111,7 @@ mod text_search {
         );
         // Optional parameters
         if let Some(language) = language {
-            url.push_str(&format!("&language={}", language.as_str()));
+            url.push_str(&format!("&language={}", language.to_string()));
         }
         if let Some(location) = location {
             url.push_str(&format!("&location={}%2C{}", location.0, location.1));
@@ -141,7 +141,7 @@ mod text_search {
             url.push_str(&format!("&region={}", region.alpha2()));
         }
         if let Some(place_types) = place_types {
-            let type_list: Vec<String> = place_types.into_iter().map(|p| String::from(p.as_str())).collect();
+            let type_list: Vec<String> = place_types.into_iter().map(|p| String::from(p.to_string())).collect();
             let type_string = type_list.join(",");
             url.push_str(&format!("&type={}", type_string));
         }
@@ -169,25 +169,25 @@ mod find_place {
         let input_encoded = encode(input);
         let mut url = format!(
             "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={}&inputtype={}&key={}",
-            input_encoded, input_type.as_str(), api_key
+            input_encoded, input_type.to_string(), api_key
         );
         // Fields
         let all_fields = fields.cloned();
         if let Some(mut all_fields) = all_fields {
             all_fields.insert(PlaceDataField::PlaceId);
-            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.as_str())).collect();
+            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.to_string())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
         }
         
         // Language
         if let Some(language) = language {
-            url.push_str(&format!("&language={}", language.as_str()));
+            url.push_str(&format!("&language={}", language.to_string()));
         }
         
         // Location Bias
         if let Some(location_bias) = location_bias {
-            url.push_str(&format!("&locationbias={}", location_bias.as_str()));
+            url.push_str(&format!("&locationbias={}", location_bias.to_string()));
         }
         Ok(url)
     }

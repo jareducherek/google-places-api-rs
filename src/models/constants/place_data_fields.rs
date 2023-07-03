@@ -1,100 +1,114 @@
 use serde::{Deserialize, Serialize};
+use strum_macros::{Display, EnumString};
 
-#[derive(Debug, Copy, Eq, PartialEq, Hash, Clone, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize, Hash, Eq, PartialEq, Display, EnumString)]
 pub enum PlaceDataField {
     // Basic Data
+    #[strum(serialize = "address_components")]
     AddressComponents,
+    #[strum(serialize = "business_status")]
     BusinessStatus,
+    #[strum(serialize = "formatted_address")]
     FormattedAddress,
+    #[strum(serialize = "geometry/viewport")]
     Viewport,
+    #[strum(serialize = "geometry/location")]
     Location,
+    #[strum(serialize = "icon")]
     Icon,
+    #[strum(serialize = "icon_mask_base_uri")]
     IconMaskBaseUri,
+    #[strum(serialize = "icon_background_color")]
     IconBackgroundColor,
+    #[strum(serialize = "name")]
     Name,
+    #[strum(serialize = "permanently_closed")]
     PermanentlyClosed,
+    #[strum(serialize = "photos")]
     Photo,
+    #[strum(serialize = "place_id")]
     PlaceId,
+    #[strum(serialize = "plus_code")]
     PlusCode,
+    #[strum(serialize = "type")]
     Type,
+    #[strum(serialize = "url")]
     Url,
+    #[strum(serialize = "utc_offset")]
     UtcOffset,
+    #[strum(serialize = "vicinity")]
     Vicinity,
+    #[strum(serialize = "wheelchair_accessible_entrance")]
     WheelchairAccessibleEntrance,
 
     // Contact Data
+    #[strum(serialize = "formatted_phone_number")]
     FormattedPhoneNumber,
+    #[strum(serialize = "international_phone_number")]
     InternationalPhoneNumber,
+    #[strum(serialize = "opening_hours")]
     OpeningHours,
+    #[strum(serialize = "current_opening_hours")]
     CurrentOpeningHours,
+    #[strum(serialize = "secondary_opening_hours")]
     SecondaryOpeningHours,
+    #[strum(serialize = "website")]
     Website,
 
     // Atmosphere Data
+    #[strum(serialize = "curbside_pickup")]
     CurbsidePickup,
+    #[strum(serialize = "delivery")]
     Delivery,
+    #[strum(serialize = "dine_in")]
     DineIn,
+    #[strum(serialize = "editorial_summary")]
     EditorialSummary,
+    #[strum(serialize = "price_level")]
     PriceLevel,
+    #[strum(serialize = "rating")]
     Rating,
+    #[strum(serialize = "reservable")]
     Reservable,
+    #[strum(serialize = "reviews")]
     Reviews,
+    #[strum(serialize = "serves_beer")]
     ServesBeer,
+    #[strum(serialize = "serves_breakfast")]
     ServesBreakfast,
+    #[strum(serialize = "serves_brunch")]
     ServesBrunch,
+    #[strum(serialize = "serves_dinner")]
     ServesDinner,
+    #[strum(serialize = "serves_lunch")]
     ServesLunch,
+    #[strum(serialize = "serves_vegetarian_food")]
     ServesVegetarianFood,
+    #[strum(serialize = "serves_wine")]
     ServesWine,
+    #[strum(serialize = "takeout")]
     Takeout,
+    #[strum(serialize = "user_ratings_total")]
     UserRatingsTotal,
 }
 
-impl PlaceDataField {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            PlaceDataField::AddressComponents => "address_components",
-            PlaceDataField::BusinessStatus => "business_status",
-            PlaceDataField::FormattedAddress => "formatted_address",
-            PlaceDataField::Viewport => "geometry/viewport",
-            PlaceDataField::Location => "geometry/location",
-            PlaceDataField::Icon => "icon",
-            PlaceDataField::IconMaskBaseUri => "icon_mask_base_uri",
-            PlaceDataField::IconBackgroundColor => "icon_background_color",
-            PlaceDataField::Name => "name",
-            PlaceDataField::PermanentlyClosed => "permanently_closed",
-            PlaceDataField::Photo => "photos",
-            PlaceDataField::PlaceId => "place_id",
-            PlaceDataField::PlusCode => "plus_code",
-            PlaceDataField::Type => "type",
-            PlaceDataField::Url => "url",
-            PlaceDataField::UtcOffset => "utc_offset",
-            PlaceDataField::Vicinity => "vicinity",
-            PlaceDataField::WheelchairAccessibleEntrance => "wheelchair_accessible_entrance",
-            PlaceDataField::FormattedPhoneNumber => "formatted_phone_number",
-            PlaceDataField::InternationalPhoneNumber => "international_phone_number",
-            PlaceDataField::OpeningHours => "opening_hours",
-            PlaceDataField::CurrentOpeningHours => "current_opening_hours",
-            PlaceDataField::SecondaryOpeningHours => "secondary_opening_hours",
-            PlaceDataField::Website => "website",
-            PlaceDataField::CurbsidePickup => "curbside_pickup",
-            PlaceDataField::Delivery => "delivery",
-            PlaceDataField::DineIn => "dine_in",
-            PlaceDataField::EditorialSummary => "editorial_summary",
-            PlaceDataField::PriceLevel => "price_level",
-            PlaceDataField::Rating => "rating",
-            PlaceDataField::Reservable => "reservable",
-            PlaceDataField::Reviews => "reviews",
-            PlaceDataField::ServesBeer => "serves_beer",
-            PlaceDataField::ServesBreakfast => "serves_breakfast",
-            PlaceDataField::ServesBrunch => "serves_brunch",
-            PlaceDataField::ServesDinner => "serves_dinner",
-            PlaceDataField::ServesLunch => "serves_lunch",
-            PlaceDataField::ServesVegetarianFood => "serves_vegetarian_food",
-            PlaceDataField::ServesWine => "serves_wine",
-            PlaceDataField::Takeout => "takeout",
-            PlaceDataField::UserRatingsTotal => "user_ratings_total",
-        }
+mod tests {
+    use super::PlaceDataField;
+
+    #[test]
+    fn test_language_as_str() {
+        assert_eq!(PlaceDataField::AddressComponents.to_string(), "address_components");
+        assert_eq!(PlaceDataField::BusinessStatus.to_string(), "business_status");
+        assert_eq!(PlaceDataField::FormattedAddress.to_string(), "formatted_address");
+    }
+
+    #[test]
+    fn test_language_parse() {
+        let parsed_result: PlaceDataField = "address_components".parse().unwrap();
+        assert_eq!(parsed_result, PlaceDataField::AddressComponents);
+        let parsed_result: PlaceDataField = "business_status".parse().unwrap();
+        assert_eq!(parsed_result, PlaceDataField::BusinessStatus);
+        let parsed_result: PlaceDataField = "formatted_address".parse().unwrap();
+        assert_eq!(parsed_result, PlaceDataField::FormattedAddress);
     }
 }
-

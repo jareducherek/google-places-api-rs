@@ -1,16 +1,28 @@
-use serde::{Deserialize};
+use serde::{Deserialize, Serialize};
+use strum_macros::{Display, EnumString};
 
-#[derive(Debug, Deserialize, Copy, Clone, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Display, EnumString)]
 pub enum RankBy {
+    #[strum(serialize = "prominence")]
     Prominence,
+    #[strum(serialize = "distance")]
     Distance,
 }
 
-impl RankBy {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            RankBy::Prominence => "prominence",
-            RankBy::Distance => "distance",
-        }
+mod tests {
+    use super::RankBy;
+
+    #[test]
+    fn test_rankby_as_str() {
+        assert_eq!(RankBy::Prominence.to_string(), "prominence");
+        assert_eq!(RankBy::Distance.to_string(), "distance");
+    }
+
+    #[test]
+    fn test_rankby_parse() {
+        let parsed_result: RankBy = "prominence".parse().unwrap();
+        assert_eq!(parsed_result, RankBy::Prominence);
+        let parsed_result: RankBy = "distance".parse().unwrap();
+        assert_eq!(parsed_result, RankBy::Distance);
     }
 }
