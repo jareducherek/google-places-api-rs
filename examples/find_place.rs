@@ -21,7 +21,7 @@ async fn main() {
     // Output path to view the corresponding json
     let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
     let output_path = RelativePath::new("examples/outputs/find_place.json").to_path(root_dir);
-
+    
     // Define the request parameters
     let input = "Mongolian Grill";
     let input_type: InputType = InputType::TextQuery;

@@ -42,30 +42,22 @@ impl std::error::Error for GridError {}
 #[cfg(test)]
 mod tests {
     use super::*;
-
     #[test]
     fn test_coordinates_to_grid() {
-       // Example input values
-    let tl_lat = 37.7749;
-    let tl_lng = -122.4194;
-    let br_lat = 37.3352;
-    let br_lng = -121.8811;
-    let m_btwn_pts = 800.0;
-
-    // Invoke the function
-    let result = coordinates_to_grid(tl_lat, tl_lng, br_lat, br_lng, m_btwn_pts);
-
-    // Handle the result
-    match result {
-        Ok(grid_points) => {
-            // Process the grid points
-            println!("Grid points: {:?}", grid_points);
+        let tl_lat = 37.7749;
+        let tl_lng = -122.4194;
+        let br_lat = 37.3352;
+        let br_lng = -121.8811;
+        let m_btwn_pts = 800.0;
+        let result = coordinates_to_grid(tl_lat, tl_lng, br_lat, br_lng, m_btwn_pts);
+        match result {
+            Ok(grid_points) => {
+                println!("Grid points: {:?}", grid_points);
+            }
+            Err(err) => {
+                eprintln!("Error: {}", err);
+            }
         }
-        Err(err) => {
-            // Handle the error
-            eprintln!("Error: {}", err);
-        }
-    }
     }
 }
 

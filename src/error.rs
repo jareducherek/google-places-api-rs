@@ -14,6 +14,8 @@ pub enum GooglePlacesError {
     #[error("Parse Error: {0}")]
     ParseError(SerdeError),
     #[error("IO Error")]
-    ReaderError(IOError)
+    ReaderError(IOError),
+    #[error("Invalid Input Parameter: {0}")]
+    ParamError(String),
     // Add more custom error variants as needed
 }
