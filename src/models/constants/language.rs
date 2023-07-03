@@ -1,99 +1,188 @@
 use serde::{Deserialize, Serialize};
+use strum_macros::{Display, EnumString};
 
-#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Display, EnumString)]
 pub enum Language {
-    Af, Am, Ar, Hy, Az, Eu, Be, Bn, Bs, Bg, My, Ca, Zh, ZhCN, ZhHK, ZhTW,
-    Hr, Cs, Da, Nl, En, EnAU, EnGB, Et, Fa, Fi, Fil, Fr, FrCA, Gl, Ka, De,
-    El, Gu, Iw, Hi, Hu, Is, Id, It, Ja, Kn, Kk, Km, Ko, Ky, Lo, Lv, Lt, Mk,
-    Ms, Ml, Mr, Mn, Ne, No, Pl, Pt, PtBR, PtPT, Pa, Ro, Ru, Sr, Si, Sk, Sl,
-    Es, Es419, Sw, Sv, Ta, Te, Th, Tr, Uk, Ur, Uz, Vi, Zu,
-    // Add other supported languages here
+    #[strum(serialize = "af")]
+    Af,
+    #[strum(serialize = "am")]
+    Am,
+    #[strum(serialize = "ar")]
+    Ar,
+    #[strum(serialize = "hy")]
+    Hy,
+    #[strum(serialize = "az")]
+    Az,
+    #[strum(serialize = "eu")]
+    Eu,
+    #[strum(serialize = "be")]
+    Be,
+    #[strum(serialize = "bn")]
+    Bn,
+    #[strum(serialize = "bs")]
+    Bs,
+    #[strum(serialize = "bg")]
+    Bg,
+    #[strum(serialize = "my")]
+    My,
+    #[strum(serialize = "ca")]
+    Ca,
+    #[strum(serialize = "zh")]
+    Zh,
+    #[strum(serialize = "zh-CN")]
+    ZhCN,
+    #[strum(serialize = "zh-HK")]
+    ZhHK,
+    #[strum(serialize = "zh-TW")]
+    ZhTW,
+    #[strum(serialize = "hr")]
+    Hr,
+    #[strum(serialize = "cs")]
+    Cs,
+    #[strum(serialize = "da")]
+    Da,
+    #[strum(serialize = "nl")]
+    Nl,
+    #[strum(serialize = "en")]
+    En,
+    #[strum(serialize = "en-AU")]
+    EnAU,
+    #[strum(serialize = "en-GB")]
+    EnGB,
+    #[strum(serialize = "et")]
+    Et,
+    #[strum(serialize = "fa")]
+    Fa,
+    #[strum(serialize = "fi")]
+    Fi,
+    #[strum(serialize = "fil")]
+    Fil,
+    #[strum(serialize = "fr")]
+    Fr,
+    #[strum(serialize = "fr-CA")]
+    FrCA,
+    #[strum(serialize = "gl")]
+    Gl,
+    #[strum(serialize = "ka")]
+    Ka,
+    #[strum(serialize = "de")]
+    De,
+    #[strum(serialize = "el")]
+    El,
+    #[strum(serialize = "gu")]
+    Gu,
+    #[strum(serialize = "iw")]
+    Iw,
+    #[strum(serialize = "hi")]
+    Hi,
+    #[strum(serialize = "hu")]
+    Hu,
+    #[strum(serialize = "is")]
+    Is,
+    #[strum(serialize = "id")]
+    Id,
+    #[strum(serialize = "it")]
+    It,
+    #[strum(serialize = "ja")]
+    Ja,
+    #[strum(serialize = "kn")]
+    Kn,
+    #[strum(serialize = "kk")]
+    Kk,
+    #[strum(serialize = "km")]
+    Km,
+    #[strum(serialize = "ko")]
+    Ko,
+    #[strum(serialize = "ky")]
+    Ky,
+    #[strum(serialize = "lo")]
+    Lo,
+    #[strum(serialize = "lv")]
+    Lv,
+    #[strum(serialize = "lt")]
+    Lt,
+    #[strum(serialize = "mk")]
+    Mk,
+    #[strum(serialize = "ms")]
+    Ms,
+    #[strum(serialize = "ml")]
+    Ml,
+    #[strum(serialize = "mr")]
+    Mr,
+    #[strum(serialize = "mn")]
+    Mn,
+    #[strum(serialize = "ne")]
+    Ne,
+    #[strum(serialize = "no")]
+    No,
+    #[strum(serialize = "pl")]
+    Pl,
+    #[strum(serialize = "pt")]
+    Pt,
+    #[strum(serialize = "pt-BR")]
+    PtBR,
+    #[strum(serialize = "pt-PT")]
+    PtPT,
+    #[strum(serialize = "pa")]
+    Pa,
+    #[strum(serialize = "ro")]
+    Ro,
+    #[strum(serialize = "ru")]
+    Ru,
+    #[strum(serialize = "sr")]
+    Sr,
+    #[strum(serialize = "si")]
+    Si,
+    #[strum(serialize = "sk")]
+    Sk,
+    #[strum(serialize = "sl")]
+    Sl,
+    #[strum(serialize = "es")]
+    Es,
+    #[strum(serialize = "es-419")]
+    Es419,
+    #[strum(serialize = "sw")]
+    Sw,
+    #[strum(serialize = "sv")]
+    Sv,
+    #[strum(serialize = "ta")]
+    Ta,
+    #[strum(serialize = "te")]
+    Te,
+    #[strum(serialize = "th")]
+    Th,
+    #[strum(serialize = "tr")]
+    Tr,
+    #[strum(serialize = "uk")]
+    Uk,
+    #[strum(serialize = "ur")]
+    Ur,
+    #[strum(serialize = "uz")]
+    Uz,
+    #[strum(serialize = "vi")]
+    Vi,
+    #[strum(serialize = "zu")]
+    Zu,
 }
 
-impl Language {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Language::Af => "af",
-            Language::Am => "am",
-            Language::Ar => "ar",
-            Language::Hy => "hy",
-            Language::Az => "az",
-            Language::Eu => "eu",
-            Language::Be => "be",
-            Language::Bn => "bn",
-            Language::Bs => "bs",
-            Language::Bg => "bg",
-            Language::My => "my",
-            Language::Ca => "ca",
-            Language::Zh => "zh",
-            Language::ZhCN => "zh-CN",
-            Language::ZhHK => "zh-HK",
-            Language::ZhTW => "zh-TW",
-            Language::Hr => "hr",
-            Language::Cs => "cs",
-            Language::Da => "da",
-            Language::Nl => "nl",
-            Language::En => "en",
-            Language::EnAU => "en-AU",
-            Language::EnGB => "en-GB",
-            Language::Et => "et",
-            Language::Fa => "fa",
-            Language::Fi => "fi",
-            Language::Fil => "fil",
-            Language::Fr => "fr",
-            Language::FrCA => "fr-CA",
-            Language::Gl => "gl",
-            Language::Ka => "ka",
-            Language::De => "de",
-            Language::El => "el",
-            Language::Gu => "gu",
-            Language::Iw => "iw",
-            Language::Hi => "hi",
-            Language::Hu => "hu",
-            Language::Is => "is",
-            Language::Id => "id",
-            Language::It => "it",
-            Language::Ja => "ja",
-            Language::Kn => "kn",
-            Language::Kk => "kk",
-            Language::Km => "km",
-            Language::Ko => "ko",
-            Language::Ky => "ky",
-            Language::Lo => "lo",
-            Language::Lv => "lv",
-            Language::Lt => "lt",
-            Language::Mk => "mk",
-            Language::Ms => "ms",
-            Language::Ml => "ml",
-            Language::Mr => "mr",
-            Language::Mn => "mn",
-            Language::Ne => "ne",
-            Language::No => "no",
-            Language::Pl => "pl",
-            Language::Pt => "pt",
-            Language::PtBR => "pt-BR",
-            Language::PtPT => "pt-PT",
-            Language::Pa => "pa",
-            Language::Ro => "ro",
-            Language::Ru => "ru",
-            Language::Sr => "sr",
-            Language::Si => "si",
-            Language::Sk => "sk",
-            Language::Sl => "sl",
-            Language::Es => "es",
-            Language::Es419 => "es-419",
-            Language::Sw => "sw",
-            Language::Sv => "sv",
-            Language::Ta => "ta",
-            Language::Te => "te",
-            Language::Th => "th",
-            Language::Tr => "tr",
-            Language::Uk => "uk",
-            Language::Ur => "ur",
-            Language::Uz => "uz",
-            Language::Vi => "vi",
-            Language::Zu => "zu",
-        }
+#[cfg(test)]
+mod tests {
+    use super::Language;
+
+    #[test]
+    fn test_language_as_str() {
+        assert_eq!(Language::En.to_string(), "en");
+        assert_eq!(Language::FrCA.to_string(), "fr-CA");
+        assert_eq!(Language::ZhHK.to_string(), "zh-HK");
+    }
+
+    #[test]
+    fn test_language_parse() {
+        let parsed_result: Language = "en".parse().unwrap();
+        assert_eq!(parsed_result, Language::En);
+        let parsed_result: Language = "fr-CA".parse().unwrap();
+        assert_eq!(parsed_result, Language::FrCA);
+        let parsed_result: Language = "zh-HK".parse().unwrap();
+        assert_eq!(parsed_result, Language::ZhHK);
     }
 }
-

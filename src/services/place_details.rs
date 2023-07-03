@@ -80,12 +80,12 @@ impl PlaceDetailsService {
         let all_fields = fields.cloned();
         if let Some(mut all_fields) = all_fields {
             all_fields.insert(PlaceDataField::PlaceId);
-            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.as_str())).collect();
+            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.to_string())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
         }
         if let Some(language) = language {
-            url.push_str(&format!("&language={}", language.as_str()));
+            url.push_str(&format!("&language={}", language.to_string()));
         }
         if let Some(region) = region {
             url.push_str(&format!("&region={}", region.alpha2()));
@@ -94,7 +94,7 @@ impl PlaceDetailsService {
             url.push_str(&format!("&reviews_no_translations={}", review_no_translation));
         }
         if let Some(review_sort) = review_sort {
-            url.push_str(&format!("&sort={}", review_sort.as_str()));
+            url.push_str(&format!("&sort={}", review_sort.to_string()));
         }
         if let Some(session_token) = session_token {
             if !session_token.is_empty() {
