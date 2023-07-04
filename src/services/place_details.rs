@@ -12,6 +12,64 @@ pub struct PlaceDetailsService {
     session_token: Option<String>,
 }
 
+mod place_details {
+    use super::*;
+
+    pub fn build_place_details(
+        api_key: &str,
+        place_id: &str,
+        fields: Option<&HashSet<PlaceDataField>>, 
+        language: Option<&Language>, 
+        region: Option<&CountryCode>,
+        review_no_translation: Option<&bool>,
+        review_sort: Option<&ReviewSort>, 
+        session_token: Option<&str>,
+    ) -> Result<String, GooglePlacesError> { 
+        // TODO format for url might be wrong, need to test all cases
+        let base_url = format!(
+            "https://maps.googleapis.com/maps/api/place/details/json?place_id={}&key={}",
+            place_id, api_key
+        );
+        let mut url = base_url;
+        // Optional parameters
+        let all_fields = fields.cloned();
+        if let Some(mut all_fields) = all_fields {
+            all_fields.insert(PlaceDataField::PlaceId);
+            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.to_string())).collect();
+            let field_string = field_list.join(",");
+            url.push_str(&format!("&fields={}", field_string));
+        }
+        if let Some(language) = language {
+            url.push_str(&format!("&language={}", language.to_string()));
+        }
+        if let Some(region) = region {
+            url.push_str(&format!("&region={}", region.alpha2()));
+        }
+        if let Some(review_no_translation) = review_no_translation {
+            url.push_str(&format!("&reviews_no_translations={}", review_no_translation));
+        }
+        if let Some(review_sort) = review_sort {
+            url.push_str(&format!("&sort={}", review_sort.to_string()));
+        }
+        if let Some(session_token) = session_token {
+            if !session_token.is_empty() {
+                url.push_str(&format!("&sessiontoken={}", session_token));
+            }
+        }
+        Ok(url)
+    }
+
+    pub fn process_place_details(
+        body: &str
+    ) -> Result<PlaceDetailsResult, GooglePlacesError> {
+        let search_result: PlaceDetailsResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
+        Ok(search_result)
+    }
+}
+
 impl PlaceDetailsService {
     /// Retrieves detailed information about a place based on its place ID.
 
@@ -70,38 +128,8 @@ impl PlaceDetailsService {
         review_sort: Option<&ReviewSort>, 
         session_token: Option<&str>,
 
-    ) -> Result<PlaceDetailsResult, GooglePlacesError> {//format for url might be wrong, need to test all cases
-        let base_url = format!(
-            "https://maps.googleapis.com/maps/api/place/details/json?place_id={}&key={}",
-            place_id, self.client.get_api_key()
-        );
-        let mut url = base_url;
-        // Optional parameters
-        let all_fields = fields.cloned();
-        if let Some(mut all_fields) = all_fields {
-            all_fields.insert(PlaceDataField::PlaceId);
-            let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.to_string())).collect();
-            let field_string = field_list.join(",");
-            url.push_str(&format!("&fields={}", field_string));
-        }
-        if let Some(language) = language {
-            url.push_str(&format!("&language={}", language.to_string()));
-        }
-        if let Some(region) = region {
-            url.push_str(&format!("&region={}", region.alpha2()));
-        }
-        if let Some(review_no_translation) = review_no_translation {
-            url.push_str(&format!("&reviews_no_translations={}", review_no_translation));
-        }
-        if let Some(review_sort) = review_sort {
-            url.push_str(&format!("&sort={}", review_sort.to_string()));
-        }
-        if let Some(session_token) = session_token {
-            if !session_token.is_empty() {
-                url.push_str(&format!("&sessiontoken={}", session_token));
-            }
-        }
-
+    ) -> Result<PlaceDetailsResult, GooglePlacesError> { 
+        let url = place_details::build_place_details(self.client.get_api_key(), place_id, fields, language, region, review_no_translation, review_sort, session_token)?;
         let response: reqwest::Response = match self.client.get_req_client().get(&url).send().await{
             Ok(response) => response,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
@@ -110,14 +138,57 @@ impl PlaceDetailsService {
             Ok(body) => body,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
         };
-        let search_result: PlaceDetailsResult = match serde_json::from_str(&body){
-            Ok(search_result) => search_result,
-            Err(e) => return Err(GooglePlacesError::ParseError(e)),
-        };
-        //self.end_query();
-        
-        Ok(search_result)
+        Ok(place_details::process_place_details(&body)?)   
     }
+
 }
 
+#[cfg(test)]
+mod test{
+    use super::*;
+    use relative_path::RelativePath;
+    use std::path::Path;
+    use crate::models::place_details::{PlaceDetailsStatus};
 
+    #[test]
+    fn test_build_nearby_search() {
+        let api_key = "12345";
+        let place_id = "ChIJN1t_tDeuEmsRUsoyG83frY4";
+        let fields_set: HashSet<PlaceDataField> = vec![
+           PlaceDataField::Name,
+        ].into_iter().collect();
+        let fields = Some(&fields_set);
+        let language = Some(&Language::Es);
+        let region = Some(&CountryCode::USA);
+        let review_no_translation = Some(&false);
+        let review_sort = Some(&ReviewSort::Newest);
+        let session_token = Some("token123");
+        let url = place_details::build_place_details(api_key, place_id, fields, language, region, review_no_translation, review_sort, session_token).unwrap();
+        let actual_url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&key=12345&fields=place_id,name&language=es&region=US&reviews_no_translations=false&sort=newest&sessiontoken=token123".to_string();
+        assert_eq!(url.replace("name,place_id", "place_id,name"), actual_url); // order of name and place_id is not guaranteed, so we reorder them
+    }
+
+    #[test]
+    fn test_process_nearby_search() {
+        let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let input_path = RelativePath::new("resources/tests/place_details.txt").to_path(root_dir);
+        let body = std::fs::read_to_string(input_path).unwrap();
+        let search_result = place_details::process_place_details(&body).unwrap();
+        assert_eq!(search_result.status, PlaceDetailsStatus::Ok);
+        assert!(search_result.place.id.len() > 0);
+        assert!(search_result.place.name.is_some());
+        assert!(search_result.place.business_status.is_some());
+        assert!(search_result.place.geometry.is_some());
+        assert!(search_result.place.icon.is_some());
+        assert!(search_result.place.icon_background_color.is_some());
+        assert!(search_result.place.icon_mask_base_uri.is_some());
+        // assert!(search_result.place.opening_hours.is_some()); // this is occasionally null
+        // assert!(search_result.place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0); // this is occasionally null
+        assert!(search_result.place.plus_code.is_some());
+        assert!(search_result.place.types.is_some());
+        // assert!(search_result.place.vicinity.is_some()); // this is occasionally null
+        // assert!(search_result.place.price_level.is_some()); // this is occasionally null
+        assert!(search_result.place.rating.is_some());
+        assert!(search_result.place.user_ratings_total.is_some());
+    }
+}

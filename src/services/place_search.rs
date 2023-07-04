@@ -6,15 +6,13 @@ use std::collections::HashSet;
 use isocountry::CountryCode;
 use urlencoding::encode;
 use std::sync::Arc;
-use serde::de::DeserializeOwned;
 
 pub struct PlaceSearchService {
     client: Arc<RequestService>,
 }
 mod nearby_search {
-    use core::panic;
-
     use super::*;
+
     pub fn build_nearby_search(
         api_key: &str,
         location: &(f64, f64),
@@ -75,7 +73,8 @@ mod nearby_search {
         }
         Ok(url)
     }
-    pub fn process_nearby_search(body: &str) -> Result<NearbySearchResult, GooglePlacesError>{
+
+    pub fn process_nearby_search(body: &str) -> Result<NearbySearchResult, GooglePlacesError> {
         let mut search_result: NearbySearchResult = match serde_json::from_str(&body){
             Ok(search_result) => search_result,
             Err(e) => return Err(GooglePlacesError::ParseError(e)),
@@ -83,17 +82,11 @@ mod nearby_search {
         search_result.calculate_total_results();
         Ok(search_result)
     }
+
 }
 mod text_search {
     use super::*;
-    pub fn process_text_search(body: &str) -> Result<TextSearchResult, GooglePlacesError> {
-        let mut search_result: TextSearchResult = match serde_json::from_str(&body){
-            Ok(search_result) => search_result,
-            Err(e) => return Err(GooglePlacesError::ParseError(e)),
-        };
-        search_result.calculate_total_results();
-        Ok(search_result)
-    }
+
     pub fn build_text_search(
         api_key: &str,
         query: &str,
@@ -149,16 +142,20 @@ mod text_search {
         }
         Ok(url)
     }
-}
-mod find_place {
-    use super::*;
-    pub fn process_find_place(body: &str) -> Result<FindPlaceSearchResult, GooglePlacesError> {
-        let search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
+
+    pub fn process_text_search(body: &str) -> Result<TextSearchResult, GooglePlacesError> {
+        let mut search_result: TextSearchResult = match serde_json::from_str(&body){
             Ok(search_result) => search_result,
             Err(e) => return Err(GooglePlacesError::ParseError(e)),
         };
+        search_result.calculate_total_results();
         Ok(search_result)
     }
+
+}
+mod find_place {
+    use super::*;
+
     pub fn build_find_place(
         api_key: &str,
         input: &str,
@@ -193,6 +190,15 @@ mod find_place {
         }
         Ok(url)
     }
+
+    pub fn process_find_place(body: &str) -> Result<FindPlaceSearchResult, GooglePlacesError> {
+        let search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
+            Ok(search_result) => search_result,
+            Err(e) => return Err(GooglePlacesError::ParseError(e)),
+        };
+        Ok(search_result)
+    }
+
 }
 
 impl PlaceSearchService {
@@ -227,6 +233,7 @@ impl PlaceSearchService {
             ).await
         
     }
+
     pub async fn nearby_search_rank_by_distance(
         &self,
         location: &(f64, f64),
@@ -286,7 +293,7 @@ impl PlaceSearchService {
         fields: Option<&HashSet<PlaceDataField>>,
         language: Option<&Language>,
         location_bias: Option<&LocationBias>,
-    ) -> Result<FindPlaceSearchResult, GooglePlacesError>{       
+    ) -> Result<FindPlaceSearchResult, GooglePlacesError> {       
         let url = find_place::build_find_place(self.client.get_api_key(), input, input_type, fields, language, location_bias)?;
         let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
             Ok(response) => response,
@@ -311,7 +318,7 @@ impl PlaceSearchService {
         page_token: Option<&str>,
         region: Option<&CountryCode>,
         place_types: Option<&HashSet<PlaceTypes>>
-    ) -> Result<TextSearchResult, GooglePlacesError>{
+    ) -> Result<TextSearchResult, GooglePlacesError> {
         let url = text_search::build_text_search(self.client.get_api_key(), query, radius, language, location, max_price, 
         min_price, open_now, page_token, region, place_types)?;
         let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
@@ -324,6 +331,7 @@ impl PlaceSearchService {
         };
         Ok(text_search::process_text_search(&body)?)
     }
+
 }
 
 #[cfg(test)]
@@ -355,17 +363,31 @@ mod test{
     }
 
     #[test]
-    fn test_process_find_place() {
+    fn test_process_nearby_search() {
         let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
-        let input_path = RelativePath::new("resources/tests/find_place.txt").to_path(root_dir);
+        let input_path = RelativePath::new("resources/tests/nearby_search.txt").to_path(root_dir);
         let body = std::fs::read_to_string(input_path).unwrap();
-        let search_result = find_place::process_find_place(&body).unwrap();
+        let search_result = nearby_search::process_nearby_search(&body).unwrap();
         assert_eq!(search_result.status, PlaceSearchStatus::Ok);
-        assert_eq!(search_result.results.len(), 1);
-        assert_eq!(search_result.results[0].id, "ChIJSXuUF3SAbIcRhY8fohJ33n4");
-        assert_eq!(search_result.results[0].name, Some("HuHot Mongolian Grill".to_string()));
-        assert_eq!(search_result.results[0].formatted_address, Some("3698 S Natches Ct, Sheridan, CO 80110, United States".to_string()));
-        assert_eq!(search_result.results[0].rating, Some(4.3));
+        assert_eq!(search_result.html_attributions.len(), 0);
+        assert_eq!(search_result.places.len(), 20);
+        for place in search_result.places {
+            assert!(place.id.len() > 0);
+            assert!(place.name.is_some());
+            assert!(place.business_status.is_some());
+            assert!(place.geometry.is_some());
+            assert!(place.icon.is_some());
+            assert!(place.icon_background_color.is_some());
+            assert!(place.icon_mask_base_uri.is_some());
+            // assert!(place.opening_hours.is_some()); // this is occasionally null
+            // assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0); // this is occasionally null
+            assert!(place.plus_code.is_some());
+            assert!(place.types.is_some());
+            // assert!(place.vicinity.is_some()); // this is occasionally null
+            // assert!(place.price_level.is_some()); // this is occasionally null
+            assert!(place.rating.is_some());
+            assert!(place.user_ratings_total.is_some());
+        }
     }
 
     #[test]
@@ -390,6 +412,34 @@ mod test{
     }
 
     #[test]
+    fn test_process_text_search() {
+        let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let input_path = RelativePath::new("resources/tests/text_search.txt").to_path(root_dir);
+        let body = std::fs::read_to_string(input_path).unwrap();
+        let search_result = text_search::process_text_search(&body).unwrap();
+        assert_eq!(search_result.status, PlaceSearchStatus::Ok);
+        assert_eq!(search_result.html_attributions.len(), 0);
+        assert_eq!(search_result.places.len(), 20);
+        for place in search_result.places {
+            assert!(place.id.len() > 0);
+            assert!(place.name.is_some());
+            assert!(place.business_status.is_some());
+            assert!(place.geometry.is_some());
+            assert!(place.icon.is_some());
+            assert!(place.icon_background_color.is_some());
+            assert!(place.icon_mask_base_uri.is_some());
+            // assert!(place.opening_hours.is_some()); // this is occasionally null
+            // assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0); // this is occasionally null
+            assert!(place.plus_code.is_some());
+            assert!(place.types.is_some());
+            // assert!(place.vicinity.is_some()); // this is occasionally null
+            // assert!(place.price_level.is_some()); // this is occasionally null
+            assert!(place.rating.is_some());
+            assert!(place.user_ratings_total.is_some());
+        }
+    }
+
+    #[test]
     fn test_build_find_place() {
         let api_key = "12345";
         let input = "Mongolian Grill";
@@ -407,8 +457,21 @@ mod test{
         let url = find_place::build_find_place(api_key, input, input_type, fields, language, location_bias).unwrap();
         println!("{}", url);
         let actual_url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Mongolian%20Grill&inputtype=textquery&key=12345&fields=place_id,name&language=en&locationbias=circle:10000@33.85984846198168,151.20907015422375".to_string();
-        assert_eq!(url.replace("name,place_id", "place_id,name"), actual_url);
+        assert_eq!(url.replace("name,place_id", "place_id,name"), actual_url); // order of name and place_id is not guaranteed, so we reorder them
     }
 
+    #[test]
+    fn test_process_find_place() {
+        let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let input_path = RelativePath::new("resources/tests/find_place.txt").to_path(root_dir);
+        let body = std::fs::read_to_string(input_path).unwrap();
+        let search_result = find_place::process_find_place(&body).unwrap();
+        assert_eq!(search_result.status, PlaceSearchStatus::Ok);
+        assert_eq!(search_result.places.len(), 1);
+        assert_eq!(search_result.places[0].id, "ChIJSXuUF3SAbIcRhY8fohJ33n4");
+        assert_eq!(search_result.places[0].name, Some("HuHot Mongolian Grill".to_string()));
+        assert_eq!(search_result.places[0].formatted_address, Some("3698 S Natches Ct, Sheridan, CO 80110, United States".to_string()));
+        assert_eq!(search_result.places[0].rating, Some(4.3));
+    }
 
 }

@@ -8,6 +8,24 @@ pub struct PlacePhotosService {
     client: Arc<RequestService>,
 }
 
+mod place_photos {
+    use super::*;
+
+    pub fn build_photo_references(
+        api_key: &str,
+        photo_reference: &str,
+        max_width: Option<&u32>,
+        max_height: Option<&u32>,
+    ) -> Result<String, GooglePlacesError> {
+        let url = format!(
+            "https://maps.googleapis.com/maps/api/place/photo?maxwidth={}&maxheight={}&photoreference={}&key={}",
+            max_width.unwrap_or(&1000), max_height.unwrap_or(&1000), photo_reference, api_key
+        );
+        Ok(url)
+    }    
+
+}
+
 impl PlacePhotosService {
     pub fn new(client: Arc<RequestService>) -> Self {
         PlacePhotosService { client }
@@ -20,10 +38,7 @@ impl PlacePhotosService {
         max_height: Option<&u32>,
     ) -> Result<image::DynamicImage, GooglePlacesError> {
         // Construct the request URL
-        let url = format!(
-            "https://maps.googleapis.com/maps/api/place/photo?maxwidth={}&maxheight={}&photoreference={}&key={}",
-            max_width.unwrap_or(&1000), max_height.unwrap_or(&1000), photo_reference, self.client.get_api_key()
-        );
+        let url = place_photos::build_photo_references(self.client.get_api_key(), photo_reference, max_width, max_height)?;
         let response = match self.client.get_req_client().get(&url).send().await{
             Ok(response) => response,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),

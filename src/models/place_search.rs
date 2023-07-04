@@ -18,7 +18,7 @@ pub struct NearbySearchResult {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FindPlaceSearchResult {
     #[serde(rename = "candidates")]
-    pub results: Vec<Place>,
+    pub places: Vec<Place>,
     pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
@@ -53,7 +53,7 @@ impl NearbySearchResult {
 
 impl FindPlaceSearchResult {
     pub fn display(&self) -> String {
-        let results = self.results.iter().map(|p| p.display()).collect::<Vec<String>>().join(", ");
+        let results = self.places.iter().map(|p| p.display()).collect::<Vec<String>>().join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
         format!("FindPlaceSearchResult {{ results: [{}], status: {}, error_message: {}, info_messages: [{}] }}", 
             results, self.status.to_string(), self.error_message.as_ref().unwrap_or(&"".to_string()), info_messages)
