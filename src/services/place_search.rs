@@ -12,6 +12,8 @@ pub struct PlaceSearchService {
     client: Arc<RequestService>,
 }
 mod nearby_search {
+    use core::panic;
+
     use super::*;
     pub fn build_nearby_search(
         api_key: &str,
@@ -327,6 +329,9 @@ impl PlaceSearchService {
 #[cfg(test)]
 mod test{
     use super::*;
+    use relative_path::RelativePath;
+    use std::path::Path;
+    use crate::models::place_search::{PlaceSearchStatus};
 
     #[test]
     fn test_build_nearby_search() {
@@ -347,6 +352,20 @@ mod test{
         let url = nearby_search::build_nearby_search(api_key, location, radius, keyword, language, max_price, min_price, open_now, page_token, rank_by, place_types).unwrap();
         let actual_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=0%2C0&key=12345&radius=1000&keyword=restaurant&language=en&maxprice=2&minprice=1&opennow=true&pagetoken=token123&rankby=distance&type=restaurant".to_string();
         assert_eq!(url, actual_url);
+    }
+
+    #[test]
+    fn test_process_find_place() {
+        let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let input_path = RelativePath::new("resources/tests/find_place.txt").to_path(root_dir);
+        let body = std::fs::read_to_string(input_path).unwrap();
+        let search_result = find_place::process_find_place(&body).unwrap();
+        assert_eq!(search_result.status, PlaceSearchStatus::Ok);
+        assert_eq!(search_result.results.len(), 1);
+        assert_eq!(search_result.results[0].id, "ChIJSXuUF3SAbIcRhY8fohJ33n4");
+        assert_eq!(search_result.results[0].name, Some("HuHot Mongolian Grill".to_string()));
+        assert_eq!(search_result.results[0].formatted_address, Some("3698 S Natches Ct, Sheridan, CO 80110, United States".to_string()));
+        assert_eq!(search_result.results[0].rating, Some(4.3));
     }
 
     #[test]
@@ -390,4 +409,6 @@ mod test{
         let actual_url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Mongolian%20Grill&inputtype=textquery&key=12345&fields=place_id,name&language=en&locationbias=circle:10000@33.85984846198168,151.20907015422375".to_string();
         assert_eq!(url.replace("name,place_id", "place_id,name"), actual_url);
     }
+
+
 }
