@@ -31,6 +31,7 @@ impl PlacePhotosService {
         PlacePhotosService { client }
     }
 
+    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
     pub async fn get_photo_reference(
         &self,
         photo_reference: &str,
@@ -39,6 +40,7 @@ impl PlacePhotosService {
     ) -> Result<image::DynamicImage, GooglePlacesError> {
         // Construct the request URL
         let url = place_photos::build_photo_references(self.client.get_api_key(), photo_reference, max_width, max_height)?;
+        tracing::debug!("Google Places API, Photo Reference: `{url}`");
         let response = match self.client.get_req_client().get(&url).send().await{
             Ok(response) => response,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
