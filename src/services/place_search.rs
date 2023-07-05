@@ -259,6 +259,8 @@ impl PlaceSearchService {
                 place_types,
             ).await
     }
+    
+    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
     async fn full_nearby_search(
         &self,
         location: &(f64, f64),
@@ -275,6 +277,7 @@ impl PlaceSearchService {
     
         let url = nearby_search::build_nearby_search(self.client.get_api_key(), location, radius, keyword, 
         language, max_price, min_price, open_now, page_token, rank_by, place_types)?;
+        tracing::debug!("Google Places API, Nearby Search: `{url}`");
         let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
             Ok(response) => response,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
@@ -286,6 +289,7 @@ impl PlaceSearchService {
         Ok(nearby_search::process_nearby_search(&body)?)
     }
 
+    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
     pub async fn find_place(
         &self,
         input: &str,
@@ -295,6 +299,7 @@ impl PlaceSearchService {
         location_bias: Option<&LocationBias>,
     ) -> Result<FindPlaceSearchResult, GooglePlacesError> {       
         let url = find_place::build_find_place(self.client.get_api_key(), input, input_type, fields, language, location_bias)?;
+        tracing::debug!("Google Places API, Find Place: `{url}`");
         let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
             Ok(response) => response,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
@@ -306,6 +311,7 @@ impl PlaceSearchService {
         Ok(find_place::process_find_place(&body)?)
     }
 
+    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
     pub async fn text_search(
         &self,
         query: &str,
@@ -321,6 +327,7 @@ impl PlaceSearchService {
     ) -> Result<TextSearchResult, GooglePlacesError> {
         let url = text_search::build_text_search(self.client.get_api_key(), query, radius, language, location, max_price, 
         min_price, open_now, page_token, region, place_types)?;
+        tracing::debug!("Google Places API, Text Search: `{url}`");
         let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
             Ok(response) => response,
             Err(e) => return Err(GooglePlacesError::HttpError(e)),
