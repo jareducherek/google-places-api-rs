@@ -31,15 +31,15 @@ async fn main() {
     let max_price = 4;
     let min_price = 1;
     let open_now = false;
-    let place_types: HashSet<PlaceTypes> = vec![
+    let place_set: HashSet<PlaceTypes> = vec![
         PlaceTypes::Restaurant,
         PlaceTypes::Establishment,
         PlaceTypes::Food,
-    ].into_iter().collect();
-    let place_types_clone = place_types.clone();
+        ].into_iter().collect();
+    let place_types = Some(&place_set);
 
     // Perform the request
-    match client.place_search_service.nearby_search_rank_by_distance(&location, Some(keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, Some(&place_types_clone)).await {
+    match client.place_search_service.nearby_search_rank_by_distance(&location, Some(keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, place_types).await {
         Ok(search_result) => {
             println!("{}", search_result.display());
             std::fs::write(
@@ -53,7 +53,7 @@ async fn main() {
     }
 
     // Perform the place search with default args
-    match client.place_search_service.nearby_search(&location, &radius, Some(&keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, Some(&place_types)).await {
+    match client.place_search_service.nearby_search(&location, &radius, Some(&keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, place_types).await {
        Ok(nearby_search) => {
            // Process and display the search result
            println!("{}", nearby_search.display());

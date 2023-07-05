@@ -19,7 +19,7 @@ impl PlaceDetailsResult {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, PartialEq, Eq, Deserialize)]
 pub enum PlaceDetailsStatus {
     #[serde(rename = "OK")]
     Ok,

@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use strum_macros::{Display, EnumString};
 use crate::models::constants::Place;
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,7 +18,7 @@ pub struct NearbySearchResult {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FindPlaceSearchResult {
     #[serde(rename = "candidates")]
-    pub results: Vec<Place>,
+    pub places: Vec<Place>,
     pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
@@ -44,7 +45,7 @@ impl NearbySearchResult {
         let html_attributions = self.html_attributions.join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
         format!("NearbySearchResult {{ html_attributions: [{}], places: [{}], status: {}, error_message: {}, info_messages: [{}], next_page_token: {}, total_results: {} }}", 
-            html_attributions, places, self.status.as_str(), 
+            html_attributions, places, self.status.to_string(), 
             self.error_message.as_ref().unwrap_or(&"".to_string()), 
             info_messages, self.next_page_token.as_ref().unwrap_or(&"".to_string()), self.total_results)
     }
@@ -52,10 +53,10 @@ impl NearbySearchResult {
 
 impl FindPlaceSearchResult {
     pub fn display(&self) -> String {
-        let results = self.results.iter().map(|p| p.display()).collect::<Vec<String>>().join(", ");
+        let results = self.places.iter().map(|p| p.display()).collect::<Vec<String>>().join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
         format!("FindPlaceSearchResult {{ results: [{}], status: {}, error_message: {}, info_messages: [{}] }}", 
-            results, self.status.as_str(), self.error_message.as_ref().unwrap_or(&"".to_string()), info_messages)
+            results, self.status.to_string(), self.error_message.as_ref().unwrap_or(&"".to_string()), info_messages)
     }
 }
 
@@ -68,38 +69,31 @@ impl TextSearchResult {
         let html_attributions = self.html_attributions.join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
         format!("TextSearchResult {{ html_attributions: [{}], places: [{}], status: {}, error_message: {}, info_messages: [{}], next_page_token: {} }}, total_results: {}", 
-            html_attributions, places, self.status.as_str(),
+            html_attributions, places, self.status.to_string(),
             self.error_message.as_ref().unwrap_or(&"".to_string()),
             info_messages, self.next_page_token.as_ref().unwrap_or(&"".to_string()), self.total_results)
     }
 }
 
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, PartialEq, Eq, Deserialize, Display, EnumString)]
 pub enum PlaceSearchStatus {
     #[serde(rename = "OK")]
+    #[strum(serialize = "OK")]
     Ok,
     #[serde(rename = "ZERO_RESULTS")]
+    #[strum(serialize = "ZERO_RESULTS")]
     ZeroResults,
     #[serde(rename = "INVALID_REQUEST")]
+    #[strum(serialize = "INVALID_REQUEST")]
     InvalidRequest,
     #[serde(rename = "OVER_QUERY_LIMIT")]
+    #[strum(serialize = "OVER_QUERY_LIMIT")]
     OverQueryLimit,
     #[serde(rename = "REQUEST_DENIED")]
+    #[strum(serialize = "REQUEST_DENIED")]
     RequestDenied,
     #[serde(rename = "UNKNOWN_ERROR")]
+    #[strum(serialize = "UNKNOWN_ERROR")]
     UnknownError,
-}
-
-impl PlaceSearchStatus {
-    pub fn as_str(&self) -> &str {
-        match self {
-            PlaceSearchStatus::Ok => "OK",
-            PlaceSearchStatus::ZeroResults => "ZERO_RESULTS",
-            PlaceSearchStatus::OverQueryLimit => "OVER_QUERY_LIMIT",
-            PlaceSearchStatus::RequestDenied => "REQUEST_DENIED",
-            PlaceSearchStatus::InvalidRequest => "INVALID_REQUEST",
-            PlaceSearchStatus::UnknownError => "UNKNOWN_ERROR",
-        }
-    }
 }

@@ -54,57 +54,57 @@ pub struct Place {
 }
 
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AddressComponent {
     pub long_name: Option<String>,
     pub short_name: Option<String>,
     pub types: Option<Vec<String>>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Geometry {
     pub location: Option<Location>,
     pub viewport: Option<Viewport>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Location {
     pub lat: Option<f64>,
-    pub lng: Option<f64>,
+    pub lon: Option<f64>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Viewport {
     pub northeast: Option<Location>,
     pub southwest: Option<Location>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OpeningHours {
     pub open_now: Option<bool>,
     pub periods: Option<Vec<Period>>,
     pub weekday_text: Option<Vec<String>>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Period {
     pub open: Option<DayTime>,
     pub close: Option<DayTime>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DayTime {
     pub day: Option<i32>,
     pub time: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PlusCode {
     pub compound_code: Option<String>,
     pub global_code: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Review {
     pub author_name: String,
     pub author_url: Option<String>,
@@ -120,7 +120,7 @@ pub struct Review {
 
 // Additional structs
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PlaceOpeningHours {
     pub open_now: Option<bool>,
     pub periods: Option<Vec<OpeningHoursPeriod>>,
@@ -130,25 +130,25 @@ pub struct PlaceOpeningHours {
     pub weekday_text: Option<Vec<String>>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PlaceSpecialDay {
     pub date: Option<String>,
     pub exceptional_hours: Option<bool>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OpeningHoursPeriod {
     pub open: Option<OpeningHoursTime>,
     pub close: Option<OpeningHoursTime>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OpeningHoursTime {
     pub day: Option<i32>,
     pub time: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PlaceEditorialSummary {
     pub body: Option<String>,
     pub attribution: Option<String>,
