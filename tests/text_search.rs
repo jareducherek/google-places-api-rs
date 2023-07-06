@@ -54,7 +54,7 @@ async fn test_text_search() {
             }
         }
         Err(error) => {
-            panic!("Error in text seatch test {}", error);
+            panic!("Error in text search test {}", error);
         }
     }
     thread::sleep(Duration::from_secs(2));
@@ -83,7 +83,7 @@ async fn test_text_search() {
             }
         }
         Err(error) => {
-            panic!("Error in text seatch test {}", error);
+            panic!("Error in text search test {}", error);
         }
     }
 
