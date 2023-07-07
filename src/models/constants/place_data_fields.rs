@@ -22,8 +22,8 @@ pub enum PlaceDataField {
     IconBackgroundColor,
     #[strum(serialize = "name")]
     Name,
-    #[strum(serialize = "permanently_closed")]
-    PermanentlyClosed,
+    // #[strum(serialize = "permanently_closed")]
+    // PermanentlyClosed, // deprecated
     #[strum(serialize = "photos")]
     Photo,
     #[strum(serialize = "place_id")]

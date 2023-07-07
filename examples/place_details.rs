@@ -5,7 +5,7 @@ use isocountry::CountryCode;
 use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::models::constants::{PlaceDataField, Language, ReviewSort};
+use google_places_api::models::constants::{PlaceDataField, Language, ReviewSort, Place};
 
 #[tokio::main]
 async fn main() {
@@ -30,6 +30,7 @@ async fn main() {
        PlaceDataField::Name,
        PlaceDataField::Rating,
        PlaceDataField::FormattedPhoneNumber,
+       PlaceDataField::Vicinity,
     ].into_iter().collect();
     let language: Language = Language::Es;
     let region: CountryCode = CountryCode::USA;

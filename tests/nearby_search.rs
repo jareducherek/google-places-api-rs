@@ -47,8 +47,8 @@ async fn test_nearby_search() {
                 assert!(place.types.is_some());
                 assert!(place.vicinity.is_some());
                 // assert!(place.price_level.is_some()); // this is occasionally null
-                assert!(place.rating.is_some());
-                assert!(place.user_ratings_total.is_some());
+                // assert!(place.rating.is_some()); // this is occasionally null
+                // assert!(place.user_ratings_total.is_some()); // this is occasionally null
             }
         }
         Err(error) => {
