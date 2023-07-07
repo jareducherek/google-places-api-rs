@@ -132,9 +132,9 @@ impl PlaceDetailsService {
     ) -> Result<PlaceDetailsResult, GooglePlacesError> { 
         let url = place_details::build_place_details(self.client.get_api_key(), place_id, fields, language, region, review_no_translation, review_sort, session_token)?;
         tracing::debug!("Google Places API, Place Details: `{url}`");
-        let response: reqwest::Response = match self.client.get_req_client().get(&url).send().await{
+        let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
-            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+            Err(e) => return Err(e),
         };
         let body: String = match response.text().await{
             Ok(body) => body,

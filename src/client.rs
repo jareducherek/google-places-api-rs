@@ -1,5 +1,7 @@
 use std::sync::Arc;
 use crate::services::{RequestService, PlaceSearchService, PlaceDetailsService, PlacePhotosService};
+use crate::error::GooglePlacesError;
+
 
 pub struct GooglePlacesClient {
     pub place_search_service: PlaceSearchService,
