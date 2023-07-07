@@ -41,9 +41,9 @@ impl PlacePhotosService {
         // Construct the request URL
         let url = place_photos::build_photo_references(self.client.get_api_key(), photo_reference, max_width, max_height)?;
         tracing::debug!("Google Places API, Photo Reference: `{url}`");
-        let response = match self.client.get_req_client().get(&url).send().await{
+        let response = match self.client.get_response(&url).await{
             Ok(response) => response,
-            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+            Err(e) => return Err(e),
         };
         let bytes = match response.bytes().await{
             Ok(body) => body,

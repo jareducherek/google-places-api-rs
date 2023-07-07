@@ -17,5 +17,7 @@ pub enum GooglePlacesError {
     ReaderError(IOError),
     #[error("Invalid Input Parameter: {0}")]
     ParamError(String),
+    #[error("Rate Limit Error")]
+    RateLimitError,
     // Add more custom error variants as needed
 }
