@@ -200,10 +200,11 @@ mod find_place {
     }
 
     pub fn process_find_place(body: &str) -> Result<FindPlaceSearchResult, GooglePlacesError> {
-        let search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
+        let mut search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
             Ok(search_result) => search_result,
             Err(e) => return Err(GooglePlacesError::ParseError(e)),
         };
+        search_result.calculate_total_results();
         Ok(search_result)
     }
 
