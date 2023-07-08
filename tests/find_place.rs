@@ -2,6 +2,7 @@ use dotenv::dotenv;
 use std::env;
 use std::collections::HashSet;
 use google_places_api::client::GooglePlacesClient;
+use google_places_api::models::place_search::{PlaceSearchStatus};
 use google_places_api::models::constants::{PlaceDataField, Language, InputType, LocationBias};
 
 #[tokio::test]
@@ -12,10 +13,15 @@ async fn test_find_place() {
     let input = "Mongolian Grill";
     let input_type: InputType = InputType::TextQuery;
     let fields: HashSet<PlaceDataField> = vec![
+        PlaceDataField::PlaceId,
         PlaceDataField::Name,
-        PlaceDataField::Rating,
+        PlaceDataField::BusinessStatus,
         PlaceDataField::FormattedAddress,
-
+        PlaceDataField::Icon,
+        PlaceDataField::IconMaskBaseUri,
+        PlaceDataField::IconBackgroundColor,
+        PlaceDataField::PlusCode,
+        PlaceDataField::Type,
     ].into_iter().collect();
     let language: Language = Language::En;
     let location_bias: LocationBias = LocationBias::Circular {
@@ -24,13 +30,25 @@ async fn test_find_place() {
         longitude: 151.20907015422375,
     };
 
-    // Perform the request
     match client.place_search_service.find_place(input, &input_type, Some(&fields), Some(&language), Some(&location_bias)).await {
-        Ok(search_result) => {
-            println!("{}", search_result.display());
+        Ok(find_place) => {
+            print!("{}", find_place.display());
+            assert!(find_place.places.len() == find_place.total_results as usize);
+            assert!(matches!(find_place.status, PlaceSearchStatus::Ok));
+            for place in find_place.places.iter() {
+                assert!(place.id.len() > 0);
+                assert!(place.name.is_some());
+                assert!(place.business_status.is_some());
+                assert!(place.formatted_address.is_some());
+                assert!(place.icon.is_some());
+                assert!(place.icon_mask_base_uri.is_some());
+                assert!(place.icon_background_color.is_some());
+                assert!(place.plus_code.is_some());
+                assert!(place.types.is_some());
+            }
         }
         Err(error) => {
-            panic!("Error in find place test {}", error);
+            panic!("Error in nearby search test {}", error);
         }
     }
 }
