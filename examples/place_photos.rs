@@ -16,6 +16,10 @@ async fn main() {
     // Create a Google Places client
     let client = GooglePlacesClient::new(&api_key);
 
+    // Create a tracing subscriber for logging purposes
+    let sub = tracing_subscriber::FmtSubscriber::builder().with_max_level(tracing::Level::INFO).finish();
+    let sub_guard = tracing::subscriber::set_default(sub);
+
     // Output path to view the corresponding json
     let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
     let output_path = RelativePath::new("examples/outputs/place_photos.png").to_path(root_dir);
@@ -30,7 +34,7 @@ async fn main() {
             
         }
         Err(error) => {
-            eprintln!("Error: {:?}", error);
+            tracing::error!("Error: {:?}", error);
         }
     }
 }

@@ -286,7 +286,7 @@ impl PlaceSearchService {
             ).await
     }
     
-    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
+    #[tracing::instrument(level="debug", name="Place Search: Full Nearby Search", skip(self))]
     async fn full_nearby_search(
         &self,
         location: Option<&(f64, f64)>,
@@ -303,7 +303,7 @@ impl PlaceSearchService {
     
         let url = nearby_search::build_nearby_search(self.client.get_api_key(), location, radius, keyword, 
         language, max_price, min_price, open_now, page_token, rank_by, place_types)?;
-        tracing::debug!("Google Places API, Nearby Search: `{url}`");
+        tracing::debug!("Nearby Search: `{url}`", url=url);
         let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
             Err(e) => return Err(e),
@@ -315,7 +315,7 @@ impl PlaceSearchService {
         Ok(nearby_search::process_nearby_search(&body)?)
     }
 
-    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
+    #[tracing::instrument(level="debug", name="Place Search: Find Place", skip(self))]
     pub async fn find_place(
         &self,
         input: &str,
@@ -325,7 +325,7 @@ impl PlaceSearchService {
         location_bias: Option<&LocationBias>,
     ) -> Result<FindPlaceSearchResult, GooglePlacesError> {       
         let url = find_place::build_find_place(self.client.get_api_key(), input, input_type, fields, language, location_bias)?;
-        tracing::debug!("Google Places API, Find Place: `{url}`");
+        tracing::info!("Find Place: `{url}`", url=url);
         let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
             Err(e) => return Err(e),
@@ -356,7 +356,7 @@ impl PlaceSearchService {
     }
             
 
-    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
+    
     pub async fn text_search(
         &self,
         query: &str,
@@ -384,6 +384,8 @@ impl PlaceSearchService {
                 place_types,
             ).await
     }
+
+    #[tracing::instrument(level="debug", name="Place Search: Text Search", skip(self))]
     async fn full_text_search(
         &self,
         query: Option<&str>,
@@ -399,7 +401,7 @@ impl PlaceSearchService {
     ) -> Result<TextSearchResult, GooglePlacesError> {
         let url = text_search::build_text_search(self.client.get_api_key(), query, radius, language, location, max_price, 
         min_price, open_now, page_token, region, place_types)?;
-        tracing::debug!("Google Places API, Text Search: `{url}`");
+        tracing::debug!("Text Search: `{url}`", url=url);
         let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
             Err(e) => return Err(e),

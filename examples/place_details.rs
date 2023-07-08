@@ -19,6 +19,10 @@ async fn main() {
     // Create a Google Places client
     let client = GooglePlacesClient::new(&api_key);
 
+    // Create a tracing subscriber for logging purposes
+    let sub = tracing_subscriber::FmtSubscriber::builder().with_max_level(tracing::Level::INFO).finish();
+    let sub_guard = tracing::subscriber::set_default(sub);
+
     // Output path to view the corresponding json
     let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
     let output_path = RelativePath::new("examples/outputs/place_details.json").to_path(root_dir);
@@ -40,14 +44,14 @@ async fn main() {
     // Perform the request
     match client.place_details_service.get_place_details(place_id, Some(&fields), Some(&language), Some(&region), Some(&review_no_translation), Some(&review_sort), None).await {
         Ok(search_result) => {
-            println!("{}", search_result.display());
+            tracing::info!("{}", search_result.display());
             std::fs::write(
                 output_path,
                 serde_json::to_string_pretty(&search_result).unwrap(),
             );
         }
         Err(error) => {
-            eprintln!("Error: {:?}", error);
+            tracing::error!("Error: {:?}", error);
         }
     }
 }
