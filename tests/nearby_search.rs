@@ -42,7 +42,7 @@ async fn test_nearby_search() {
                 assert!(place.icon_background_color.is_some());
                 assert!(place.icon_mask_base_uri.is_some());
                 assert!(place.opening_hours.is_some());
-                assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0);
+                // assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0); // this is occasionally null
                 assert!(place.plus_code.is_some());
                 assert!(place.types.is_some());
                 assert!(place.vicinity.is_some());

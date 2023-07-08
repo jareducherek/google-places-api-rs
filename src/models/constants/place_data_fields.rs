@@ -92,6 +92,64 @@ pub enum PlaceDataField {
     UserRatingsTotal,
 }
 
+#[derive(Debug, Copy, Clone, Serialize, Deserialize, Hash, Eq, PartialEq, Display, EnumString)]
+pub enum PlaceDataFieldSubset {
+    // Basic Data
+    #[strum(serialize = "business_status")]
+    BusinessStatus,
+    #[strum(serialize = "formatted_address")]
+    FormattedAddress,
+    #[strum(serialize = "geometry")]
+    Geometry,
+    #[strum(serialize = "icon")]
+    Icon,
+    #[strum(serialize = "icon_mask_base_uri")]
+    IconMaskBaseUri,
+    #[strum(serialize = "icon_background_color")]
+    IconBackgroundColor,
+    #[strum(serialize = "name")]
+    Name,
+    // #[strum(serialize = "permanently_closed")]
+    // PermanentlyClosed, // Deprecated
+    #[strum(serialize = "photo")]
+    Photo,
+    #[strum(serialize = "place_id")]
+    PlaceId,
+    #[strum(serialize = "plus_code")]
+    PlusCode,
+
+    // Contact Data
+    #[strum(serialize = "formatted_phone_number")]
+    FormattedPhoneNumber,
+    #[strum(serialize = "international_phone_number")]
+    InternationalPhoneNumber,
+
+    // Atmosphere Data
+    #[strum(serialize = "dine_in")]
+    DineIn,
+    #[strum(serialize = "price_level")]
+    PriceLevel,
+    #[strum(serialize = "rating")]
+    Rating,
+    #[strum(serialize = "serves_beer")]
+    ServesBeer,
+    #[strum(serialize = "serves_breakfast")]
+    ServesBreakfast,
+    #[strum(serialize = "serves_brunch")]
+    ServesBrunch,
+    #[strum(serialize = "serves_dinner")]
+    ServesDinner,
+    #[strum(serialize = "serves_lunch")]
+    ServesLunch,
+    #[strum(serialize = "serves_vegetarian_food")]
+    ServesVegetarianFood,
+    #[strum(serialize = "serves_wine")]
+    ServesWine,
+    #[strum(serialize = "takeout")]
+    Takeout,
+}
+
+
 mod tests {
     use super::PlaceDataField;
 

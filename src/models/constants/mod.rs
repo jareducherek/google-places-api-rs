@@ -8,7 +8,7 @@ pub mod location_bias;
 pub mod rank_by;
 
 pub use language::Language;
-pub use place_data_fields::PlaceDataField;
+pub use place_data_fields::{PlaceDataField, PlaceDataFieldSubset};
 pub use place_types::PlaceTypes;
 pub use review_sort::ReviewSort;
 pub use place::Place;

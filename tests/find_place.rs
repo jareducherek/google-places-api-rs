@@ -3,7 +3,7 @@ use std::env;
 use std::collections::HashSet;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::models::place_search::{PlaceSearchStatus};
-use google_places_api::models::constants::{PlaceDataField, Language, InputType, LocationBias};
+use google_places_api::models::constants::{PlaceDataFieldSubset, Language, InputType, LocationBias};
 
 #[tokio::test]
 async fn test_find_place() {
@@ -12,16 +12,15 @@ async fn test_find_place() {
     let client = GooglePlacesClient::new(&api_key);
     let input = "Mongolian Grill";
     let input_type: InputType = InputType::TextQuery;
-    let fields: HashSet<PlaceDataField> = vec![
-        PlaceDataField::PlaceId,
-        PlaceDataField::Name,
-        PlaceDataField::BusinessStatus,
-        PlaceDataField::FormattedAddress,
-        PlaceDataField::Icon,
-        PlaceDataField::IconMaskBaseUri,
-        PlaceDataField::IconBackgroundColor,
-        PlaceDataField::PlusCode,
-        PlaceDataField::Type,
+    let fields: HashSet<PlaceDataFieldSubset> = vec![
+        PlaceDataFieldSubset::PlaceId,
+        PlaceDataFieldSubset::Name,
+        PlaceDataFieldSubset::BusinessStatus,
+        PlaceDataFieldSubset::FormattedAddress,
+        PlaceDataFieldSubset::Icon,
+        PlaceDataFieldSubset::IconMaskBaseUri,
+        PlaceDataFieldSubset::IconBackgroundColor,
+        PlaceDataFieldSubset::PlusCode,
     ].into_iter().collect();
     let language: Language = Language::En;
     let location_bias: LocationBias = LocationBias::Circular {
@@ -44,7 +43,6 @@ async fn test_find_place() {
                 assert!(place.icon_mask_base_uri.is_some());
                 assert!(place.icon_background_color.is_some());
                 assert!(place.plus_code.is_some());
-                assert!(place.types.is_some());
             }
         }
         Err(error) => {

@@ -4,7 +4,7 @@ use std::collections::HashSet;
 use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::models::constants::{InputType,PlaceDataField, Language, LocationBias};
+use google_places_api::models::constants::{InputType,PlaceDataField, Language, LocationBias, PlaceDataFieldSubset};
 
 #[tokio::main]
 async fn main() {
@@ -28,10 +28,10 @@ async fn main() {
     // Define the request parameters
     let input = "Mongolian Grill";
     let input_type: InputType = InputType::TextQuery;
-    let fields: HashSet<PlaceDataField> = vec![
-        PlaceDataField::Name,
-        PlaceDataField::Rating,
-        PlaceDataField::FormattedAddress,
+    let fields: HashSet<PlaceDataFieldSubset> = vec![
+        PlaceDataFieldSubset::Name,
+        PlaceDataFieldSubset::Rating,
+        PlaceDataFieldSubset::FormattedAddress,
 
     ].into_iter().collect();
     let language: Language = Language::En;
