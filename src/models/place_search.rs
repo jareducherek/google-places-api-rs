@@ -22,6 +22,8 @@ pub struct FindPlaceSearchResult {
     pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
+    #[serde(skip)]
+    pub total_results: u32,
 }
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TextSearchResult {
@@ -52,11 +54,14 @@ impl NearbySearchResult {
 }
 
 impl FindPlaceSearchResult {
+    pub fn calculate_total_results(&mut self) {
+        self.total_results = self.places.len() as u32;
+    }
     pub fn display(&self) -> String {
         let results = self.places.iter().map(|p| p.display()).collect::<Vec<String>>().join(", ");
         let info_messages = self.info_messages.as_ref().map(|v| v.join(", ")).unwrap_or_default();
-        format!("FindPlaceSearchResult {{ results: [{}], status: {}, error_message: {}, info_messages: [{}] }}", 
-            results, self.status.to_string(), self.error_message.as_ref().unwrap_or(&"".to_string()), info_messages)
+        format!("FindPlaceSearchResult {{ results: [{}], status: {}, error_message: {}, info_messages: [{}], total_results: {} }}", 
+            results, self.status.to_string(), self.error_message.as_ref().unwrap_or(&"".to_string()), info_messages, self.total_results)
     }
 }
 

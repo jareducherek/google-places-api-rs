@@ -5,6 +5,7 @@ use crate::models::constants::{PlaceDataField, Language, InputType, LocationBias
 use std::collections::HashSet;
 use isocountry::CountryCode;
 use urlencoding::encode;
+use uuid::NoContext;
 use std::sync::Arc;
 
 pub struct PlaceSearchService {
@@ -15,7 +16,7 @@ mod nearby_search {
 
     pub fn build_nearby_search(
         api_key: &str,
-        location: &(f64, f64),
+        location: Option<&(f64, f64)>,
         radius: Option<&u32>,
         keyword: Option<&str>,
         language: Option<&Language>,
@@ -29,10 +30,12 @@ mod nearby_search {
         // Construct the request URL
         // "{}/maps/api/place/nearbysearch/json?keyword={}&location={}%2c{}&radius={}&key={}",
         let mut url = format!(
-            "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={}%2C{}&key={}",
-            location.0,location.1, api_key
+            "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key={}", api_key
         );
         // Optional parameters
+        if let Some(location) = location {
+            url.push_str(&format!("&location={}%2C{}",location.0, location.1));
+        }
         if let Some(radius) = radius {
             url.push_str(&format!("&radius={}", radius));
         }
@@ -89,8 +92,8 @@ mod text_search {
 
     pub fn build_text_search(
         api_key: &str,
-        query: &str,
-        radius: &u32,
+        query: Option<&str>,
+        radius: Option<&u32>,
         language: Option<&Language>,
         location: Option<&(f64, f64)>,
         max_price: Option<&u32>,
@@ -101,10 +104,15 @@ mod text_search {
         place_types: Option<&HashSet<PlaceTypes>>
     ) -> Result<String, GooglePlacesError>{
         let mut url = format!(
-            "https://maps.googleapis.com/maps/api/place/textsearch/json?query={}&radius={}&key={}",
-            query, radius, api_key
+            "https://maps.googleapis.com/maps/api/place/textsearch/json?key={}", api_key
         );
         // Optional parameters
+        if let Some(query) = query {
+            url.push_str(&format!("&query={}", query));
+        }
+        if let Some(radius) = radius {
+            url.push_str(&format!("&radius={}", radius));
+        }
         if let Some(language) = language {
             url.push_str(&format!("&language={}", language.to_string()));
         }
@@ -192,10 +200,11 @@ mod find_place {
     }
 
     pub fn process_find_place(body: &str) -> Result<FindPlaceSearchResult, GooglePlacesError> {
-        let search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
+        let mut search_result: FindPlaceSearchResult = match serde_json::from_str(&body){
             Ok(search_result) => search_result,
             Err(e) => return Err(GooglePlacesError::ParseError(e)),
         };
+        search_result.calculate_total_results();
         Ok(search_result)
     }
 
@@ -204,6 +213,24 @@ mod find_place {
 impl PlaceSearchService {
     pub fn new(client: Arc<RequestService>) -> Self {
         PlaceSearchService { client }
+    }
+    pub async fn nearby_search_next_page (
+        &self,
+        page_token: &str,
+    ) -> Result<NearbySearchResult, GooglePlacesError> {
+        return 
+            self.full_nearby_search(
+                None, 
+                None, 
+                None, 
+                None, 
+                None, 
+                None, 
+                None, 
+                Some(page_token), 
+                None, 
+                None
+            ).await
     }
 
     pub async fn nearby_search(
@@ -220,7 +247,7 @@ impl PlaceSearchService {
     ) -> Result<NearbySearchResult, GooglePlacesError> {
         return
             self.full_nearby_search(
-                location,
+                Some(location),
                 Some(radius),
                 keyword,
                 language, 
@@ -231,7 +258,6 @@ impl PlaceSearchService {
                 None,
                 place_types,
             ).await
-        
     }
 
     pub async fn nearby_search_rank_by_distance(
@@ -247,7 +273,7 @@ impl PlaceSearchService {
     ) -> Result<NearbySearchResult, GooglePlacesError> {
         return
             self.full_nearby_search(
-                location,
+                Some(location),
                 None,
                 keyword,
                 language,
@@ -260,10 +286,10 @@ impl PlaceSearchService {
             ).await
     }
     
-    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
+    #[tracing::instrument(level="debug", name="Place Search: Full Nearby Search", skip(self))]
     async fn full_nearby_search(
         &self,
-        location: &(f64, f64),
+        location: Option<&(f64, f64)>,
         radius: Option<&u32>,
         keyword: Option<&str>,
         language: Option<&Language>,
@@ -277,10 +303,10 @@ impl PlaceSearchService {
     
         let url = nearby_search::build_nearby_search(self.client.get_api_key(), location, radius, keyword, 
         language, max_price, min_price, open_now, page_token, rank_by, place_types)?;
-        tracing::debug!("Google Places API, Nearby Search: `{url}`");
-        let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
+        tracing::debug!("Nearby Search: `{url}`", url=url);
+        let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
-            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+            Err(e) => return Err(e),
         };
         let body: String = match response.text().await{
             Ok(body) => body,
@@ -289,7 +315,7 @@ impl PlaceSearchService {
         Ok(nearby_search::process_nearby_search(&body)?)
     }
 
-    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
+    #[tracing::instrument(level="debug", name="Place Search: Find Place", skip(self))]
     pub async fn find_place(
         &self,
         input: &str,
@@ -299,10 +325,10 @@ impl PlaceSearchService {
         location_bias: Option<&LocationBias>,
     ) -> Result<FindPlaceSearchResult, GooglePlacesError> {       
         let url = find_place::build_find_place(self.client.get_api_key(), input, input_type, fields, language, location_bias)?;
-        tracing::debug!("Google Places API, Find Place: `{url}`");
-        let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
+        tracing::info!("Find Place: `{url}`", url=url);
+        let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
-            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+            Err(e) => return Err(e),
         };
         let body: String = match response.text().await{
             Ok(body) => body,
@@ -310,8 +336,27 @@ impl PlaceSearchService {
         };
         Ok(find_place::process_find_place(&body)?)
     }
+    pub async fn text_search_next_page (
+        &self,
+        page_token: &str,
+    ) -> Result<TextSearchResult, GooglePlacesError> {
+        return 
+            self.full_text_search(
+                None,
+                None,
+                None,
+                None,
+                None,
+                None,
+                None,
+                Some(page_token),
+                None,
+                None
+            ).await
+    }
+            
 
-    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
+    
     pub async fn text_search(
         &self,
         query: &str,
@@ -325,12 +370,41 @@ impl PlaceSearchService {
         region: Option<&CountryCode>,
         place_types: Option<&HashSet<PlaceTypes>>
     ) -> Result<TextSearchResult, GooglePlacesError> {
+        return
+            self.full_text_search(
+                Some(query),
+                Some(radius),
+                language,
+                location,
+                max_price,
+                min_price,
+                open_now,
+                page_token,
+                region,
+                place_types,
+            ).await
+    }
+
+    #[tracing::instrument(level="debug", name="Place Search: Text Search", skip(self))]
+    async fn full_text_search(
+        &self,
+        query: Option<&str>,
+        radius: Option<&u32>,
+        language: Option<&Language>,
+        location: Option<&(f64, f64)>,
+        max_price: Option<&u32>,
+        min_price: Option<&u32>,
+        open_now: Option<&bool>,
+        page_token: Option<&str>,
+        region: Option<&CountryCode>,
+        place_types: Option<&HashSet<PlaceTypes>>
+    ) -> Result<TextSearchResult, GooglePlacesError> {
         let url = text_search::build_text_search(self.client.get_api_key(), query, radius, language, location, max_price, 
         min_price, open_now, page_token, region, place_types)?;
-        tracing::debug!("Google Places API, Text Search: `{url}`");
-        let response: reqwest::Response = match self.client.get_req_client().get(url).send().await{
+        tracing::debug!("Text Search: `{url}`", url=url);
+        let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
-            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+            Err(e) => return Err(e),
         };
         let body: String = match response.text().await{
             Ok(body) => body,
@@ -351,7 +425,7 @@ mod test{
     #[test]
     fn test_build_nearby_search() {
         let api_key = "12345";
-        let location = &(0.0, 0.0);
+        let location = Some(&(0.0, 0.0));
         let radius = Some(&1000);
         let keyword = Some("restaurant");
         let language = Some(&Language::En);
@@ -365,7 +439,7 @@ mod test{
         ].into_iter().collect();
         let place_types = Some(&place_set);
         let url = nearby_search::build_nearby_search(api_key, location, radius, keyword, language, max_price, min_price, open_now, page_token, rank_by, place_types).unwrap();
-        let actual_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=0%2C0&key=12345&radius=1000&keyword=restaurant&language=en&maxprice=2&minprice=1&opennow=true&pagetoken=token123&rankby=distance&type=restaurant".to_string();
+        let actual_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=12345&location=0%2C0&radius=1000&keyword=restaurant&language=en&maxprice=2&minprice=1&opennow=true&pagetoken=token123&rankby=distance&type=restaurant".to_string();
         assert_eq!(url, actual_url);
     }
 
@@ -400,8 +474,8 @@ mod test{
     #[test]
     fn test_build_text_search() {
         let api_key = "12345";
-        let query = "query";
-        let radius = &(1000 as u32);
+        let query = Some("query");
+        let radius = Some(&(1000 as u32));
         let language = Some(&Language::En);
         let location = Some(&(0.0, 0.0));
         let max_price = Some(&2);
@@ -414,7 +488,7 @@ mod test{
         ].into_iter().collect();
         let place_types = Some(&place_set);
         let url = text_search::build_text_search(api_key, query, radius, language, location, max_price, min_price, open_now, page_token, region, place_types).unwrap();
-        let actual_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=query&radius=1000&key=12345&language=en&location=0%2C0&maxprice=2&minprice=1&opennow=true&pagetoken=token123&region=US&type=restaurant".to_string();
+        let actual_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=12345&query=query&radius=1000&language=en&location=0%2C0&maxprice=2&minprice=1&opennow=true&pagetoken=token123&region=US&type=restaurant".to_string();
         assert_eq!(url, actual_url);
     }
 

@@ -18,6 +18,10 @@ async fn main() {
     // Create a Google Places client
     let client = GooglePlacesClient::new(&api_key);
 
+    // Create a tracing subscriber for logging purposes
+    let sub = tracing_subscriber::FmtSubscriber::builder().with_max_level(tracing::Level::INFO).finish();
+    let sub_guard = tracing::subscriber::set_default(sub);
+
     // Output path to view the corresponding json
     let root_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
     let output_path = RelativePath::new("examples/outputs/nearby_search.json").to_path(root_dir);
@@ -38,29 +42,28 @@ async fn main() {
         ].into_iter().collect();
     let place_types = Some(&place_set);
 
-    // Perform the request
+    // Perform the request (nearby search ranking by distance)
     match client.place_search_service.nearby_search_rank_by_distance(&location, Some(keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, place_types).await {
         Ok(search_result) => {
-            println!("{}", search_result.display());
+            tracing::info!("{}", search_result.display());
             std::fs::write(
                 output_path,
                 serde_json::to_string_pretty(&search_result).unwrap(),
             );
         }
         Err(error) => {
-            eprintln!("Error: {:?}", error);
+            tracing::error!("Error: {:?}", error);
         }
     }
 
-    // Perform the place search with default args
+    // Perform the request (nearby search)
     match client.place_search_service.nearby_search(&location, &radius, Some(&keyword), Some(&language), Some(&max_price), Some(&min_price), Some(&open_now), None, place_types).await {
        Ok(nearby_search) => {
-           // Process and display the search result
-           println!("{}", nearby_search.display());
+           tracing::info!("{}", nearby_search.display());
        }
        Err(error) => {
            // Handle the error
-           eprintln!("Error: {:?}", error);
+           tracing::error!("Error: {:?}", error);
        }
     }
 }

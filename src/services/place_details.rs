@@ -118,7 +118,7 @@ impl PlaceDetailsService {
     /// The retrieved place details as a `PlaceDetails` struct if successful, or an error of type
     /// `GooglePlacesError` if the API request fails or the place details cannot be retrieved.
     ///
-    #[tracing::instrument(level="debug", name="Google Maps Place Details", skip(self))]
+    #[tracing::instrument(level="debug", name="Place Details", skip(self))]
     pub async fn get_place_details(
         &self,
         place_id: &str,
@@ -131,10 +131,10 @@ impl PlaceDetailsService {
 
     ) -> Result<PlaceDetailsResult, GooglePlacesError> { 
         let url = place_details::build_place_details(self.client.get_api_key(), place_id, fields, language, region, review_no_translation, review_sort, session_token)?;
-        tracing::debug!("Google Places API, Place Details: `{url}`");
-        let response: reqwest::Response = match self.client.get_req_client().get(&url).send().await{
+        tracing::debug!("Place Details: `{url}`", url=url);
+        let response: reqwest::Response = match self.client.get_response(&url).await{
             Ok(response) => response,
-            Err(e) => return Err(GooglePlacesError::HttpError(e)),
+            Err(e) => return Err(e),
         };
         let body: String = match response.text().await{
             Ok(body) => body,
