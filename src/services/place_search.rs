@@ -1,7 +1,7 @@
 use crate::services::RequestService;
 use crate::error::GooglePlacesError;
 use crate::models::place_search::{FindPlaceSearchResult, NearbySearchResult, TextSearchResult};
-use crate::models::constants::{PlaceDataFieldSubset, Language, InputType, LocationBias, PlaceTypes, RankBy};
+use crate::models::constants::{PlaceSearchPlaceFields, Language, InputType, LocationBias, PlaceTypes, RankBy};
 use std::collections::HashSet;
 use isocountry::CountryCode;
 use urlencoding::encode;
@@ -168,7 +168,7 @@ mod find_place {
         api_key: &str,
         input: &str,
         input_type: &InputType,
-        fields: Option<&HashSet<PlaceDataFieldSubset>>,
+        fields: Option<&HashSet<PlaceSearchPlaceFields>>,
         language: Option<&Language>,
         location_bias: Option<&LocationBias>,
     ) -> Result<String, GooglePlacesError>{
@@ -181,7 +181,7 @@ mod find_place {
         // Fields
         let all_fields = fields.cloned();
         if let Some(mut all_fields) = all_fields {
-            all_fields.insert(PlaceDataFieldSubset::PlaceId);
+            all_fields.insert(PlaceSearchPlaceFields::PlaceId);
             let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.to_string())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
@@ -320,7 +320,7 @@ impl PlaceSearchService {
         &self,
         input: &str,
         input_type: &InputType,
-        fields: Option<&HashSet<PlaceDataFieldSubset>>,
+        fields: Option<&HashSet<PlaceSearchPlaceFields>>,
         language: Option<&Language>,
         location_bias: Option<&LocationBias>,
     ) -> Result<FindPlaceSearchResult, GooglePlacesError> {       
@@ -467,7 +467,6 @@ mod test{
             // assert!(place.vicinity.is_some()); // this is occasionally null
             // assert!(place.price_level.is_some()); // this is occasionally null
             assert!(place.rating.is_some());
-            assert!(place.user_ratings_total.is_some());
         }
     }
 
@@ -516,7 +515,6 @@ mod test{
             // assert!(place.vicinity.is_some()); // this is occasionally null
             // assert!(place.price_level.is_some()); // this is occasionally null
             assert!(place.rating.is_some());
-            assert!(place.user_ratings_total.is_some());
         }
     }
 
@@ -525,8 +523,8 @@ mod test{
         let api_key = "12345";
         let input = "Mongolian Grill";
         let input_type = &InputType::TextQuery;
-        let fields_set: HashSet<PlaceDataFieldSubset> = vec![
-            PlaceDataFieldSubset::Name,
+        let fields_set: HashSet<PlaceSearchPlaceFields> = vec![
+            PlaceSearchPlaceFields::Name,
         ].into_iter().collect();
         let fields = Some(&fields_set);
         let language: Option<&Language> = Some(&Language::En);

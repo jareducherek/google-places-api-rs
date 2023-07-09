@@ -41,11 +41,10 @@ async fn test_nearby_search() {
                 assert!(place.icon.is_some());
                 assert!(place.icon_background_color.is_some());
                 assert!(place.icon_mask_base_uri.is_some());
-                assert!(place.opening_hours.is_some());
                 // assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0); // this is occasionally null
                 assert!(place.plus_code.is_some());
                 assert!(place.types.is_some());
-                assert!(place.vicinity.is_some());
+                assert!(place.geometry.is_some());
                 // assert!(place.price_level.is_some()); // this is occasionally null
                 // assert!(place.rating.is_some()); // this is occasionally null
                 // assert!(place.user_ratings_total.is_some()); // this is occasionally null
@@ -70,14 +69,12 @@ async fn test_nearby_search() {
                 assert!(place.icon.is_some());
                 assert!(place.icon_background_color.is_some());
                 assert!(place.icon_mask_base_uri.is_some());
-                assert!(place.opening_hours.is_some());
                 // assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0); // this is occasionally null
                 assert!(place.plus_code.is_some());
                 assert!(place.types.is_some());
-                assert!(place.vicinity.is_some());
+                assert!(place.geometry.is_some());
                 // assert!(place.price_level.is_some()); // this is occasionally null
                 assert!(place.rating.is_some());
-                assert!(place.user_ratings_total.is_some());
             }
         }
         Err(error) => {

@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumString};
 
 #[derive(Debug, Copy, Clone, Serialize, Deserialize, Hash, Eq, PartialEq, Display, EnumString)]
-pub enum PlaceDataField {
+pub enum PlaceDetailsPlaceFields {
     // Basic Data
     #[strum(serialize = "address_components")]
     AddressComponents,
@@ -93,7 +93,7 @@ pub enum PlaceDataField {
 }
 
 #[derive(Debug, Copy, Clone, Serialize, Deserialize, Hash, Eq, PartialEq, Display, EnumString)]
-pub enum PlaceDataFieldSubset {
+pub enum PlaceSearchPlaceFields {
     // Basic Data
     #[strum(serialize = "business_status")]
     BusinessStatus,
@@ -151,22 +151,22 @@ pub enum PlaceDataFieldSubset {
 
 
 mod tests {
-    use super::PlaceDataField;
+    use super::PlaceDetailsPlaceFields;
 
     #[test]
     fn test_language_as_str() {
-        assert_eq!(PlaceDataField::AddressComponents.to_string(), "address_components");
-        assert_eq!(PlaceDataField::BusinessStatus.to_string(), "business_status");
-        assert_eq!(PlaceDataField::FormattedAddress.to_string(), "formatted_address");
+        assert_eq!(PlaceDetailsPlaceFields::AddressComponents.to_string(), "address_components");
+        assert_eq!(PlaceDetailsPlaceFields::BusinessStatus.to_string(), "business_status");
+        assert_eq!(PlaceDetailsPlaceFields::FormattedAddress.to_string(), "formatted_address");
     }
 
     #[test]
     fn test_language_parse() {
-        let parsed_result: PlaceDataField = "address_components".parse().unwrap();
-        assert_eq!(parsed_result, PlaceDataField::AddressComponents);
-        let parsed_result: PlaceDataField = "business_status".parse().unwrap();
-        assert_eq!(parsed_result, PlaceDataField::BusinessStatus);
-        let parsed_result: PlaceDataField = "formatted_address".parse().unwrap();
-        assert_eq!(parsed_result, PlaceDataField::FormattedAddress);
+        let parsed_result: PlaceDetailsPlaceFields = "address_components".parse().unwrap();
+        assert_eq!(parsed_result, PlaceDetailsPlaceFields::AddressComponents);
+        let parsed_result: PlaceDetailsPlaceFields = "business_status".parse().unwrap();
+        assert_eq!(parsed_result, PlaceDetailsPlaceFields::BusinessStatus);
+        let parsed_result: PlaceDetailsPlaceFields = "formatted_address".parse().unwrap();
+        assert_eq!(parsed_result, PlaceDetailsPlaceFields::FormattedAddress);
     }
 }

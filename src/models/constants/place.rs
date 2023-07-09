@@ -3,7 +3,7 @@ use serde_json::{json, Value};
 use crate::models::Photo;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Place {
+pub struct PlaceDetailsPlace {
     // Basic
     #[serde(rename = "place_id")]
     pub id: String,
@@ -50,7 +50,34 @@ pub struct Place {
     pub serves_vegetarian_food: Option<bool>,
     pub serves_wine: Option<bool>,
     pub takeout: Option<bool>,
-    pub user_ratings_total: Option<i32>,  
+    pub user_ratings_total: Option<i32>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlaceSearchPlace {
+    // Basic
+    #[serde(rename = "place_id")]
+    pub id: String,
+    pub name: Option<String>,
+    pub business_status: Option<String>,
+    pub formatted_address: Option<String>,
+    pub geometry: Option<Geometry>,
+    pub icon: Option<String>,
+    pub icon_mask_base_uri: Option<String>,
+    pub icon_background_color: Option<String>,
+    pub photos: Option<Vec<Photo>>,
+    pub plus_code: Option<PlusCode>,
+    pub types: Option<Vec<String>>,
+    pub url: Option<String>,
+    pub utc_offset: Option<i32>,
+
+    // Contact
+    pub formatted_phone_number: Option<String>,
+    pub website: Option<String>,
+
+    // Atmosphere
+    pub price_level: Option<i32>,
+    pub rating: Option<f32>,
 }
 
 
@@ -156,7 +183,15 @@ pub struct PlaceEditorialSummary {
     pub overview: Option<String>,
 }
 
-impl Place {
+impl PlaceDetailsPlace {
+    pub fn display(&self) -> String {
+        let json_value: Value = json!(self);
+        let cleaned_value = remove_empty_fields(&json_value);
+        serde_json::to_string_pretty(&cleaned_value).unwrap_or_else(|_| String::from("Error formatting Place"))
+    }
+}
+
+impl PlaceSearchPlace {
     pub fn display(&self) -> String {
         let json_value: Value = json!(self);
         let cleaned_value = remove_empty_fields(&json_value);
