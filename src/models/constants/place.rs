@@ -16,7 +16,6 @@ pub struct PlaceDetailsPlace {
     pub icon: Option<String>,
     pub icon_mask_base_uri: Option<String>,
     pub icon_background_color: Option<String>,
-    pub permanently_closed: Option<bool>,
     pub photos: Option<Vec<Photo>>,
     pub plus_code: Option<PlusCode>,
     pub types: Option<Vec<String>>,
@@ -67,13 +66,6 @@ pub struct PlaceSearchPlace {
     pub icon_background_color: Option<String>,
     pub photos: Option<Vec<Photo>>,
     pub plus_code: Option<PlusCode>,
-    pub types: Option<Vec<String>>,
-    pub url: Option<String>,
-    pub utc_offset: Option<i32>,
-
-    // Contact
-    pub formatted_phone_number: Option<String>,
-    pub website: Option<String>,
 
     // Atmosphere
     pub price_level: Option<i32>,

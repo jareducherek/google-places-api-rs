@@ -39,15 +39,14 @@ async fn test_text_search() {
                 assert!(place.id.len() > 0);
                 assert!(place.name.is_some());
                 assert!(place.business_status.is_some());
+                assert!(place.formatted_address.is_some());
                 assert!(place.geometry.is_some());
                 assert!(place.icon.is_some());
-                assert!(place.icon_background_color.is_some());
                 assert!(place.icon_mask_base_uri.is_some());
-                assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0);
+                assert!(place.icon_background_color.is_some());
+                assert!(place.photos.is_some());
                 assert!(place.plus_code.is_some());
-                assert!(place.types.is_some());
-                // assert!(place.vicinity.is_some()); // this is occasionally null
-                // assert!(place.price_level.is_some()); // this is occasionally null
+                assert!(place.price_level.is_some());
                 assert!(place.rating.is_some());
             }
         }
@@ -66,15 +65,14 @@ async fn test_text_search() {
                 assert!(place.id.len() > 0);
                 assert!(place.name.is_some());
                 assert!(place.business_status.is_some());
+                // assert!(place.formatted_address.is_some()); // this is sometimes null
                 assert!(place.geometry.is_some());
                 assert!(place.icon.is_some());
-                assert!(place.icon_background_color.is_some());
                 assert!(place.icon_mask_base_uri.is_some());
-                // assert!(place.photos.as_ref().map(|vec| vec.len()).unwrap_or(0) > 0); // this is occasionally null
+                assert!(place.icon_background_color.is_some());
+                // assert!(place.photos.is_some()); // this is sometimes null
                 assert!(place.plus_code.is_some());
-                assert!(place.types.is_some());
-                // assert!(place.vicinity.is_some()); // this is occasionally null
-                // assert!(place.price_level.is_some()); // this is occasionally null
+                // assert!(place.price_level.is_some()); // this is sometimes null
                 assert!(place.rating.is_some());
             }
         }

@@ -13,14 +13,19 @@ async fn test_find_place() {
     let input = "Mongolian Grill";
     let input_type: InputType = InputType::TextQuery;
     let fields: HashSet<PlaceSearchPlaceFields> = vec![
-        PlaceSearchPlaceFields::PlaceId,
-        PlaceSearchPlaceFields::Name,
         PlaceSearchPlaceFields::BusinessStatus,
         PlaceSearchPlaceFields::FormattedAddress,
+        PlaceSearchPlaceFields::Viewport,
+        PlaceSearchPlaceFields::Location,
         PlaceSearchPlaceFields::Icon,
         PlaceSearchPlaceFields::IconMaskBaseUri,
         PlaceSearchPlaceFields::IconBackgroundColor,
+        PlaceSearchPlaceFields::Name,
+        PlaceSearchPlaceFields::Photo,
+        PlaceSearchPlaceFields::PlaceId,
         PlaceSearchPlaceFields::PlusCode,
+        PlaceSearchPlaceFields::PriceLevel,
+        PlaceSearchPlaceFields::Rating,
     ].into_iter().collect();
     let language: Language = Language::En;
     let location_bias: LocationBias = LocationBias::Circular {
@@ -39,10 +44,14 @@ async fn test_find_place() {
                 assert!(place.name.is_some());
                 assert!(place.business_status.is_some());
                 assert!(place.formatted_address.is_some());
+                assert!(place.geometry.is_some());
                 assert!(place.icon.is_some());
                 assert!(place.icon_mask_base_uri.is_some());
                 assert!(place.icon_background_color.is_some());
+                assert!(place.photos.is_some());
                 assert!(place.plus_code.is_some());
+                assert!(place.price_level.is_some());
+                assert!(place.rating.is_some());
             }
         }
         Err(error) => {

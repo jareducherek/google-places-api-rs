@@ -6,6 +6,8 @@ pub enum PlaceDetailsPlaceFields {
     // Basic Data
     #[strum(serialize = "address_components")]
     AddressComponents,
+    #[strum(serialize = "adr_address")]
+    AdrAddress,
     #[strum(serialize = "business_status")]
     BusinessStatus,
     #[strum(serialize = "formatted_address")]
@@ -99,8 +101,10 @@ pub enum PlaceSearchPlaceFields {
     BusinessStatus,
     #[strum(serialize = "formatted_address")]
     FormattedAddress,
-    #[strum(serialize = "geometry")]
-    Geometry,
+    #[strum(serialize = "geometry/viewport")]
+    Viewport,
+    #[strum(serialize = "geometry/location")]
+    Location,
     #[strum(serialize = "icon")]
     Icon,
     #[strum(serialize = "icon_mask_base_uri")]
@@ -109,44 +113,18 @@ pub enum PlaceSearchPlaceFields {
     IconBackgroundColor,
     #[strum(serialize = "name")]
     Name,
-    // #[strum(serialize = "permanently_closed")]
-    // PermanentlyClosed, // Deprecated
-    #[strum(serialize = "photo")]
+    #[strum(serialize = "photos")]
     Photo,
     #[strum(serialize = "place_id")]
     PlaceId,
     #[strum(serialize = "plus_code")]
     PlusCode,
 
-    // Contact Data
-    #[strum(serialize = "formatted_phone_number")]
-    FormattedPhoneNumber,
-    #[strum(serialize = "international_phone_number")]
-    InternationalPhoneNumber,
-
     // Atmosphere Data
-    #[strum(serialize = "dine_in")]
-    DineIn,
     #[strum(serialize = "price_level")]
     PriceLevel,
     #[strum(serialize = "rating")]
     Rating,
-    #[strum(serialize = "serves_beer")]
-    ServesBeer,
-    #[strum(serialize = "serves_breakfast")]
-    ServesBreakfast,
-    #[strum(serialize = "serves_brunch")]
-    ServesBrunch,
-    #[strum(serialize = "serves_dinner")]
-    ServesDinner,
-    #[strum(serialize = "serves_lunch")]
-    ServesLunch,
-    #[strum(serialize = "serves_vegetarian_food")]
-    ServesVegetarianFood,
-    #[strum(serialize = "serves_wine")]
-    ServesWine,
-    #[strum(serialize = "takeout")]
-    Takeout,
 }
 
 
