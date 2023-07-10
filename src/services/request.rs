@@ -48,6 +48,10 @@ impl RequestService {
     pub fn get_api_key(&self) -> &str {
         &self.api_key
     }
+
+    pub fn get_total_requests(&self) -> u64 {
+        self.total_requests.load(Ordering::SeqCst)
+    }
     
 }
 
@@ -60,6 +64,13 @@ mod test {
     async fn test_service_api_key() {
         let service = RequestService::new("test", Some(1), Some(Duration::from_millis(100)));
         assert_eq!(service.get_api_key(), "test");
+    }
+
+    #[tokio::test]
+    async fn test_total_requests() {
+        let service = RequestService::new("test", Some(1), Some(Duration::from_millis(100)));
+        service.get_response("https://www.google.com").await.unwrap();
+        assert_eq!(service.get_total_requests(), 1);
     }
 
     #[tokio::test]
