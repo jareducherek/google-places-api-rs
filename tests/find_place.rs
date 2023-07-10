@@ -3,7 +3,7 @@ use std::env;
 use std::collections::HashSet;
 use google_places_api::client::GooglePlacesClient;
 use google_places_api::models::place_search::{PlaceSearchStatus};
-use google_places_api::models::constants::{PlaceDataField, Language, InputType, LocationBias};
+use google_places_api::models::constants::{PlaceSearchPlaceFields, Language, InputType, LocationBias};
 
 #[tokio::test]
 async fn test_find_place() {
@@ -12,16 +12,20 @@ async fn test_find_place() {
     let client = GooglePlacesClient::new(&api_key);
     let input = "Mongolian Grill";
     let input_type: InputType = InputType::TextQuery;
-    let fields: HashSet<PlaceDataField> = vec![
-        PlaceDataField::PlaceId,
-        PlaceDataField::Name,
-        PlaceDataField::BusinessStatus,
-        PlaceDataField::FormattedAddress,
-        PlaceDataField::Icon,
-        PlaceDataField::IconMaskBaseUri,
-        PlaceDataField::IconBackgroundColor,
-        PlaceDataField::PlusCode,
-        PlaceDataField::Type,
+    let fields: HashSet<PlaceSearchPlaceFields> = vec![
+        PlaceSearchPlaceFields::BusinessStatus,
+        PlaceSearchPlaceFields::FormattedAddress,
+        PlaceSearchPlaceFields::Viewport,
+        PlaceSearchPlaceFields::Location,
+        PlaceSearchPlaceFields::Icon,
+        PlaceSearchPlaceFields::IconMaskBaseUri,
+        PlaceSearchPlaceFields::IconBackgroundColor,
+        PlaceSearchPlaceFields::Name,
+        PlaceSearchPlaceFields::Photo,
+        PlaceSearchPlaceFields::PlaceId,
+        PlaceSearchPlaceFields::PlusCode,
+        PlaceSearchPlaceFields::PriceLevel,
+        PlaceSearchPlaceFields::Rating,
     ].into_iter().collect();
     let language: Language = Language::En;
     let location_bias: LocationBias = LocationBias::Circular {
@@ -40,11 +44,14 @@ async fn test_find_place() {
                 assert!(place.name.is_some());
                 assert!(place.business_status.is_some());
                 assert!(place.formatted_address.is_some());
+                assert!(place.geometry.is_some());
                 assert!(place.icon.is_some());
                 assert!(place.icon_mask_base_uri.is_some());
                 assert!(place.icon_background_color.is_some());
+                assert!(place.photos.is_some());
                 assert!(place.plus_code.is_some());
-                assert!(place.types.is_some());
+                assert!(place.price_level.is_some());
+                assert!(place.rating.is_some());
             }
         }
         Err(error) => {

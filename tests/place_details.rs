@@ -3,7 +3,7 @@ use std::env;
 use std::collections::HashSet;
 use isocountry::CountryCode;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::models::constants::{Language, ReviewSort, PlaceDataField};
+use google_places_api::models::constants::{Language, ReviewSort, PlaceDetailsPlaceFields};
 use google_places_api::models::place_details::{PlaceDetailsStatus};
 
 #[tokio::test]
@@ -60,10 +60,10 @@ async fn test_place_details() {
         }
     }
 
-    let fields: HashSet<PlaceDataField> = vec![
-       PlaceDataField::Name,
-       PlaceDataField::Rating,
-       PlaceDataField::FormattedPhoneNumber,
+    let fields: HashSet<PlaceDetailsPlaceFields> = vec![
+        PlaceDetailsPlaceFields::Name,
+        PlaceDetailsPlaceFields::Rating,
+        PlaceDetailsPlaceFields::FormattedPhoneNumber,
     ].into_iter().collect();
 
     match client.place_details_service.get_place_details(place_id, Some(&fields), Some(&language), Some(&region), Some(&review_no_translation), Some(&review_sort), None).await {

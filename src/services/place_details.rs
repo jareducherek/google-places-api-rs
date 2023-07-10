@@ -1,7 +1,7 @@
 use crate::services::RequestService;
 use crate::error::GooglePlacesError;
 use crate::models::PlaceDetailsResult;
-use crate::models::constants::{PlaceDataField, Language, ReviewSort};
+use crate::models::constants::{PlaceDetailsPlaceFields, Language, ReviewSort};
 use isocountry::CountryCode;
 use std::collections::HashSet;
 use uuid::Uuid;
@@ -18,7 +18,7 @@ mod place_details {
     pub fn build_place_details(
         api_key: &str,
         place_id: &str,
-        fields: Option<&HashSet<PlaceDataField>>, 
+        fields: Option<&HashSet<PlaceDetailsPlaceFields>>, 
         language: Option<&Language>, 
         region: Option<&CountryCode>,
         review_no_translation: Option<&bool>,
@@ -34,7 +34,7 @@ mod place_details {
         // Optional parameters
         let all_fields = fields.cloned();
         if let Some(mut all_fields) = all_fields {
-            all_fields.insert(PlaceDataField::PlaceId);
+            all_fields.insert(PlaceDetailsPlaceFields::PlaceId);
             let field_list: Vec<String> = all_fields.into_iter().map(|f| String::from(f.to_string())).collect();
             let field_string = field_list.join(",");
             url.push_str(&format!("&fields={}", field_string));
@@ -122,7 +122,7 @@ impl PlaceDetailsService {
     pub async fn get_place_details(
         &self,
         place_id: &str,
-        fields: Option<&HashSet<PlaceDataField>>, 
+        fields: Option<&HashSet<PlaceDetailsPlaceFields>>, 
         language: Option<&Language>, 
         region: Option<&CountryCode>,
         review_no_translation: Option<&bool>,
@@ -156,8 +156,8 @@ mod test{
     fn test_build_nearby_search() {
         let api_key = "12345";
         let place_id = "ChIJN1t_tDeuEmsRUsoyG83frY4";
-        let fields_set: HashSet<PlaceDataField> = vec![
-           PlaceDataField::Name,
+        let fields_set: HashSet<PlaceDetailsPlaceFields> = vec![
+            PlaceDetailsPlaceFields::Name,
         ].into_iter().collect();
         let fields = Some(&fields_set);
         let language = Some(&Language::Es);
