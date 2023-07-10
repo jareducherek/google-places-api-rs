@@ -1,11 +1,11 @@
 use serde::{Deserialize, Serialize};
-use crate::models::constants::Place;
+use crate::models::constants::PlaceDetailsPlace;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PlaceDetailsResult {
     pub html_attributions: Vec<String>,
     #[serde(rename = "result")]
-    pub place: Place,
+    pub place: PlaceDetailsPlace,
     pub status: PlaceDetailsStatus,
     pub info_messages: Option<Vec<String>>,
 }

@@ -1,12 +1,12 @@
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumString};
-use crate::models::constants::Place;
+use crate::models::constants::PlaceSearchPlace;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct NearbySearchResult {
     pub html_attributions: Vec<String>,
     #[serde(rename = "results")]
-    pub places: Vec<Place>,
+    pub places: Vec<PlaceSearchPlace>,
     pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
@@ -18,7 +18,7 @@ pub struct NearbySearchResult {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FindPlaceSearchResult {
     #[serde(rename = "candidates")]
-    pub places: Vec<Place>,
+    pub places: Vec<PlaceSearchPlace>,
     pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,
@@ -29,7 +29,7 @@ pub struct FindPlaceSearchResult {
 pub struct TextSearchResult {
     pub html_attributions: Vec<String>,
     #[serde(rename = "results")]
-    pub places: Vec<Place>,
+    pub places: Vec<PlaceSearchPlace>,
     pub status: PlaceSearchStatus,
     pub error_message: Option<String>,
     pub info_messages: Option<Vec<String>>,

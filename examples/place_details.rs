@@ -5,7 +5,7 @@ use isocountry::CountryCode;
 use relative_path::RelativePath;
 use std::path::Path;
 use google_places_api::client::GooglePlacesClient;
-use google_places_api::models::constants::{PlaceDataField, Language, ReviewSort, Place};
+use google_places_api::models::constants::{PlaceDetailsPlaceFields, Language, ReviewSort};
 
 #[tokio::main]
 async fn main() {
@@ -30,11 +30,11 @@ async fn main() {
 
     // Define the request parameters
     let place_id = "ChIJN1t_tDeuEmsRUsoyG83frY4";
-    let fields: HashSet<PlaceDataField> = vec![
-       PlaceDataField::Name,
-       PlaceDataField::Rating,
-       PlaceDataField::FormattedPhoneNumber,
-       PlaceDataField::Vicinity,
+    let fields: HashSet<PlaceDetailsPlaceFields> = vec![
+        PlaceDetailsPlaceFields::Name,
+        PlaceDetailsPlaceFields::Rating,
+        PlaceDetailsPlaceFields::FormattedPhoneNumber,
+        PlaceDetailsPlaceFields::Vicinity,
     ].into_iter().collect();
     let language: Language = Language::Es;
     let region: CountryCode = CountryCode::USA;
