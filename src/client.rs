@@ -10,8 +10,8 @@ pub struct GooglePlacesClient {
 }
 
 impl GooglePlacesClient {
-    pub fn new(api_key: &str) -> Self {
-        let request_service = Arc::new(RequestService::new(api_key));
+    pub fn new(api_key: &str, max_requests: Option<u64>, per: Option<std::time::Duration>) -> Self {
+        let request_service = Arc::new(RequestService::new(api_key, max_requests, per));
 
         GooglePlacesClient {
             place_search_service: PlaceSearchService::new(request_service.clone()),
