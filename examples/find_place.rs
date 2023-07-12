@@ -15,7 +15,7 @@ async fn main() {
     let api_key = env::var("GOOGLE_PLACES_API_KEY").expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
 
     // Create a Google Places client
-    let client = GooglePlacesClient::new(&api_key);
+    let client = GooglePlacesClient::new(&api_key, Some(5), None);
 
     // Create a tracing subscriber for logging purposes
     let sub = tracing_subscriber::FmtSubscriber::builder().with_max_level(tracing::Level::INFO).finish();

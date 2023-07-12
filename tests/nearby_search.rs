@@ -10,7 +10,7 @@ use google_places_api::models::constants::{PlaceTypes, Language};
 async fn test_nearby_search() {
     dotenv().ok();
     let api_key = env::var("GOOGLE_PLACES_API_KEY").expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
-    let client = GooglePlacesClient::new(&api_key);
+    let client = GooglePlacesClient::new(&api_key, None, None);
     let keyword = "restaurant";
     let location = (37.7749, -122.4194); // San Francisco coordinates
     let radius = 5000; // 5000 meters radius

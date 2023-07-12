@@ -66,10 +66,16 @@ pub struct PlaceSearchPlace {
     pub icon_background_color: Option<String>,
     pub photos: Option<Vec<Photo>>,
     pub plus_code: Option<PlusCode>,
+    pub types: Option<Vec<String>>,
+    pub vicinity: Option<String>,
 
+    // Contact
+    pub opening_hours: Option<OpeningHours>,
+    
     // Atmosphere
     pub price_level: Option<i32>,
     pub rating: Option<f32>,
+    pub user_ratings_total: Option<i32>,
 }
 
 
