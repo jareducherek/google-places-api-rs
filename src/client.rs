@@ -7,6 +7,7 @@ pub struct GooglePlacesClient {
     pub place_search_service: PlaceSearchService,
     pub place_details_service: PlaceDetailsService,
     pub place_photos_service: PlacePhotosService,
+    pub request_service: Arc<RequestService>,
 }
 
 impl GooglePlacesClient {
@@ -17,6 +18,7 @@ impl GooglePlacesClient {
             place_search_service: PlaceSearchService::new(request_service.clone()),
             place_details_service: PlaceDetailsService::new(request_service.clone()),
             place_photos_service: PlacePhotosService::new(request_service.clone()),
+            request_service,
         }
     }
 }
