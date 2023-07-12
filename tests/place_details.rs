@@ -10,7 +10,7 @@ use google_places_api::models::place_details::{PlaceDetailsStatus};
 async fn test_place_details() {
     dotenv().ok();
     let api_key = env::var("GOOGLE_PLACES_API_KEY").expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
-    let client = GooglePlacesClient::new(&api_key);
+    let client = GooglePlacesClient::new(&api_key, None, None);
     let place_id = "ChIJN1t_tDeuEmsRUsoyG83frY4";
     let language: Language = Language::Es;
     let region: CountryCode = CountryCode::USA;

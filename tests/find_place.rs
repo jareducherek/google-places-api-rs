@@ -9,7 +9,7 @@ use google_places_api::models::constants::{PlaceSearchPlaceFields, Language, Inp
 async fn test_find_place() {
     dotenv().ok();
     let api_key = env::var("GOOGLE_PLACES_API_KEY").expect("Please set the GOOGLE_PLACES_API_KEY environment variable");
-    let client = GooglePlacesClient::new(&api_key);
+    let client = GooglePlacesClient::new(&api_key, None, None);
     let input = "Mongolian Grill";
     let input_type: InputType = InputType::TextQuery;
     let fields: HashSet<PlaceSearchPlaceFields> = vec![
